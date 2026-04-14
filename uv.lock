@@ -406,6 +406,7 @@ name = "shopping-agent"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [
+    { name = "pyyaml" },
     { name = "textual" },
 ]
 
@@ -418,7 +419,10 @@ dev = [
 ]
 
 [package.metadata]
-requires-dist = [{ name = "textual", specifier = ">=0.60.0" }]
+requires-dist = [
+    { name = "pyyaml", specifier = ">=6.0.2" },
+    { name = "textual", specifier = ">=0.60.0" },
+]
 
 [package.metadata.requires-dev]
 dev = [

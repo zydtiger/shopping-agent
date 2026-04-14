@@ -6,7 +6,7 @@ Terminal-first scaffold for an interactive shopping agent project. This reposito
 
 - Textual terminal UI with request entry, loading state, follow-up questions, ranked results, and open-link actions
 - Shared product schema and preference-profile models
-- Mock adapters for Amazon, eBay, and Shopify-style sources
+- Retrieval adapter protocol and orchestration hooks for external product sources
 - Two ranking design stubs matching the project plan:
   - direct JSON style ranking
   - RAG-style candidate retrieval plus final reranking
@@ -17,6 +17,7 @@ Terminal-first scaffold for an interactive shopping agent project. This reposito
 
 - Real scraping or API integration
 - Real LLM prompting, embeddings, or evaluator models
+- Built-in retrieval adapter implementations
 - Production persistence or vector databases
 
 ## UV Workflow

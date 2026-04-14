@@ -1,7 +1,7 @@
 from __future__ import annotations
 
-from datetime import datetime
 import webbrowser
+from datetime import datetime
 
 from textual.app import App, ComposeResult
 from textual.containers import Container, Horizontal, Vertical
@@ -253,6 +253,9 @@ class ShoppingAgentApp(App[None]):
         self.query_one("#logs-view", RichLog).write(f"{timestamp}  {message}")
 
 
-def run_app(design: RankingDesign = RankingDesign.DIRECT_JSON) -> None:
-    app = ShoppingAgentApp(design=design)
+def run_app(
+    design: RankingDesign = RankingDesign.DIRECT_JSON,
+    service: ShoppingAgentService | None = None,
+) -> None:
+    app = ShoppingAgentApp(design=design, service=service)
     app.run()
