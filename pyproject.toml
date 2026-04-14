@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "shopping-agent"
+version = "0.1.0"
+description = "Terminal shopping agent backbone for interactive retrieval and ranking experiments."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+  "textual>=0.60.0",
+]
+
+[dependency-groups]
+dev = [
+  "pytest>=8.0.0",
+]
+
+[project.scripts]
+shopping-agent = "shopping_agent.main:run"
+
+[tool.uv]
+package = true
+default-groups = ["dev"]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
