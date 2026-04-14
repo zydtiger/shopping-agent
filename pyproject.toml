@@ -27,6 +27,11 @@ shopping-agent = "shopping_agent.main:run"
 package = true
 default-groups = ["dev"]
 
+[tool.mypy]
+python_version = "3.12"
+files = ["src"]
+pretty = true
+
 [tool.setuptools]
 package-dir = {"" = "src"}
 

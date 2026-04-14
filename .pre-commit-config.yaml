@@ -11,3 +11,9 @@ repos:
         entry: uv run ruff format
         language: system
         types_or: [python, pyi]
+      - id: mypy
+        name: mypy src
+        entry: uv run mypy src
+        language: system
+        pass_filenames: false
+        types_or: [python, pyi]
