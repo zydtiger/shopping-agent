@@ -26,6 +26,12 @@ uv sync
 uv run shopping-agent
 ```
 
+Use the alternate ranking path with:
+
+```bash
+uv run shopping-agent --rag
+```
+
 ## Test
 
 ```bash
@@ -37,6 +43,7 @@ uv run python -m unittest discover -s tests
 - Dependencies are managed through `pyproject.toml` and resolved with `uv`.
 - `uv sync` creates the local environment and installs the package plus the default `dev` group.
 - If you want to avoid installing dev dependencies, run `uv sync --no-dev`.
+- Direct JSON ranking is the default launch mode. Pass `--rag` to use the RAG path.
 
 ## Project Layout
 
