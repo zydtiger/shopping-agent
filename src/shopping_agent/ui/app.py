@@ -1,47 +1,69 @@
 from __future__ import annotations
 
+from datetime import datetime
 import webbrowser
 
 from textual.app import App, ComposeResult
 from textual.containers import Container, Horizontal, Vertical
-from textual.widgets import Button, Footer, Header, Input, LoadingIndicator, Static
+from textual.screen import ModalScreen
+from textual.widgets import (
+    Button,
+    DataTable,
+    Input,
+    LoadingIndicator,
+    RichLog,
+    Static,
+    TabbedContent,
+    TabPane,
+)
 
-from shopping_agent.domain import ClarificationQuestion, RankedProduct, RankingDesign
-from shopping_agent.service import ShoppingAgentService, build_default_service
+from ..domain import ClarificationQuestion, RankedProduct, RankingDesign
+from ..service import ShoppingAgentService, build_default_service
 
 
-class ClarificationCard(Static):
+class ClarificationDialog(ModalScreen[str]):
     def __init__(self, question: ClarificationQuestion) -> None:
-        super().__init__(classes="question-card")
+        super().__init__()
         self.question = question
 
     def compose(self) -> ComposeResult:
-        yield Static(self.question.prompt, classes="question-prompt")
-        yield Static(self.question.reason, classes="question-reason")
-        with Horizontal(classes="option-row"):
-            for option in self.question.options:
-                yield Button(
-                    option.label,
-                    id=f"answer-{self.question.id}-{option.id}",
-                    classes="answer-option",
+        with Container(id="dialog-card"):
+            yield Static(self.question.prompt, classes="dialog-title")
+            yield Static(self.question.reason, classes="dialog-reason")
+            with Vertical(classes="dialog-options"):
+                for option in self.question.options:
+                    yield Button(
+                        option.label,
+                        id=f"dialog-choice-{option.id}",
+                        classes="dialog-choice",
+                    )
+            yield Static("Custom answer", classes="dialog-label")
+            with Horizontal(id="dialog-custom-row"):
+                yield Input(
+                    placeholder="Type a custom answer",
+                    id="dialog-custom-input",
                 )
+                yield Button("Submit", id="dialog-custom-submit", variant="primary")
 
+    def on_mount(self) -> None:
+        self.query_one("#dialog-custom-input", Input).focus()
 
-class ResultCard(Static):
-    def __init__(self, item: RankedProduct) -> None:
-        super().__init__(classes="result-card")
-        self.item = item
+    async def on_button_pressed(self, event: Button.Pressed) -> None:
+        button_id = event.button.id or ""
+        if button_id.startswith("dialog-choice-"):
+            self.dismiss(button_id.removeprefix("dialog-choice-"))
+            return
+        if button_id == "dialog-custom-submit":
+            value = self.query_one("#dialog-custom-input", Input).value.strip()
+            if value:
+                self.dismiss(value)
 
-    def compose(self) -> ComposeResult:
-        product = self.item.product
-        summary = (
-            f"[#{self.item.rank}] {product.title}\n"
-            f"${product.price:.2f} {product.currency}  |  {product.source_site}\n"
-            f"{product.short_description}\n"
-            f"Why ranked: {self.item.rationale}"
-        )
-        yield Static(summary, classes="result-copy")
-        yield Button("Open Listing", id=f"open-{self.item.rank}", variant="primary")
+    async def on_input_submitted(self, event: Input.Submitted) -> None:
+        if event.input.id != "dialog-custom-input":
+            return
+        value = event.value.strip()
+        if value:
+            self.dismiss(value)
 
 
 class ShoppingAgentApp(App[None]):
@@ -58,168 +80,177 @@ class ShoppingAgentApp(App[None]):
         self.service = service or build_default_service()
         self.selected_design = design
         self.pending_query = ""
-        self.pending_questions: list[ClarificationQuestion] = []
         self.selected_answers: dict[str, str] = {}
-        self.result_urls: dict[int, str] = {}
+        self.result_urls: dict[str, str] = {}
+        self.search_in_flight = False
 
     def compose(self) -> ComposeResult:
-        yield Header(show_clock=True)
-        with Container(id="shell"):
-            yield Static("Atlas Shopping Agent", id="hero")
-            yield Static(
-                "Clarify vague shopping requests, compare ranking designs, and inspect mock retrieval output.",
-                id="subhero",
-            )
-            yield Static(
-                f"Active pipeline: {self.selected_design.label}",
-                id="design-status",
-            )
-            yield Static("Shopping Request", classes="section-label")
+        with Container(id="launch-view"):
             yield Input(
-                placeholder="Example: need a durable laptop backpack for weekend travel",
-                id="query-input",
+                placeholder="Describe what you want to shop for and press Enter",
+                id="launch-query-input",
             )
-            with Horizontal(id="search-row"):
-                yield Button("Run Search", id="submit", variant="success")
-                yield LoadingIndicator(id="loading")
-            yield Static("Enter a request to start.", id="status-copy")
-            yield Static("Clarification", classes="section-label")
-            yield Vertical(id="clarification-panel")
-            yield Button("Continue With Answers", id="continue", variant="primary")
-            yield Static("Ranked Results", classes="section-label")
-            yield Vertical(id="results-panel")
-            yield Static("Recent Logs", classes="section-label")
-            yield Vertical(id="log-panel")
-        yield Footer()
 
-    async def on_mount(self) -> None:
-        self.query_one("#loading").display = False
-        self.query_one("#continue", Button).display = False
-        await self._render_logs()
-
-    async def on_button_pressed(self, event: Button.Pressed) -> None:
-        button_id = event.button.id or ""
-        if button_id == "submit":
-            await self._start_search()
-            return
-        if button_id == "continue":
-            await self._complete_search()
-            return
-        if button_id.startswith("answer-"):
-            _, question_id, option_id = button_id.split("-", maxsplit=2)
-            self.selected_answers[question_id] = option_id
-            self._highlight_selected_answers()
-            return
-        if button_id.startswith("open-"):
-            rank = int(button_id.removeprefix("open-"))
-            url = self.result_urls.get(rank)
-            if url:
-                webbrowser.open(url)
-                self.query_one("#status-copy", Static).update(
-                    f"Opened result #{rank} in the default browser."
+        with Vertical(id="main-view"):
+            with Container(id="top-panel", classes="panel"):
+                yield Static("Active Prompt", classes="panel-title")
+                yield Static("No search submitted yet.", id="active-prompt")
+                yield Static(
+                    f"Pipeline: {self.selected_design.label}",
+                    id="design-status",
                 )
+                with Horizontal(id="search-row"):
+                    yield Input(
+                        placeholder="Enter a new shopping search and press Enter",
+                        id="active-query-input",
+                    )
+                    yield LoadingIndicator(id="loading")
+                yield Static("Ready for a shopping query.", id="status-copy")
 
-    async def _start_search(self) -> None:
-        query = self.query_one("#query-input", Input).value.strip()
-        if not query:
-            self.query_one("#status-copy", Static).update(
-                "Enter a shopping request before running the agent."
-            )
+            with Container(id="bottom-panel", classes="panel"):
+                with TabbedContent(id="workspace-tabs"):
+                    with TabPane("Recommendations", id="recommendations-tab"):
+                        yield DataTable(id="recommendations-table")
+                        yield Static(
+                            "Select a recommendation row to open the listing in your browser.",
+                            id="table-hint",
+                        )
+                    with TabPane("Logs", id="logs-tab"):
+                        yield RichLog(
+                            id="logs-view",
+                            markup=False,
+                            highlight=False,
+                            wrap=True,
+                        )
+
+    def on_mount(self) -> None:
+        self.query_one("#main-view").display = False
+        self.query_one("#loading").display = False
+        self.query_one("#launch-query-input", Input).focus()
+
+        table = self.query_one("#recommendations-table", DataTable)
+        table.cursor_type = "row"
+        table.zebra_stripes = True
+        table.add_columns("RANK", "NAME", "PRICE", "SITE")
+
+        self.query_one("#workspace-tabs", TabbedContent).active = "logs-tab"
+        self._append_log("[plan] Waiting for the first user prompt.")
+
+    async def on_input_submitted(self, event: Input.Submitted) -> None:
+        if event.input.id not in {"launch-query-input", "active-query-input"}:
             return
+        query = event.value.strip()
+        if not query or self.search_in_flight:
+            return
+        await self._run_search(query)
 
+    async def on_data_table_row_selected(self, event: DataTable.RowSelected) -> None:
+        row_key = str(event.row_key.value)
+        url = self.result_urls.get(row_key)
+        if not url:
+            return
+        webbrowser.open(url)
+        self.query_one("#status-copy", Static).update(
+            "Opened the selected product in the default browser."
+        )
+        self._append_log("[action] Opened the selected recommendation in the browser.")
+
+    async def _run_search(self, query: str) -> None:
+        self.search_in_flight = True
         self.pending_query = query
         self.selected_answers = {}
-        self._set_loading(True)
-        response = await self.service.start_search(query, self.selected_design)
-        self._set_loading(False)
-        await self._render_logs()
 
-        clarification_panel = self.query_one("#clarification-panel", Vertical)
-        results_panel = self.query_one("#results-panel", Vertical)
-        await clarification_panel.remove_children()
-        await results_panel.remove_children()
+        self._enter_main_layout(query)
+        self._reset_search_views()
+        self._append_log(f"[action] Received user prompt: {query}")
+        self._set_loading(True, "Analyzing prompt and preparing the agent workflow...")
+
+        response = await self.service.start_search(
+            query,
+            self.selected_design,
+            progress=self._handle_progress,
+        )
 
         if response.requires_clarification:
-            self.pending_questions = response.questions
-            for question in response.questions:
-                await clarification_panel.mount(ClarificationCard(question))
-            self.query_one("#continue", Button).display = True
-            self.query_one("#status-copy", Static).update(response.status_message)
-            return
-
-        self.pending_questions = []
-        self.query_one("#continue", Button).display = False
-        await self._render_results(response.ranked_products, response.status_message)
-
-    async def _complete_search(self) -> None:
-        missing = [
-            question.prompt
-            for question in self.pending_questions
-            if question.id not in self.selected_answers
-        ]
-        if missing:
-            self.query_one("#status-copy", Static).update(
-                "Pick one option for each follow-up question before continuing."
+            self._set_loading(
+                False, "Clarification required before retrieval can continue."
             )
-            return
+            answers = await self._ask_clarification_questions(response.questions)
+            self.selected_answers = answers
+            self._set_loading(True, "Retrieving products and ranking candidates...")
+            response = await self.service.finalize_search(
+                query,
+                answers,
+                self.selected_design,
+                progress=self._handle_progress,
+            )
 
-        self._set_loading(True)
-        response = await self.service.finalize_search(
-            self.pending_query,
-            self.selected_answers,
-            self.selected_design,
-        )
-        self._set_loading(False)
-        self.query_one("#continue", Button).display = False
-        await self.query_one("#clarification-panel", Vertical).remove_children()
-        await self._render_logs()
-        await self._render_results(response.ranked_products, response.status_message)
+        await self._render_results(response.ranked_products)
+        for note in response.debug_notes:
+            self._append_log(f"[action] {note}")
 
-    async def _render_results(
-        self, ranked_products: list[RankedProduct], status_message: str
-    ) -> None:
-        results_panel = self.query_one("#results-panel", Vertical)
-        await results_panel.remove_children()
-        self.result_urls = {
-            item.rank: item.product.product_url for item in ranked_products
-        }
+        self._set_loading(False, response.status_message)
+        self.query_one("#workspace-tabs", TabbedContent).active = "recommendations-tab"
+        self.search_in_flight = False
 
-        for item in ranked_products:
-            await results_panel.mount(ResultCard(item))
+    async def _ask_clarification_questions(
+        self, questions: list[ClarificationQuestion]
+    ) -> dict[str, str]:
+        answers: dict[str, str] = {}
+        for question in questions:
+            self._append_log(f"[action] Opening clarification popup: {question.prompt}")
+            answer = await self.push_screen_wait(ClarificationDialog(question))
+            answers[question.id] = answer
+            self._append_log(
+                f"[action] Clarification captured for {question.id}: {answer}"
+            )
+        return answers
+
+    async def _handle_progress(self, message: str) -> None:
+        self._append_log(message)
+
+    async def _render_results(self, ranked_products: list[RankedProduct]) -> None:
+        table = self.query_one("#recommendations-table", DataTable)
+        table.clear(columns=False)
+        self.result_urls = {}
+
+        for display_rank, item in enumerate(ranked_products):
+            row_key = f"result-{display_rank}"
+            table.add_row(
+                str(display_rank),
+                item.product.title,
+                f"${item.product.price:.2f}",
+                item.product.source_site,
+                key=row_key,
+            )
+            self.result_urls[row_key] = item.product.product_url
+
+        if not ranked_products:
+            self._append_log(
+                "[action] No recommendations are available because retrieval returned no products."
+            )
+
+    def _reset_search_views(self) -> None:
+        self.query_one("#workspace-tabs", TabbedContent).active = "logs-tab"
+        self.query_one("#logs-view", RichLog).clear()
+        self.query_one("#recommendations-table", DataTable).clear(columns=False)
+        self.result_urls = {}
+
+    def _enter_main_layout(self, query: str) -> None:
+        self.query_one("#launch-view").display = False
+        self.query_one("#main-view").display = True
+        self.query_one("#active-prompt", Static).update(query)
+        self.query_one("#active-query-input", Input).value = query
+
+    def _set_loading(self, is_loading: bool, status_message: str) -> None:
+        self.query_one("#loading").display = is_loading
+        self.query_one("#launch-query-input", Input).disabled = is_loading
+        self.query_one("#active-query-input", Input).disabled = is_loading
         self.query_one("#status-copy", Static).update(status_message)
 
-    def _highlight_selected_answers(self) -> None:
-        for button in self.query(".answer-option", Button):
-            button.remove_class("selected")
-            button_id = button.id or ""
-            if not button_id.startswith("answer-"):
-                continue
-            _, question_id, option_id = button_id.split("-", maxsplit=2)
-            if self.selected_answers.get(question_id) == option_id:
-                button.add_class("selected")
-
-    def _set_loading(self, is_loading: bool) -> None:
-        self.query_one("#loading").display = is_loading
-        self.query_one("#submit", Button).disabled = is_loading
-        self.query_one("#continue", Button).disabled = is_loading
-        if is_loading:
-            self.query_one("#status-copy", Static).update(
-                "Retrieving mock products and preparing ranked output..."
-            )
-
-    async def _render_logs(self) -> None:
-        log_panel = self.query_one("#log-panel", Vertical)
-        await log_panel.remove_children()
-        recent = self.service.logger.read_recent()
-        if not recent:
-            await log_panel.mount(Static("No runs logged yet.", classes="log-line"))
-            return
-        for entry in reversed(recent):
-            event_type = entry["event_type"]
-            timestamp = entry["timestamp"].split("T", maxsplit=1)[1][:8]
-            await log_panel.mount(
-                Static(f"{timestamp}  {event_type}", classes="log-line")
-            )
+    def _append_log(self, message: str) -> None:
+        timestamp = datetime.now().strftime("%H:%M:%S")
+        self.query_one("#logs-view", RichLog).write(f"{timestamp}  {message}")
 
 
 def run_app(design: RankingDesign = RankingDesign.DIRECT_JSON) -> None:

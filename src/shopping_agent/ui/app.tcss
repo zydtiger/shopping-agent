@@ -1,41 +1,57 @@
 Screen {
-    background: #0b1020;
+    background: #09111d;
     color: #edf2ff;
 }
 
-#shell {
+#launch-view {
+    width: 1fr;
+    height: 1fr;
+    align: center middle;
+    padding: 0 4;
+}
+
+#launch-query-input {
+    width: 72;
+    border: round #3a537f;
+    background: #132038;
+    color: #edf2ff;
+}
+
+#main-view {
     width: 1fr;
     height: 1fr;
     padding: 1 2;
-    background: #0d1324;
-    overflow-y: auto;
 }
 
-#hero {
-    content-align: center middle;
+.panel {
+    border: round #31466f;
+    background: #0f182b;
+    padding: 1 2;
+}
+
+#top-panel {
+    height: 9;
+    margin-bottom: 1;
+}
+
+#bottom-panel {
+    height: 1fr;
+    padding: 0 1;
+}
+
+.panel-title {
     text-style: bold;
-    color: #f5d76e;
-    padding: 1 0 0 0;
+    color: #f2c87c;
 }
 
-#subhero {
-    color: #b8c3e0;
+#active-prompt {
+    color: #edf2ff;
     padding: 0 0 1 0;
 }
 
 #design-status {
     color: #9ed8c2;
-    padding-bottom: 1;
-}
-
-.section-label {
-    text-style: bold;
-    color: #f2c87c;
-    padding-top: 1;
-}
-
-#query-input {
-    margin: 0 0 1 0;
+    padding: 0 0 1 0;
 }
 
 #search-row {
@@ -43,61 +59,90 @@ Screen {
     align: left middle;
 }
 
+#active-query-input {
+    width: 1fr;
+}
+
 #loading {
+    width: 3;
     margin-left: 1;
     color: #f2c87c;
 }
 
 #status-copy {
-    min-height: 2;
-    color: #d9e3ff;
-    padding: 1 0;
+    color: #c4d1ef;
+    padding-top: 1;
 }
 
-#clarification-panel,
-#results-panel,
-#log-panel {
+TabbedContent {
+    height: 1fr;
+}
+
+TabPane {
+    padding: 1 0 0 0;
+}
+
+#recommendations-table {
+    height: 1fr;
+}
+
+#table-hint {
+    color: #9fb2d8;
+    padding-top: 1;
+}
+
+#logs-view {
+    height: 1fr;
+    background: #0c1424;
+    border: round #20324f;
+    color: #dbe7ff;
+}
+
+ClarificationDialog {
+    align: center middle;
+    background: #050a12;
+}
+
+#dialog-card {
+    width: 76;
     height: auto;
+    border: round #3a537f;
+    background: #132038;
+    padding: 1 2;
 }
 
-.question-card,
-.result-card {
-    background: #162340;
-    border: round #31466f;
-    margin: 0 0 1 0;
-    padding: 1;
-}
-
-.question-prompt {
+.dialog-title {
     text-style: bold;
-    color: #edf2ff;
-}
-
-.question-reason {
-    color: #99aacf;
+    color: #f2c87c;
     padding-bottom: 1;
 }
 
-.option-row {
-    height: auto;
-}
-
-.answer-option {
-    margin-right: 1;
-    background: #22335a;
-}
-
-.answer-option.selected {
-    background: #9ed8c2;
-    color: #102133;
-    text-style: bold;
-}
-
-.result-copy {
-    color: #edf2ff;
-    padding-bottom: 1;
-}
-
-.log-line {
+.dialog-reason {
     color: #b8c3e0;
+    padding-bottom: 1;
+}
+
+.dialog-options {
+    height: auto;
+}
+
+.dialog-choice {
+    width: 1fr;
+    margin-bottom: 1;
+    background: #1b2b49;
+}
+
+.dialog-label {
+    color: #9ed8c2;
+    padding-top: 1;
+    padding-bottom: 1;
+}
+
+#dialog-custom-row {
+    height: auto;
+}
+
+#dialog-custom-input {
+    width: 1fr;
+    margin-right: 1;
 }
