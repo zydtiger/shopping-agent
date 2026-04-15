@@ -17,8 +17,8 @@ from textual.widgets import (
     TabPane,
 )
 
-from ..domain import ClarificationQuestion, RankedProduct, RankingDesign
-from ..service import ShoppingAgentService, build_default_service
+from ..agent import AgentHarnessError, ShoppingAgent, build_default_agent
+from ..types import ClarificationQuestion, RankedProduct, RankingDesign
 
 
 class ClarificationDialog(ModalScreen[str]):
@@ -74,10 +74,10 @@ class ShoppingAgentApp(App[None]):
     def __init__(
         self,
         design: RankingDesign = RankingDesign.DIRECT_JSON,
-        service: ShoppingAgentService | None = None,
+        agent: ShoppingAgent | None = None,
     ) -> None:
         super().__init__()
-        self.service = service or build_default_service()
+        self.agent = agent or build_default_agent()
         self.selected_design = design
         self.pending_query = ""
         self.selected_answers: dict[str, str] = {}
@@ -165,25 +165,18 @@ class ShoppingAgentApp(App[None]):
         self._append_log(f"[action] Received user prompt: {query}")
         self._set_loading(True, "Analyzing prompt and preparing the agent workflow...")
 
-        response = await self.service.start_search(
-            query,
-            self.selected_design,
-            progress=self._handle_progress,
-        )
-
-        if response.requires_clarification:
-            self._set_loading(
-                False, "Clarification required before retrieval can continue."
-            )
-            answers = await self._ask_clarification_questions(response.questions)
-            self.selected_answers = answers
-            self._set_loading(True, "Retrieving products and ranking candidates...")
-            response = await self.service.finalize_search(
+        try:
+            response = await self.agent.run_search(
                 query,
-                answers,
                 self.selected_design,
                 progress=self._handle_progress,
+                ask_user=self._ask_clarification,
             )
+        except AgentHarnessError as exc:
+            self._append_log(f"[action] Agent harness failed: {exc}")
+            self._set_loading(False, str(exc))
+            self.search_in_flight = False
+            return
 
         await self._render_results(response.ranked_products)
         for note in response.debug_notes:
@@ -193,18 +186,32 @@ class ShoppingAgentApp(App[None]):
         self.query_one("#workspace-tabs", TabbedContent).active = "recommendations-tab"
         self.search_in_flight = False
 
-    async def _ask_clarification_questions(
-        self, questions: list[ClarificationQuestion]
-    ) -> dict[str, str]:
-        answers: dict[str, str] = {}
-        for question in questions:
-            self._append_log(f"[action] Opening clarification popup: {question.prompt}")
-            answer = await self.push_screen_wait(ClarificationDialog(question))
-            answers[question.id] = answer
-            self._append_log(
-                f"[action] Clarification captured for {question.id}: {answer}"
-            )
-        return answers
+    async def _ask_clarification(
+        self, question: ClarificationQuestion
+    ) -> dict[str, str | None]:
+        self._set_loading(False, "Waiting for clarification input...")
+        self._append_log(f"[action] Opening clarification popup: {question.prompt}")
+        selected_value = await self.push_screen_wait(ClarificationDialog(question))
+        if not selected_value:
+            selected_value = ""
+        selected_option = next(
+            (option for option in question.options if option.id == selected_value),
+            None,
+        )
+        if selected_option is None:
+            answer = selected_value.strip()
+            source = "custom"
+        else:
+            answer = selected_option.label
+            source = "suggested_choice"
+        self.selected_answers[question.id] = answer
+        self._set_loading(True, "Clarification received. Resuming the agent...")
+        return {
+            "answer": answer,
+            "selected_choice_id": selected_option.id if selected_option else None,
+            "selected_choice_label": selected_option.label if selected_option else None,
+            "source": source,
+        }
 
     async def _handle_progress(self, message: str) -> None:
         self._append_log(message)
@@ -255,7 +262,7 @@ class ShoppingAgentApp(App[None]):
 
 def run_app(
     design: RankingDesign = RankingDesign.DIRECT_JSON,
-    service: ShoppingAgentService | None = None,
+    agent: ShoppingAgent | None = None,
 ) -> None:
-    app = ShoppingAgentApp(design=design, service=service)
+    app = ShoppingAgentApp(design=design, agent=agent)
     app.run()

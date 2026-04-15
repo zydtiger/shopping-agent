@@ -1,12 +1,13 @@
 # Shopping Agent Backbone
 
-Terminal-first scaffold for an interactive shopping agent project. This repository includes the UI flow, domain model, mock retrieval/ranking pipelines, structured logging, and an evaluation harness outline. It intentionally excludes real LLM calls and live product scraping.
+Terminal-first scaffold for an interactive shopping agent project. This repository now centers the end-to-end flow inside an OpenAI SDK agent harness: the model receives the raw user query, decides when to clarify, calls local retrieval tools, and returns final ranked recommendations for the Textual TUI.
 
 ## Included
 
 - Textual terminal UI with request entry, loading state, follow-up questions, ranked results, and open-link actions
+- OpenAI Python SDK harness with runtime tool registration for `ask_clarification` and `search_amazon`
 - Shared product schema and preference-profile models
-- Retrieval adapter protocol and orchestration hooks for external product sources
+- Mock Amazon retrieval adapter that returns normalized product payloads for local development
 - Two ranking design stubs matching the project plan:
   - direct JSON style ranking
   - RAG-style candidate retrieval plus final reranking
@@ -15,22 +16,34 @@ Terminal-first scaffold for an interactive shopping agent project. This reposito
 
 ## Not Included
 
-- Real scraping or API integration
-- Real LLM prompting, embeddings, or evaluator models
-- Built-in retrieval adapter implementations
+- Real Amazon scraping or API integration
+- Real embedding generation or evaluator models
 - Production persistence or vector databases
 
 ## UV Workflow
 
 ```bash
 uv sync
-uv run shopping-agent
+uv run shopping-agent --config config.yaml
 ```
 
 Use the alternate ranking path with:
 
 ```bash
-uv run shopping-agent --rag
+uv run shopping-agent --config config.yaml --rag
+```
+
+The config file must define the SDK connection for the main agent model and the placeholder embedding model:
+
+```yaml
+agent:
+  openai_base_url: "https://api.openai.com/v1"
+  openai_model_id: "gpt-4.1"
+  openai_api_key: "sk-..."
+embedding:
+  openai_base_url: "https://api.openai.com/v1"
+  openai_model_id: "text-embedding-3-large"
+  openai_api_key: "sk-..."
 ```
 
 ## Test
@@ -44,16 +57,17 @@ uv run python -m unittest discover -s tests
 - Dependencies are managed through `pyproject.toml` and resolved with `uv`.
 - `uv sync` creates the local environment and installs the package plus the default `dev` group.
 - If you want to avoid installing dev dependencies, run `uv sync --no-dev`.
-- Direct JSON ranking is the default launch mode. Pass `--rag` to use the RAG path.
+- The TUI popup flow is driven by the agent's `ask_clarification` tool call rather than a hard-coded question phase.
+- Direct JSON ranking is the default launch mode. Pass `--rag` to switch the agent guidance to the RAG comparison path.
 
 ## Project Layout
 
 ```text
 src/shopping_agent/
+  agent.py
   clarification.py
   domain.py
   event_log.py
-  service.py
   main.py
   evaluation/
   ranking/

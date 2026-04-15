@@ -3,9 +3,9 @@ from __future__ import annotations
 import argparse
 from collections.abc import Sequence
 
+from .agent import build_default_agent
 from .config import AppConfig
-from .domain import RankingDesign
-from .service import build_default_service
+from .types import RankingDesign
 
 
 def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
@@ -32,10 +32,10 @@ def run(argv: Sequence[str] | None = None) -> None:
     args = parse_args(argv)
     design = RankingDesign.RAG if args.rag else RankingDesign.DIRECT_JSON
     config = AppConfig.from_file(args.config)
-    service = build_default_service(config=config)
+    agent = build_default_agent(config=config)
     from .ui.app import run_app
 
-    run_app(design=design, service=service)
+    run_app(design=design, agent=agent)
 
 
 if __name__ == "__main__":
