@@ -3,7 +3,7 @@ from __future__ import annotations
 import argparse
 from collections.abc import Sequence
 
-from .agent import build_default_agent
+from .agent import ShoppingAgent
 from .config import AppConfig
 from .types import RankingDesign
 
@@ -32,7 +32,7 @@ def run(argv: Sequence[str] | None = None) -> None:
     args = parse_args(argv)
     design = RankingDesign.RAG if args.rag else RankingDesign.DIRECT_JSON
     config = AppConfig.from_file(args.config)
-    agent = build_default_agent(config=config)
+    agent = ShoppingAgent(config=config)
     from .ui.app import run_app
 
     run_app(design=design, agent=agent)

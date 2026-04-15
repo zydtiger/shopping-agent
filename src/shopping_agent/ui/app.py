@@ -17,7 +17,7 @@ from textual.widgets import (
     TabPane,
 )
 
-from ..agent import AgentHarnessError, ShoppingAgent, build_default_agent
+from ..agent import AgentHarnessError, ShoppingAgent
 from ..types import ClarificationQuestion, RankedProduct, RankingDesign
 
 
@@ -73,11 +73,11 @@ class ShoppingAgentApp(App[None]):
 
     def __init__(
         self,
+        agent: ShoppingAgent,
         design: RankingDesign = RankingDesign.DIRECT_JSON,
-        agent: ShoppingAgent | None = None,
     ) -> None:
         super().__init__()
-        self.agent = agent or build_default_agent()
+        self.agent = agent
         self.selected_design = design
         self.pending_query = ""
         self.selected_answers: dict[str, str] = {}
@@ -259,8 +259,8 @@ class ShoppingAgentApp(App[None]):
 
 
 def run_app(
+    agent: ShoppingAgent,
     design: RankingDesign = RankingDesign.DIRECT_JSON,
-    agent: ShoppingAgent | None = None,
 ) -> None:
     app = ShoppingAgentApp(design=design, agent=agent)
     app.run()
