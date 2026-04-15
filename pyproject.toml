@@ -1,6 +1,6 @@
 [build-system]
-requires = ["setuptools>=68", "wheel"]
-build-backend = "setuptools.build_meta"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
 
 [project]
 name = "shopping-agent"
@@ -44,6 +44,10 @@ ignore_missing_imports = true
 module = "openai.*"
 ignore_missing_imports = true
 
+[[tool.mypy.overrides]]
+module = "playwright.*"
+ignore_missing_imports = true
+
 [tool.ruff]
 target-version = "py312"
 line-length = 100
@@ -70,8 +74,5 @@ select = [
 # Treat the local package as first-party for import grouping.
 known-first-party = ["shopping_agent"]
 
-[tool.setuptools]
-package-dir = {"" = "src"}
-
-[tool.setuptools.packages.find]
-where = ["src"]
+[tool.hatch.build.targets.wheel]
+packages = ["src/shopping_agent"]
