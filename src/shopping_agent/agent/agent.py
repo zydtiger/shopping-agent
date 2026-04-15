@@ -3,14 +3,12 @@ from __future__ import annotations
 import inspect
 import json
 from collections.abc import Awaitable, Callable
-from time import perf_counter
 from typing import Any
 
 from openai import AsyncOpenAI
 
 from ..config import AppConfig
-from ..event_log import EventLogger
-from ..retrieval import AmazonAdapter, EbayAdapter, ProductSourceAdapter
+from ..retrieval import AmazonAdapter, EbayAdapter
 from ..types import (
     ClarificationQuestion,
     Product,
@@ -29,6 +27,7 @@ from .parsing import (
     slugify,
 )
 from .system_prompt import build_system_prompt
+from .tools import build_tool_specs, handle_search_amazon, handle_search_ebay
 
 type ProgressCallback = Callable[[str], Awaitable[None] | None]
 type ClarificationCallback = Callable[
@@ -40,13 +39,11 @@ type ResponseRunner = Callable[..., Awaitable[Any]]
 class ShoppingAgent:
     def __init__(
         self,
-        logger: EventLogger,
         config: AppConfig | None = None,
         client: Any | None = None,
         response_runner: ResponseRunner | None = None,
         max_turns: int = 8,
     ) -> None:
-        self.logger = logger
         self.config = config
         self.amazon_adapter = AmazonAdapter()
         self.ebay_adapter = EbayAdapter()
@@ -74,10 +71,6 @@ class ShoppingAgent:
         retrieval_batches: list[RetrievalBatch] = []
         debug_notes: list[str] = [f"Selected ranking design: {design.label}."]
 
-        self.logger.log_event(
-            "agent_search_started",
-            {"query": query, "design": design},
-        )
         await self._emit_progress(
             progress,
             "[plan] Analyze the raw shopping request and decide whether clarification is needed.",
@@ -88,7 +81,7 @@ class ShoppingAgent:
             response = await self.response_runner(
                 model=self._require_model(),
                 messages=messages,
-                tools=self._tool_specs(),
+                tools=build_tool_specs(),
             )
             assistant_message = self._extract_message(response)
             content = flatten_content(assistant_message.get("content"))
@@ -132,17 +125,6 @@ class ShoppingAgent:
             debug_notes=debug_notes,
             retrieved_products=retrieved_products,
         )
-        self.logger.log_event(
-            "agent_search_completed",
-            {
-                "query": query,
-                "design": design,
-                "profile": response.profile,
-                "retrieval_batches": retrieval_batches,
-                "ranked_products": response.ranked_products,
-                "debug_notes": response.debug_notes,
-            },
-        )
         await self._emit_progress(
             progress,
             "[action] Final ranking prepared with "
@@ -163,26 +145,25 @@ class ShoppingAgent:
         raw_arguments = function.get("arguments", "{}")
         arguments = parse_json_payload(raw_arguments)
 
-        self.logger.log_event(
-            "tool_called",
-            {"tool_name": tool_name, "arguments": arguments},
-        )
-
         if tool_name == "ask_clarification":
             return await self._handle_ask_clarification(arguments, ask_user, progress)
         if tool_name == "search_amazon":
-            return await self._handle_search_amazon(
-                arguments,
-                progress,
-                retrieved_products,
-                retrieval_batches,
+            return await handle_search_amazon(
+                arguments=arguments,
+                adapter=self.amazon_adapter,
+                emit_progress=self._emit_progress,
+                progress=progress,
+                retrieved_products=retrieved_products,
+                retrieval_batches=retrieval_batches,
             )
         if tool_name == "search_ebay":
-            return await self._handle_search_ebay(
-                arguments,
-                progress,
-                retrieved_products,
-                retrieval_batches,
+            return await handle_search_ebay(
+                arguments=arguments,
+                adapter=self.ebay_adapter,
+                emit_progress=self._emit_progress,
+                progress=progress,
+                retrieved_products=retrieved_products,
+                retrieval_batches=retrieval_batches,
             )
         raise AgentHarnessError(f"Unsupported tool call: {tool_name}")
 
@@ -245,82 +226,6 @@ class ShoppingAgent:
         )
         return result
 
-    async def _handle_search_amazon(
-        self,
-        arguments: dict[str, Any],
-        progress: ProgressCallback | None,
-        retrieved_products: dict[str, Product],
-        retrieval_batches: list[RetrievalBatch],
-    ) -> dict[str, Any]:
-        query = str(arguments.get("query", "")).strip()
-        if not query:
-            raise AgentHarnessError("search_amazon requires a non-empty query.")
-
-        return await self._run_search_tool(
-            adapter=self.amazon_adapter,
-            query=query,
-            tool_name="search_amazon",
-            progress=progress,
-            retrieved_products=retrieved_products,
-            retrieval_batches=retrieval_batches,
-        )
-
-    async def _handle_search_ebay(
-        self,
-        arguments: dict[str, Any],
-        progress: ProgressCallback | None,
-        retrieved_products: dict[str, Product],
-        retrieval_batches: list[RetrievalBatch],
-    ) -> dict[str, Any]:
-        query = str(arguments.get("query", "")).strip()
-        if not query:
-            raise AgentHarnessError("search_ebay requires a non-empty query.")
-
-        return await self._run_search_tool(
-            adapter=self.ebay_adapter,
-            query=query,
-            tool_name="search_ebay",
-            progress=progress,
-            retrieved_products=retrieved_products,
-            retrieval_batches=retrieval_batches,
-        )
-
-    async def _run_search_tool(
-        self,
-        adapter: ProductSourceAdapter,
-        query: str,
-        tool_name: str,
-        progress: ProgressCallback | None,
-        retrieved_products: dict[str, Product],
-        retrieval_batches: list[RetrievalBatch],
-    ) -> dict[str, Any]:
-        await self._emit_progress(
-            progress,
-            f"[plan] Search {adapter.source_name} for: {query}",
-        )
-        started = perf_counter()
-        products = await adapter.search(query, limit=50)
-        latency_ms = int((perf_counter() - started) * 1000)
-        retrieval_batches.append(
-            RetrievalBatch(
-                source=adapter.source_name,
-                products=products,
-                latency_ms=latency_ms,
-            )
-        )
-        for product in products:
-            retrieved_products[product.product_url] = product
-        await self._emit_progress(
-            progress,
-            f"[action] {tool_name} returned {len(products)} product(s) in {latency_ms} ms.",
-        )
-        return {
-            "query": query,
-            "source": adapter.source_name,
-            "result_count": len(products),
-            "products": [product.to_dict() for product in products],
-        }
-
     def _build_search_response(
         self,
         query: str,
@@ -374,95 +279,6 @@ class ShoppingAgent:
 
     def _system_prompt(self, design: RankingDesign) -> str:
         return build_system_prompt(design=design)
-
-    def _tool_specs(self) -> list[dict[str, Any]]:
-        return [
-            {
-                "type": "function",
-                "function": {
-                    "name": "ask_clarification",
-                    "description": (
-                        "Ask the user a popup clarification question with 3 to 5 "
-                        "choices and an optional preference dimension."
-                    ),
-                    "parameters": {
-                        "type": "object",
-                        "properties": {
-                            "question": {
-                                "type": "string",
-                                "description": "The user-facing clarification question.",
-                            },
-                            "suggested_choices": {
-                                "type": "array",
-                                "description": "Three to five suggested options for the popup.",
-                                "items": {
-                                    "type": "object",
-                                    "properties": {
-                                        "id": {"type": "string"},
-                                        "label": {"type": "string"},
-                                        "description": {"type": "string"},
-                                    },
-                                    "required": ["id", "label", "description"],
-                                    "additionalProperties": False,
-                                },
-                                "minItems": 3,
-                                "maxItems": 5,
-                            },
-                            "preference_dimension": {
-                                "type": "string",
-                                "description": (
-                                    "Optional metadata name for the preference being resolved."
-                                ),
-                            },
-                        },
-                        "required": ["question", "suggested_choices"],
-                        "additionalProperties": False,
-                    },
-                },
-            },
-            {
-                "type": "function",
-                "function": {
-                    "name": "search_amazon",
-                    "description": (
-                        "Search Amazon with one query string and return up to 50 "
-                        "normalized product results."
-                    ),
-                    "parameters": {
-                        "type": "object",
-                        "properties": {
-                            "query": {
-                                "type": "string",
-                                "description": "The Amazon search query generated by the agent.",
-                            }
-                        },
-                        "required": ["query"],
-                        "additionalProperties": False,
-                    },
-                },
-            },
-            {
-                "type": "function",
-                "function": {
-                    "name": "search_ebay",
-                    "description": (
-                        "Search eBay with one query string and return up to 50 "
-                        "normalized product results."
-                    ),
-                    "parameters": {
-                        "type": "object",
-                        "properties": {
-                            "query": {
-                                "type": "string",
-                                "description": "The eBay search query generated by the agent.",
-                            }
-                        },
-                        "required": ["query"],
-                        "additionalProperties": False,
-                    },
-                },
-            },
-        ]
 
     def _build_client(self, config: AppConfig | None) -> Any | None:
         if config is None:
@@ -536,13 +352,11 @@ class ShoppingAgent:
 
 
 def build_default_agent(
-    log_dir: str = "logs",
     config: AppConfig | None = None,
     client: Any | None = None,
     response_runner: ResponseRunner | None = None,
 ) -> ShoppingAgent:
     return ShoppingAgent(
-        logger=EventLogger(log_dir),
         config=config,
         client=client,
         response_runner=response_runner,
