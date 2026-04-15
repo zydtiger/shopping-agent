@@ -7,7 +7,7 @@ Terminal-first scaffold for an interactive shopping agent project. This reposito
 - Textual terminal UI with request entry, loading state, follow-up questions, ranked results, and open-link actions
 - OpenAI Python SDK harness with runtime tool registration for `ask_clarification` and `search_amazon`
 - Shared product schema and preference-profile models
-- Mock Amazon retrieval adapter that returns normalized product payloads for local development
+- Retrieval-layer provider scaffolds for future marketplace adapters such as Amazon and eBay
 - Two ranking design stubs matching the project plan:
   - direct JSON style ranking
   - RAG-style candidate retrieval plus final reranking
@@ -58,14 +58,14 @@ uv run python -m unittest discover -s tests
 - `uv sync` creates the local environment and installs the package plus the default `dev` group.
 - If you want to avoid installing dev dependencies, run `uv sync --no-dev`.
 - The TUI popup flow is driven by the agent's `ask_clarification` tool call rather than a hard-coded question phase.
+- Marketplace-specific search providers should be added under `src/shopping_agent/retrieval/`, not under the agent harness package.
 - Direct JSON ranking is the default launch mode. Pass `--rag` to switch the agent guidance to the RAG comparison path.
 
 ## Project Layout
 
 ```text
 src/shopping_agent/
-  agent.py
-  clarification.py
+  agent/
   domain.py
   event_log.py
   main.py
