@@ -116,9 +116,7 @@ class ShoppingAgent:
                 continue
 
             if not content:
-                raise AgentHarnessError(
-                    "Agent response was empty and contained no tool calls."
-                )
+                raise AgentHarnessError("Agent response was empty and contained no tool calls.")
 
             final_payload = parse_json_payload(content)
             break
@@ -219,9 +217,7 @@ class ShoppingAgent:
                 "tool_name": "ask_clarification",
             },
         )
-        await self._emit_progress(
-            progress, f"[action] Clarification requested: {prompt}"
-        )
+        await self._emit_progress(progress, f"[action] Clarification requested: {prompt}")
 
         answer_payload = ask_user(question)
         if inspect.isawaitable(answer_payload):
@@ -415,8 +411,7 @@ class ShoppingAgent:
                             "preference_dimension": {
                                 "type": "string",
                                 "description": (
-                                    "Optional metadata name for the preference "
-                                    "being resolved."
+                                    "Optional metadata name for the preference being resolved."
                                 ),
                             },
                         },
@@ -483,12 +478,8 @@ class ShoppingAgent:
                 "No OpenAI client is configured. Provide AppConfig or inject a "
                 "response runner for tests."
             )
-        if not hasattr(self.client, "chat") or not hasattr(
-            self.client.chat, "completions"
-        ):
-            raise AgentHarnessError(
-                "Configured OpenAI client does not expose chat completions."
-            )
+        if not hasattr(self.client, "chat") or not hasattr(self.client.chat, "completions"):
+            raise AgentHarnessError("Configured OpenAI client does not expose chat completions.")
         return await self.client.chat.completions.create(**kwargs)
 
     def _extract_message(self, response: Any) -> dict[str, Any]:

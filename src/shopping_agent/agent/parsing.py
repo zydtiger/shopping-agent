@@ -27,8 +27,7 @@ def normalize_choices(choice_payload: Any) -> list[ClarificationOption]:
             ClarificationOption(
                 id=option_id,
                 label=label,
-                description=str(item.get("description", "")).strip()
-                or f"Option {index + 1}",
+                description=str(item.get("description", "")).strip() or f"Option {index + 1}",
             )
         )
     return choices
@@ -65,15 +64,11 @@ def profile_from_payload(query: str, payload: Any) -> UserPreferenceProfile:
     return UserPreferenceProfile(
         raw_query=str(payload.get("raw_query", query)),
         clarified_answers={
-            str(key): str(value)
-            for key, value in clarified_answers.items()
-            if isinstance(key, str)
+            str(key): str(value) for key, value in clarified_answers.items() if isinstance(key, str)
         }
         if isinstance(clarified_answers, dict)
         else {},
-        inferred_requirements=[
-            str(item) for item in inferred_requirements if item is not None
-        ]
+        inferred_requirements=[str(item) for item in inferred_requirements if item is not None]
         if isinstance(inferred_requirements, list)
         else [],
         uncertainty_notes=[str(item) for item in uncertainty_notes if item is not None]
@@ -94,8 +89,8 @@ def flatten_content(content: Any) -> str:
                 text = item.get("text")
                 if isinstance(text, str):
                     text_parts.append(text)
-            elif hasattr(item, "text") and isinstance(item.text, str):
-                text_parts.append(item.text)
+            elif hasattr(item, "text") and isinstance(item.text, str):  # type: ignore
+                text_parts.append(item.text)  # type: ignore
         return "\n".join(part.strip() for part in text_parts if part.strip())
     return str(content).strip()
 
