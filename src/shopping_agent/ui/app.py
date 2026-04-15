@@ -186,9 +186,7 @@ class ShoppingAgentApp(App[None]):
         self.query_one("#workspace-tabs", TabbedContent).active = "recommendations-tab"
         self.search_in_flight = False
 
-    async def _ask_clarification(
-        self, question: ClarificationQuestion
-    ) -> dict[str, str | None]:
+    async def _ask_clarification(self, question: ClarificationQuestion) -> dict[str, str | None]:
         self._set_loading(False, "Waiting for clarification input...")
         self._append_log(f"[action] Opening clarification popup: {question.prompt}")
         selected_value = await self.push_screen_wait(ClarificationDialog(question))

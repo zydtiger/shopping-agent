@@ -41,9 +41,7 @@ class AppConfig:
 
         return cls(
             agent=OpenAIConfig.from_mapping("agent", raw_config.get("agent")),
-            embedding=OpenAIConfig.from_mapping(
-                "embedding", raw_config.get("embedding")
-            ),
+            embedding=OpenAIConfig.from_mapping("embedding", raw_config.get("embedding")),
         )
 
 

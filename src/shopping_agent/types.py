@@ -113,9 +113,7 @@ class RankedProduct:
     def from_dict(cls, payload: dict[str, Any]) -> RankedProduct:
         product_payload = payload.get("product")
         if not isinstance(product_payload, dict):
-            raise ValueError(
-                "Ranked product payload is missing a valid product object."
-            )
+            raise ValueError("Ranked product payload is missing a valid product object.")
         return cls(
             rank=int(payload.get("rank", 0)),
             score=float(payload.get("score", 0.0)),
