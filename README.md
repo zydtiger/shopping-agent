@@ -11,7 +11,6 @@ Terminal-first scaffold for an interactive shopping agent project. This reposito
 - Two ranking design stubs matching the project plan:
   - direct JSON style ranking
   - RAG-style candidate retrieval plus final reranking
-- JSONL logging for retrieval and ranking runs
 - Evaluation harness skeleton for synthetic demand generation and system comparison
 
 ## Not Included
@@ -67,7 +66,6 @@ uv run python -m unittest discover -s tests
 src/shopping_agent/
   agent/
   domain.py
-  event_log.py
   main.py
   evaluation/
   ranking/
