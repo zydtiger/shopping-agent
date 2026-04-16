@@ -8,7 +8,7 @@ from typing import Any
 from openai import AsyncOpenAI
 
 from ..config import AppConfig
-from ..retrieval import AmazonAdapter, EbayAdapter
+from ..retrieval import AmazonAdapter, EbayAdapter, NeweggAdapter
 from ..types import (
     ClarificationQuestion,
     Product,
@@ -27,7 +27,12 @@ from .parsing import (
     slugify,
 )
 from .system_prompt import build_system_prompt
-from .tools import build_tool_specs, handle_search_amazon, handle_search_ebay
+from .tools import (
+    build_tool_specs,
+    handle_search_amazon,
+    handle_search_ebay,
+    handle_search_newegg,
+)
 
 type ProgressCallback = Callable[[str], Awaitable[None] | None]
 type ClarificationCallback = Callable[
@@ -40,6 +45,7 @@ class ShoppingAgent:
         self.config = config
         self.amazon_adapter = AmazonAdapter()
         self.ebay_adapter = EbayAdapter()
+        self.newegg_adapter = NeweggAdapter()
         self.client = self._build_client(config)
         self.response_runner = self._default_response_runner
 
@@ -153,6 +159,15 @@ class ShoppingAgent:
             return await handle_search_ebay(
                 arguments=arguments,
                 adapter=self.ebay_adapter,
+                emit_progress=self._emit_progress,
+                progress=progress,
+                retrieved_products=retrieved_products,
+                retrieval_batches=retrieval_batches,
+            )
+        if tool_name == "search_newegg":
+            return await handle_search_newegg(
+                arguments=arguments,
+                adapter=self.newegg_adapter,
                 emit_progress=self._emit_progress,
                 progress=progress,
                 retrieved_products=retrieved_products,

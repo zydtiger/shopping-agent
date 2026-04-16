@@ -32,6 +32,7 @@ Available tools:
 - ask_clarification(question, suggested_choices, preference_dimension?)
 - search_amazon(query)
 - search_ebay(query)
+- search_newegg(query)
 
 When you have enough information, return a raw JSON object with this shape:
 {
