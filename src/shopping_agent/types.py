@@ -19,18 +19,20 @@ class RankingDesign(StrEnum):
 
 @dataclass(slots=True)
 class Product:
+    # NOTE: the following fields are commented out because they are NOT implemented right now,
+    # they might be implemented later, but do not touch it now
     title: str
     price: float
-    currency: str
+    # currency: str
     source_site: str
     product_url: str
-    short_description: str
-    category: str
-    brand: str | None = None
-    material: str | None = None
+    # short_description: str
+    # category: str
+    # brand: str | None = None
+    # material: str | None = None
     rating: float | None = None
-    review_count: int | None = None
-    raw_metadata: dict[str, Any] = field(default_factory=dict)
+    # review_count: int | None = None
+    # raw_metadata: dict[str, Any] = field(default_factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         return asdict(self)
@@ -40,16 +42,16 @@ class Product:
         return cls(
             title=str(payload.get("title", "")),
             price=float(payload.get("price", 0.0)),
-            currency=str(payload.get("currency", "USD")),
+            # currency=str(payload.get("currency", "USD")),
             source_site=str(payload.get("source_site", "")),
             product_url=str(payload.get("product_url", "")),
-            short_description=str(payload.get("short_description", "")),
-            category=str(payload.get("category", "")),
-            brand=_optional_string(payload.get("brand")),
-            material=_optional_string(payload.get("material")),
+            # short_description=str(payload.get("short_description", "")),
+            # category=str(payload.get("category", "")),
+            # brand=_optional_string(payload.get("brand")),
+            # material=_optional_string(payload.get("material")),
             rating=_optional_float(payload.get("rating")),
-            review_count=_optional_int(payload.get("review_count")),
-            raw_metadata=_optional_dict(payload.get("raw_metadata")),
+            # review_count=_optional_int(payload.get("review_count")),
+            # raw_metadata=_optional_dict(payload.get("raw_metadata")),
         )
 
 
