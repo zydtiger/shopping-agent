@@ -50,16 +50,9 @@ When you have enough information, return a raw JSON object with this shape:
       "product": {
         "title": "string",
         "price": 0.0,
-        "currency": "USD",
         "source_site": "Amazon",
         "product_url": "https://...",
-        "short_description": "string",
-        "category": "string",
-        "brand": "string or null",
-        "material": "string or null",
-        "rating": 0.0,
-        "review_count": 0,
-        "raw_metadata": {}
+        "rating": 0.0
       }
     }
   ],
