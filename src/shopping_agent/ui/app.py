@@ -3,6 +3,7 @@ from __future__ import annotations
 import webbrowser
 from datetime import datetime
 
+from textual import work
 from textual.app import App, ComposeResult
 from textual.containers import Container, Horizontal, Vertical
 from textual.screen import ModalScreen
@@ -142,7 +143,8 @@ class ShoppingAgentApp(App[None]):
         query = event.value.strip()
         if not query or self.search_in_flight:
             return
-        await self._run_search(query)
+        self.search_in_flight = True
+        self._run_search(query)
 
     async def on_data_table_row_selected(self, event: DataTable.RowSelected) -> None:
         row_key = str(event.row_key.value)
@@ -155,6 +157,7 @@ class ShoppingAgentApp(App[None]):
         )
         self._append_log("[action] Opened the selected recommendation in the browser.")
 
+    @work(exclusive=True)
     async def _run_search(self, query: str) -> None:
         self.search_in_flight = True
         self.pending_query = query
@@ -175,6 +178,11 @@ class ShoppingAgentApp(App[None]):
         except AgentHarnessError as exc:
             self._append_log(f"[action] Agent harness failed: {exc}")
             self._set_loading(False, str(exc))
+            self.search_in_flight = False
+            return
+        except Exception as exc:
+            self._append_log(f"[action] Unexpected search failure: {exc}")
+            self._set_loading(False, "The search failed before completion.")
             self.search_in_flight = False
             return
 

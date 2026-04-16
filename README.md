@@ -63,7 +63,6 @@ src/shopping_agent/
   agent/
   evaluation/
   main.py
-  ranking/
   retrieval/
   ui/
 tests/
