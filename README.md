@@ -34,6 +34,12 @@ Use the SQL-backed ranking path with:
 uv run shopping-agent --config config.yaml --sql
 ```
 
+Use `--head` to open a visible browser window instead of the default headless mode:
+
+```bash
+uv run shopping-agent --config config.yaml --head
+```
+
 The config file only needs the SDK connection for the shared agent model:
 
 ```yaml
