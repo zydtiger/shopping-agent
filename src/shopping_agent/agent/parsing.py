@@ -45,14 +45,18 @@ def assistant_message_for_history(message: dict[str, Any]) -> dict[str, Any]:
 
 
 def parse_json_payload(payload: str) -> dict[str, Any]:
+    parsed = parse_json_value(payload)
+    if not isinstance(parsed, dict):
+        raise AgentHarnessError("Expected the agent payload to be a JSON object.")
+    return parsed
+
+
+def parse_json_value(payload: str) -> Any:
     stripped = payload.strip()
     if stripped.startswith("```"):
         stripped = re.sub(r"^```(?:json)?\s*", "", stripped)
         stripped = re.sub(r"\s*```$", "", stripped)
-    parsed = json.loads(stripped)
-    if not isinstance(parsed, dict):
-        raise AgentHarnessError("Expected the agent payload to be a JSON object.")
-    return parsed
+    return json.loads(stripped)
 
 
 def profile_from_payload(query: str, payload: Any) -> UserPreferenceProfile:

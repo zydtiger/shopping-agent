@@ -3,6 +3,7 @@ from __future__ import annotations
 import inspect
 import json
 from collections.abc import Awaitable, Callable
+from dataclasses import dataclass
 from typing import Any
 
 from openai import AsyncOpenAI
@@ -16,6 +17,7 @@ from ..types import (
     RankingDesign,
     RetrievalBatch,
     SearchResponse,
+    UserPreferenceProfile,
 )
 from .errors import AgentHarnessError
 from .parsing import (
@@ -23,21 +25,40 @@ from .parsing import (
     flatten_content,
     normalize_choices,
     parse_json_payload,
+    parse_json_value,
     profile_from_payload,
     slugify,
 )
-from .system_prompt import build_system_prompt
+from .sql import ProductSQLStore
+from .system_prompt import build_ranking_system_prompt, build_retrieval_system_prompt
 from .tools import (
-    build_tool_specs,
+    build_ranking_sql_tool_specs,
+    build_retrieval_tool_specs,
     handle_search_amazon,
     handle_search_ebay,
     handle_search_newegg,
+    run_product_store_query,
 )
 
 type ProgressCallback = Callable[[str], Awaitable[None] | None]
 type ClarificationCallback = Callable[
     [ClarificationQuestion], Awaitable[dict[str, Any]] | dict[str, Any]
 ]
+
+
+@dataclass(slots=True)
+class RetrievalOutcome:
+    profile: UserPreferenceProfile
+    status_message: str
+    retrieval_batches: list[RetrievalBatch]
+    debug_notes: list[str]
+
+
+@dataclass(slots=True)
+class RankingOutcome:
+    ranked_products: list[RankedProduct]
+    status_message: str
+    debug_notes: list[str]
 
 
 class ShoppingAgent:
@@ -61,17 +82,82 @@ class ShoppingAgent:
                 "The harness needs a clarification callback to handle ask_clarification."
             )
 
-        messages: list[dict[str, Any]] = [
-            {"role": "system", "content": self._system_prompt(design)},
-            {"role": "user", "content": query},
-        ]
-        retrieved_products: dict[str, Product] = {}
-        retrieval_batches: list[RetrievalBatch] = []
-        debug_notes: list[str] = [f"Selected ranking design: {design.label}."]
+        product_store = ProductSQLStore()
+        retrieval = await self._run_retrieval_agent(
+            query=query,
+            progress=progress,
+            ask_user=ask_user,
+            product_store=product_store,
+        )
+
+        debug_notes = [f"Selected ranking design: {design.label}.", *retrieval.debug_notes]
+
+        if not product_store.all_products():
+            status_message = (
+                "Retrieval finished but no products were collected, so ranking was skipped."
+            )
+            await self._emit_progress(progress, f"[action] {status_message}")
+            return SearchResponse(
+                query=query,
+                design=design,
+                profile=retrieval.profile,
+                stage="results",
+                status_message=status_message,
+                retrieval_batches=retrieval.retrieval_batches,
+                ranked_products=[],
+                debug_notes=debug_notes,
+            )
 
         await self._emit_progress(
             progress,
-            "[plan] Analyze the raw shopping request and decide whether clarification is needed.",
+            "[plan] RetrievalAgent finished. Handing the shared product store to "
+            f"RankingAgent using {design.label}.",
+        )
+        ranking = await self._run_ranking_agent(
+            design=design,
+            profile=retrieval.profile,
+            product_store=product_store,
+            progress=progress,
+        )
+        debug_notes.extend(ranking.debug_notes)
+
+        await self._emit_progress(
+            progress,
+            "[action] Final ranking prepared with "
+            f"{len(ranking.ranked_products)} recommendation(s).",
+        )
+        return SearchResponse(
+            query=query,
+            design=design,
+            profile=retrieval.profile,
+            stage="results",
+            status_message=ranking.status_message or retrieval.status_message,
+            retrieval_batches=retrieval.retrieval_batches,
+            ranked_products=ranking.ranked_products,
+            debug_notes=debug_notes,
+        )
+
+    async def _run_retrieval_agent(
+        self,
+        *,
+        query: str,
+        progress: ProgressCallback | None,
+        ask_user: ClarificationCallback,
+        product_store: ProductSQLStore,
+    ) -> RetrievalOutcome:
+        messages: list[dict[str, Any]] = [
+            {"role": "system", "content": build_retrieval_system_prompt()},
+            {"role": "user", "content": query},
+        ]
+        clarified_answers: dict[str, str] = {}
+        retrieved_products: dict[str, Product] = {}
+        retrieval_batches: list[RetrievalBatch] = []
+        debug_notes: list[str] = []
+
+        await self._emit_progress(
+            progress,
+            "[plan] RetrievalAgent is analyzing the raw shopping request and deciding "
+            "whether clarification is needed.",
         )
 
         final_payload: dict[str, Any] | None = None
@@ -79,12 +165,10 @@ class ShoppingAgent:
             response = await self.response_runner(
                 model=self.config.agent.openai_model_id,
                 messages=messages,
-                tools=build_tool_specs(),
+                tools=build_retrieval_tool_specs(),
             )
             assistant_message, finish_reason = self._extract_choice(response)
-            content = flatten_content(assistant_message.get("content"))
-            if content and not content.lstrip().startswith("{"):
-                await self._emit_progress(progress, content)
+            await self._emit_visible_content(progress, assistant_message)
 
             tool_calls = assistant_message.get("tool_calls") or []
             if finish_reason == "tool_calls":
@@ -94,12 +178,14 @@ class ShoppingAgent:
                     )
                 messages.append(assistant_message_for_history(assistant_message))
                 for tool_call in tool_calls:
-                    tool_result = await self._execute_tool_call(
+                    tool_result = await self._execute_retrieval_tool_call(
                         tool_call=tool_call,
                         ask_user=ask_user,
                         progress=progress,
+                        clarified_answers=clarified_answers,
                         retrieved_products=retrieved_products,
                         retrieval_batches=retrieval_batches,
+                        product_store=product_store,
                     )
                     messages.append(
                         {
@@ -110,34 +196,202 @@ class ShoppingAgent:
                     )
                 continue
 
+            content = flatten_content(assistant_message.get("content"))
             if not content:
-                raise AgentHarnessError("Agent response was empty and contained no tool calls.")
-
+                raise AgentHarnessError("RetrievalAgent returned no final payload.")
             final_payload = parse_json_payload(content)
             break
 
-        response = self._build_search_response(
-            query=query,
-            design=design,
-            final_payload=final_payload,
+        profile = profile_from_payload(query, final_payload.get("profile"))
+        if clarified_answers:
+            profile.clarified_answers = {**profile.clarified_answers, **clarified_answers}
+
+        raw_debug_notes = final_payload.get("debug_notes", [])
+        if isinstance(raw_debug_notes, list):
+            debug_notes.extend(str(note) for note in raw_debug_notes)
+
+        status_message = str(
+            final_payload.get(
+                "status_message",
+                f"RetrievalAgent collected {len(product_store.all_products())} products.",
+            )
+        )
+        return RetrievalOutcome(
+            profile=profile,
+            status_message=status_message,
             retrieval_batches=retrieval_batches,
             debug_notes=debug_notes,
-            retrieved_products=retrieved_products,
         )
+
+    async def _run_ranking_agent(
+        self,
+        *,
+        design: RankingDesign,
+        profile: UserPreferenceProfile,
+        product_store: ProductSQLStore,
+        progress: ProgressCallback | None,
+    ) -> RankingOutcome:
+        if design is RankingDesign.SQL:
+            return await self._run_sql_ranking_agent(
+                profile=profile,
+                product_store=product_store,
+                progress=progress,
+            )
+        return await self._run_direct_json_ranking_agent(
+            profile=profile,
+            product_store=product_store,
+            progress=progress,
+        )
+
+    async def _run_direct_json_ranking_agent(
+        self,
+        *,
+        profile: UserPreferenceProfile,
+        product_store: ProductSQLStore,
+        progress: ProgressCallback | None,
+    ) -> RankingOutcome:
         await self._emit_progress(
             progress,
-            "[action] Final ranking prepared with "
-            f"{len(response.ranked_products)} recommendation(s).",
+            "[plan] RankingAgent is evaluating the full normalized product payload directly.",
         )
-        return response
+        messages = [
+            {
+                "role": "system",
+                "content": build_ranking_system_prompt(RankingDesign.DIRECT_JSON),
+            },
+            {
+                "role": "user",
+                "content": json.dumps(
+                    {
+                        "profile": profile.to_dict(),
+                        "products": [product.to_dict() for product in product_store.all_products()],
+                    },
+                    ensure_ascii=True,
+                ),
+            },
+        ]
+        response = await self.response_runner(
+            model=self.config.agent.openai_model_id,
+            messages=messages,
+        )
+        assistant_message, finish_reason = self._extract_choice(response)
+        if finish_reason == "tool_calls":
+            raise AgentHarnessError("Direct JSON RankingAgent must not request tools.")
 
-    async def _execute_tool_call(
+        await self._emit_visible_content(progress, assistant_message)
+        content = flatten_content(assistant_message.get("content"))
+        if not content:
+            raise AgentHarnessError("RankingAgent returned no final payload.")
+        final_payload = parse_json_payload(content)
+        return RankingOutcome(
+            ranked_products=self._parse_ranked_products(
+                final_payload.get("recommendations"),
+                product_store,
+            ),
+            status_message=str(
+                final_payload.get(
+                    "status_message",
+                    "RankingAgent prepared recommendations from the injected JSON payload.",
+                )
+            ),
+            debug_notes=[str(note) for note in final_payload.get("debug_notes", [])]
+            if isinstance(final_payload.get("debug_notes"), list)
+            else [],
+        )
+
+    async def _run_sql_ranking_agent(
         self,
+        *,
+        profile: UserPreferenceProfile,
+        product_store: ProductSQLStore,
+        progress: ProgressCallback | None,
+    ) -> RankingOutcome:
+        await self._emit_progress(
+            progress,
+            "[plan] RankingAgent is querying the shared SQLite product "
+            "store to shortlist candidates.",
+        )
+        messages: list[dict[str, Any]] = [
+            {
+                "role": "system",
+                "content": build_ranking_system_prompt(RankingDesign.SQL),
+            },
+            {
+                "role": "user",
+                "content": json.dumps(
+                    {
+                        "profile": profile.to_dict(),
+                        "product_store": product_store.summary(),
+                    },
+                    ensure_ascii=True,
+                ),
+            },
+        ]
+
+        final_payload: dict[str, Any] | None = None
+        while True:
+            response = await self.response_runner(
+                model=self.config.agent.openai_model_id,
+                messages=messages,
+                tools=build_ranking_sql_tool_specs(),
+            )
+            assistant_message, finish_reason = self._extract_choice(response)
+            await self._emit_visible_content(progress, assistant_message)
+
+            tool_calls = assistant_message.get("tool_calls") or []
+            if finish_reason == "tool_calls":
+                if not tool_calls:
+                    raise AgentHarnessError(
+                        "RankingAgent requested tool use but no SQL tool call was provided."
+                    )
+                messages.append(assistant_message_for_history(assistant_message))
+                for tool_call in tool_calls:
+                    tool_result = await self._execute_ranking_tool_call(
+                        tool_call=tool_call,
+                        product_store=product_store,
+                        progress=progress,
+                    )
+                    messages.append(
+                        {
+                            "role": "tool",
+                            "tool_call_id": tool_call["id"],
+                            "content": json.dumps(tool_result, ensure_ascii=True),
+                        }
+                    )
+                continue
+
+            content = flatten_content(assistant_message.get("content"))
+            if not content:
+                raise AgentHarnessError("RankingAgent returned no final payload.")
+            final_payload = parse_json_payload(content)
+            break
+
+        return RankingOutcome(
+            ranked_products=self._parse_ranked_products(
+                final_payload.get("recommendations"),
+                product_store,
+            ),
+            status_message=str(
+                final_payload.get(
+                    "status_message",
+                    "RankingAgent prepared recommendations from the SQL shortlist.",
+                )
+            ),
+            debug_notes=[str(note) for note in final_payload.get("debug_notes", [])]
+            if isinstance(final_payload.get("debug_notes"), list)
+            else [],
+        )
+
+    async def _execute_retrieval_tool_call(
+        self,
+        *,
         tool_call: dict[str, Any],
         ask_user: ClarificationCallback,
         progress: ProgressCallback | None,
+        clarified_answers: dict[str, str],
         retrieved_products: dict[str, Product],
         retrieval_batches: list[RetrievalBatch],
+        product_store: ProductSQLStore,
     ) -> dict[str, Any]:
         function = tool_call.get("function") or {}
         tool_name = function.get("name")
@@ -145,9 +399,16 @@ class ShoppingAgent:
         arguments = parse_json_payload(raw_arguments)
 
         if tool_name == "ask_clarification":
-            return await self._handle_ask_clarification(arguments, ask_user, progress)
+            return await self._handle_ask_clarification(
+                arguments,
+                ask_user,
+                progress,
+                clarified_answers,
+            )
+
+        previous_batch_count = len(retrieval_batches)
         if tool_name == "search_amazon":
-            return await handle_search_amazon(
+            result = await handle_search_amazon(
                 arguments=arguments,
                 adapter=self.amazon_adapter,
                 emit_progress=self._emit_progress,
@@ -155,8 +416,8 @@ class ShoppingAgent:
                 retrieved_products=retrieved_products,
                 retrieval_batches=retrieval_batches,
             )
-        if tool_name == "search_ebay":
-            return await handle_search_ebay(
+        elif tool_name == "search_ebay":
+            result = await handle_search_ebay(
                 arguments=arguments,
                 adapter=self.ebay_adapter,
                 emit_progress=self._emit_progress,
@@ -164,8 +425,8 @@ class ShoppingAgent:
                 retrieved_products=retrieved_products,
                 retrieval_batches=retrieval_batches,
             )
-        if tool_name == "search_newegg":
-            return await handle_search_newegg(
+        elif tool_name == "search_newegg":
+            result = await handle_search_newegg(
                 arguments=arguments,
                 adapter=self.newegg_adapter,
                 emit_progress=self._emit_progress,
@@ -173,13 +434,48 @@ class ShoppingAgent:
                 retrieved_products=retrieved_products,
                 retrieval_batches=retrieval_batches,
             )
-        raise AgentHarnessError(f"Unsupported tool call: {tool_name}")
+        else:
+            raise AgentHarnessError(f"Unsupported tool call: {tool_name}")
+
+        if len(retrieval_batches) > previous_batch_count:
+            inserted = product_store.add_products(retrieval_batches[-1].products)
+            result["inserted_count"] = inserted
+            result["shared_store_total"] = len(product_store.all_products())
+        return result
+
+    async def _execute_ranking_tool_call(
+        self,
+        *,
+        tool_call: dict[str, Any],
+        product_store: ProductSQLStore,
+        progress: ProgressCallback | None,
+    ) -> dict[str, Any]:
+        function = tool_call.get("function") or {}
+        tool_name = function.get("name")
+        raw_arguments = function.get("arguments", "{}")
+        arguments = parse_json_payload(raw_arguments)
+
+        if tool_name != "query_product_store":
+            raise AgentHarnessError(f"Unsupported ranking tool call: {tool_name}")
+
+        sql = str(arguments.get("sql", "")).strip()
+        await self._emit_progress(progress, f"[plan] RankingAgent SQL query: {sql}")
+        try:
+            result = run_product_store_query(arguments=arguments, store=product_store)
+        except ValueError as exc:
+            raise AgentHarnessError(str(exc)) from exc
+        await self._emit_progress(
+            progress,
+            f"[action] query_product_store returned {result['row_count']} row(s).",
+        )
+        return result
 
     async def _handle_ask_clarification(
         self,
         arguments: dict[str, Any],
         ask_user: ClarificationCallback,
         progress: ProgressCallback | None,
+        clarified_answers: dict[str, str],
     ) -> dict[str, Any]:
         prompt = str(arguments.get("question", "")).strip()
         if not prompt:
@@ -199,7 +495,7 @@ class ShoppingAgent:
             reason=(
                 f"Preference dimension: {preference_dimension}."
                 if preference_dimension
-                else "The agent needs one more preference to sharpen ranking."
+                else "The agent needs one more preference to sharpen retrieval."
             ),
             metadata={
                 "preference_dimension": preference_dimension or None,
@@ -220,9 +516,11 @@ class ShoppingAgent:
         if not answer_text:
             raise AgentHarnessError("Clarification callback returned an empty answer.")
 
+        answer_dimension = preference_dimension or question.id
+        clarified_answers[answer_dimension] = answer_text
         result = {
             "question": prompt,
-            "preference_dimension": preference_dimension or question.id,
+            "preference_dimension": answer_dimension,
             "answer": answer_text,
             "selected_choice_id": answer_payload.get("selected_choice_id"),
             "selected_choice_label": answer_payload.get("selected_choice_label"),
@@ -234,59 +532,49 @@ class ShoppingAgent:
         )
         return result
 
-    def _build_search_response(
+    def _parse_ranked_products(
         self,
-        query: str,
-        design: RankingDesign,
-        final_payload: dict[str, Any],
-        retrieval_batches: list[RetrievalBatch],
-        debug_notes: list[str],
-        retrieved_products: dict[str, Product],
-    ) -> SearchResponse:
-        profile = profile_from_payload(query, final_payload.get("profile"))
-        recommendations_payload = final_payload.get("recommendations", [])
-        ranked_products: list[RankedProduct] = []
-        if isinstance(recommendations_payload, list):
-            for item in recommendations_payload[:10]:
-                if not isinstance(item, dict):
-                    continue
-                try:
-                    ranked = RankedProduct.from_dict(item)
-                except (TypeError, ValueError):
-                    continue
-                canonical = retrieved_products.get(ranked.product.product_url)
-                if canonical is not None:
-                    ranked = RankedProduct(
-                        rank=ranked.rank,
-                        score=ranked.score,
-                        rationale=ranked.rationale,
-                        product=canonical,
-                    )
-                ranked_products.append(ranked)
-
-        raw_debug_notes = final_payload.get("debug_notes", [])
-        if isinstance(raw_debug_notes, list):
-            debug_notes.extend(str(note) for note in raw_debug_notes)
-
-        status_message = str(
-            final_payload.get(
-                "status_message",
-                f"Prepared {len(ranked_products)} recommendations from the agent harness.",
+        payload: Any,
+        product_store: ProductSQLStore,
+    ) -> list[RankedProduct]:
+        if not isinstance(payload, list):
+            raise AgentHarnessError(
+                "RankingAgent final payload must contain a recommendations list."
             )
-        )
-        return SearchResponse(
-            query=query,
-            design=design,
-            profile=profile,
-            stage="results",
-            status_message=status_message,
-            retrieval_batches=retrieval_batches,
-            ranked_products=ranked_products,
-            debug_notes=debug_notes,
-        )
 
-    def _system_prompt(self, design: RankingDesign) -> str:
-        return build_system_prompt(design=design)
+        deduped: dict[str, RankedProduct] = {}
+        for item in payload:
+            if not isinstance(item, dict):
+                raise AgentHarnessError("Each recommendation must be a JSON object.")
+            product_payload = item.get("product")
+            if not isinstance(product_payload, dict):
+                raise AgentHarnessError("Each recommendation must include a product object.")
+
+            parsed_product = Product.from_dict(product_payload)
+            canonical_product = (
+                product_store.get_product(parsed_product.product_url) or parsed_product
+            )
+            score = max(0, min(100, int(item.get("score", 0))))
+            ranked = RankedProduct(
+                rank=0,
+                score=score,
+                rationale=str(item.get("rationale", "")),
+                product=canonical_product,
+            )
+            existing = deduped.get(canonical_product.product_url)
+            if existing is None or ranked.score > existing.score:
+                deduped[canonical_product.product_url] = ranked
+
+        normalized = sorted(deduped.values(), key=lambda item: item.score, reverse=True)[:10]
+        return [
+            RankedProduct(
+                rank=index + 1,
+                score=item.score,
+                rationale=item.rationale,
+                product=item.product,
+            )
+            for index, item in enumerate(normalized)
+        ]
 
     def _build_client(self, config: AppConfig) -> AsyncOpenAI:
         return AsyncOpenAI(
@@ -346,6 +634,19 @@ class ShoppingAgent:
             },
             finish_reason,
         )
+
+    async def _emit_visible_content(
+        self,
+        progress: ProgressCallback | None,
+        assistant_message: dict[str, Any],
+    ) -> None:
+        content = flatten_content(assistant_message.get("content"))
+        if not content:
+            return
+        try:
+            parse_json_value(content)
+        except Exception:
+            await self._emit_progress(progress, content)
 
     async def _emit_progress(
         self,

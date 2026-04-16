@@ -2,8 +2,3 @@ agent:
   openai_base_url: "your_base_url"
   openai_model_id: "your_model_id"
   openai_api_key: "your_api_key"
-
-embedding:
-  openai_base_url: "your_base_url"
-  openai_model_id: "your_model_id"
-  openai_api_key: "your_api_key"

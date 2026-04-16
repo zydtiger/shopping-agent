@@ -219,7 +219,9 @@ class ShoppingAgentApp(App[None]):
         table.clear(columns=False)
         self.result_urls = {}
 
-        for display_rank, item in enumerate(ranked_products):
+        top_results = sorted(ranked_products, key=lambda item: item.score, reverse=True)[:10]
+
+        for display_rank, item in enumerate(top_results):
             row_key = f"result-{display_rank}"
             table.add_row(
                 str(display_rank),
@@ -230,7 +232,7 @@ class ShoppingAgentApp(App[None]):
             )
             self.result_urls[row_key] = item.product.product_url
 
-        if not ranked_products:
+        if not top_results:
             self._append_log(
                 "[action] No recommendations are available because retrieval returned no products."
             )

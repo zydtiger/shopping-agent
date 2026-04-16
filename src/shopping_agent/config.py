@@ -28,7 +28,6 @@ class OpenAIConfig:
 @dataclass(slots=True, frozen=True)
 class AppConfig:
     agent: OpenAIConfig
-    embedding: OpenAIConfig
 
     @classmethod
     def from_file(cls, path: str | Path) -> AppConfig:
@@ -41,7 +40,6 @@ class AppConfig:
 
         return cls(
             agent=OpenAIConfig.from_mapping("agent", raw_config.get("agent")),
-            embedding=OpenAIConfig.from_mapping("embedding", raw_config.get("embedding")),
         )
 
 

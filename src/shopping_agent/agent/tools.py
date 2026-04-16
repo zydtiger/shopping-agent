@@ -7,12 +7,13 @@ from typing import Any
 from ..retrieval import ProductSourceAdapter
 from ..types import Product, RetrievalBatch
 from .errors import AgentHarnessError
+from .sql import ProductSQLStore
 
 type ProgressCallback = Callable[[str], Awaitable[None] | None]
 type EmitProgressCallback = Callable[[ProgressCallback | None, str], Awaitable[None]]
 
 
-def build_tool_specs() -> list[dict[str, Any]]:
+def build_retrieval_tool_specs() -> list[dict[str, Any]]:
     return [
         {
             "type": "function",
@@ -123,6 +124,31 @@ def build_tool_specs() -> list[dict[str, Any]]:
     ]
 
 
+def build_ranking_sql_tool_specs() -> list[dict[str, Any]]:
+    return [
+        {
+            "type": "function",
+            "function": {
+                "name": "query_product_store",
+                "description": (
+                    "Run a read-only SQL query against the in-memory normalized product store."
+                ),
+                "parameters": {
+                    "type": "object",
+                    "properties": {
+                        "sql": {
+                            "type": "string",
+                            "description": "A read-only SELECT query over the `products` table.",
+                        }
+                    },
+                    "required": ["sql"],
+                    "additionalProperties": False,
+                },
+            },
+        }
+    ]
+
+
 async def handle_search_amazon(
     *,
     arguments: dict[str, Any],
@@ -225,9 +251,29 @@ async def run_search_tool(
         progress,
         f"[action] {tool_name} returned {len(products)} product(s) in {latency_ms} ms.",
     )
+    status = "usable" if len(products) >= 3 else "too_few_results"
     return {
         "query": query,
         "source": adapter.source_name,
         "result_count": len(products),
-        "products": [product.to_dict() for product in products],
+        "status": status,
+        "message": (
+            f"{adapter.source_name} search for '{query}' returned {len(products)} product(s) "
+            f"in {latency_ms} ms."
+        ),
     }
+
+
+def run_product_store_query(
+    *,
+    arguments: dict[str, Any],
+    store: ProductSQLStore,
+) -> dict[str, Any]:
+    sql = str(arguments.get("sql", "")).strip()
+    if not sql:
+        raise AgentHarnessError("query_product_store requires a non-empty sql string.")
+    return store.query(sql)
+
+
+def build_tool_specs() -> list[dict[str, Any]]:
+    return build_retrieval_tool_specs()

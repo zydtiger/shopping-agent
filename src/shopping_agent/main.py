@@ -14,9 +14,9 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
         description="Terminal shopping agent scaffold.",
     )
     parser.add_argument(
-        "--rag",
+        "--sql",
         action="store_true",
-        help="Use the RAG candidate-retrieval ranking path instead of direct JSON ranking.",
+        help="Use the SQL-backed ranking path instead of direct JSON ranking.",
     )
     parser.add_argument(
         "-c",
@@ -30,7 +30,7 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
 
 def run(argv: Sequence[str] | None = None) -> None:
     args = parse_args(argv)
-    design = RankingDesign.RAG if args.rag else RankingDesign.DIRECT_JSON
+    design = RankingDesign.SQL if args.sql else RankingDesign.DIRECT_JSON
     config = AppConfig.from_file(args.config)
     agent = ShoppingAgent(config=config)
     from .ui.app import run_app
