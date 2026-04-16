@@ -309,13 +309,20 @@ if (originalPerformance) {
 }
 """
 
+_BROWSER_HEADLESS = True
+
+
+def set_browser_headless(headless: bool) -> None:
+    global _BROWSER_HEADLESS
+    _BROWSER_HEADLESS = headless
+
 
 @asynccontextmanager
 async def launch_browser() -> AsyncIterator[Page]:
     async with async_playwright() as playwright:
         context = await playwright.chromium.launch_persistent_context(
             "/tmp/shopping_agent_profile",
-            headless=False,
+            headless=_BROWSER_HEADLESS,
             args=CHROMIUM_ARGS,
             locale="en-US",
             user_agent=(

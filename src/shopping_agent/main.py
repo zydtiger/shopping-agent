@@ -1,42 +1,53 @@
 from __future__ import annotations
 
-import argparse
-from collections.abc import Sequence
+from pathlib import Path
+from typing import Annotated
+
+import typer
 
 from .agent import ShoppingAgent
 from .config import AppConfig
+from .retrieval import set_browser_headless
 from .types import RankingDesign
 
-
-def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
-    parser = argparse.ArgumentParser(
-        prog="shopping-agent",
-        description="Terminal shopping agent scaffold.",
-    )
-    parser.add_argument(
-        "--sql",
-        action="store_true",
-        help="Use the SQL-backed ranking path instead of direct JSON ranking.",
-    )
-    parser.add_argument(
-        "-c",
-        "--config",
-        required=True,
-        metavar="PATH",
-        help="Path to the YAML config file.",
-    )
-    return parser.parse_args(argv)
+app = typer.Typer(add_completion=False, invoke_without_command=True)
 
 
-def run(argv: Sequence[str] | None = None) -> None:
-    args = parse_args(argv)
-    design = RankingDesign.SQL if args.sql else RankingDesign.DIRECT_JSON
-    config = AppConfig.from_file(args.config)
-    agent = ShoppingAgent(config=config)
+@app.callback()
+def main(
+    config: Annotated[
+        Path,
+        typer.Option(
+            "--config",
+            "-c",
+            exists=True,
+            dir_okay=False,
+            readable=True,
+            resolve_path=True,
+            help="Path to the YAML config file.",
+        ),
+    ],
+    sql: Annotated[
+        bool,
+        typer.Option(help="Use the SQL-backed ranking path instead of direct JSON ranking."),
+    ] = False,
+    head: Annotated[
+        bool,
+        typer.Option(help="Open the browser window instead of running Playwright headless."),
+    ] = False,
+) -> None:
+    design = RankingDesign.SQL if sql else RankingDesign.DIRECT_JSON
+    set_browser_headless(not head)
+    config_obj = AppConfig.from_file(config)
+    agent = ShoppingAgent(config=config_obj)
     from .ui.app import run_app
 
     run_app(design=design, agent=agent)
 
 
+def run(argv: list[str] | None = None) -> None:
+    app(prog_name="shopping-agent", args=argv)
+
+
 if __name__ == "__main__":
-    run()
+    app()
