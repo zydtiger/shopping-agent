@@ -1,13 +1,12 @@
 from __future__ import annotations
 
 import re
-from urllib.parse import quote_plus
+from urllib.parse import quote_plus, urlsplit, urlunsplit
 
 from playwright.async_api import Page
 
 from ..types import Product
 from .base import ProductSourceAdapter
-from .launch import launch_browser
 
 AMAZON_DOMAIN = "www.amazon.com"
 
@@ -24,13 +23,6 @@ def parse_price(whole: str | None, fraction: str | None) -> float | None:
     return float(f"{numeric}.{cents}")
 
 
-def parse_rating(value: str | None) -> float | None:
-    if not value:
-        return None
-    match = re.search(r"(\d+(?:\.\d+)?)", value)
-    return float(match.group(1)) if match else None
-
-
 class AmazonAdapter(ProductSourceAdapter):
     source_name = "Amazon"
     base_url = f"https://{AMAZON_DOMAIN}"
@@ -41,45 +33,29 @@ class AmazonAdapter(ProductSourceAdapter):
         return f"https://{AMAZON_DOMAIN}/s?k={quote_plus(query)}&page={page_number}"
 
     @classmethod
-    async def search(cls, query: str, limit: int = 50) -> list[Product]:
-        """Return normalized Amazon product results."""
-        normalized_limit = max(1, limit)
-        unique_products: dict[str, Product] = {}
-        page_number = 1
+    def normalize_product_url(cls, url: str | None) -> str | None:
+        normalized = cls.normalize_url(url)
+        if not normalized:
+            return None
 
-        async with launch_browser() as page:
-            while len(unique_products) < normalized_limit:
-                target_url = cls.build_search_url(query, page_number=page_number)
-                await page.goto(target_url, wait_until="domcontentloaded")
+        parsed = urlsplit(normalized)
+        path_match = re.search(r"(/dp/[A-Z0-9]{10})(?:[/?]|$)", parsed.path, flags=re.IGNORECASE)
+        if path_match:
+            return urlunsplit((parsed.scheme, parsed.netloc, path_match.group(1), "", ""))
 
-                await cls.wait_for_results_or_block(page, pause_on_block=False)
-                await page.mouse.wheel(0, 1800)
-                await page.wait_for_timeout(1000)
+        product_match = re.search(
+            r"(/gp/product/[A-Z0-9]{10})(?:[/?]|$)",
+            parsed.path,
+            flags=re.IGNORECASE,
+        )
+        if product_match:
+            return urlunsplit((parsed.scheme, parsed.netloc, product_match.group(1), "", ""))
 
-                page_products = await cls.extract_products(page)
-                if not page_products:
-                    break
-
-                new_products = 0
-                for product in page_products:
-                    key = product.product_url
-                    if key in unique_products:
-                        continue
-                    unique_products[key] = product
-                    new_products += 1
-                    if len(unique_products) >= normalized_limit:
-                        break
-
-                if new_products == 0:
-                    break
-
-                page_number += 1
-
-        return list(unique_products.values())[:normalized_limit]
+        return urlunsplit((parsed.scheme, parsed.netloc, parsed.path, "", ""))
 
     @classmethod
     async def extract_products(cls, page: Page) -> list[Product]:
-        cards = page.locator("[data-component-type='s-search-result']")
+        cards = page.locator(cls.results_selector)
         count = await cards.count()
         products: list[Product] = []
 
@@ -90,9 +66,9 @@ class AmazonAdapter(ProductSourceAdapter):
             if not asin:
                 continue
 
-            title = cls.clean_text(await card.locator("h2 span").first.text_content())
-            href = await card.locator("a.a-link-normal").first.get_attribute("href")
-            product_url = cls.normalize_url(href)
+            title = await cls.text_from_first(card, "h2 span")
+            href = await cls.attr_from_first(card, "a.a-link-normal", "href")
+            product_url = cls.normalize_product_url(href)
             whole = cls.clean_text(
                 await card.locator(".a-price .a-price-whole").first.text_content()
             )
@@ -114,7 +90,7 @@ class AmazonAdapter(ProductSourceAdapter):
                     price=price,
                     source_site=cls.source_name,
                     product_url=product_url,
-                    rating=parse_rating(rating_text),
+                    rating=cls.parse_rating(rating_text),
                 )
             )
         return products
