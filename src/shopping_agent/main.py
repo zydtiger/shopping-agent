@@ -35,11 +35,19 @@ def main(
         bool,
         typer.Option(help="Open the browser window instead of running Playwright headless."),
     ] = False,
+    limit: Annotated[
+        int,
+        typer.Option(
+            "--limit",
+            min=1,
+            help="Maximum number of products each scraper should return per search.",
+        ),
+    ] = 10,
 ) -> None:
     design = RankingDesign.SQL if sql else RankingDesign.DIRECT_JSON
     set_browser_headless(not head)
     config_obj = AppConfig.from_file(config)
-    agent = ShoppingAgent(config=config_obj)
+    agent = ShoppingAgent(config=config_obj, result_limit=limit)
     from .ui.app import run_app
 
     run_app(design=design, agent=agent)

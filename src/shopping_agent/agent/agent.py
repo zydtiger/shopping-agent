@@ -62,8 +62,9 @@ class RankingOutcome:
 
 
 class ShoppingAgent:
-    def __init__(self, config: AppConfig) -> None:
+    def __init__(self, config: AppConfig, result_limit: int = 50) -> None:
         self.config = config
+        self.result_limit = max(1, result_limit)
         self.amazon_adapter = AmazonAdapter()
         self.ebay_adapter = EbayAdapter()
         self.newegg_adapter = NeweggAdapter()
@@ -165,7 +166,7 @@ class ShoppingAgent:
             response = await self.response_runner(
                 model=self.config.agent.openai_model_id,
                 messages=messages,
-                tools=build_retrieval_tool_specs(),
+                tools=build_retrieval_tool_specs(self.result_limit),
             )
             assistant_message, finish_reason = self._extract_choice(response)
             await self._emit_visible_content(progress, assistant_message)
@@ -411,6 +412,7 @@ class ShoppingAgent:
             result = await handle_search_amazon(
                 arguments=arguments,
                 adapter=self.amazon_adapter,
+                result_limit=self.result_limit,
                 emit_progress=self._emit_progress,
                 progress=progress,
                 retrieved_products=retrieved_products,
@@ -420,6 +422,7 @@ class ShoppingAgent:
             result = await handle_search_ebay(
                 arguments=arguments,
                 adapter=self.ebay_adapter,
+                result_limit=self.result_limit,
                 emit_progress=self._emit_progress,
                 progress=progress,
                 retrieved_products=retrieved_products,
@@ -429,6 +432,7 @@ class ShoppingAgent:
             result = await handle_search_newegg(
                 arguments=arguments,
                 adapter=self.newegg_adapter,
+                result_limit=self.result_limit,
                 emit_progress=self._emit_progress,
                 progress=progress,
                 retrieved_products=retrieved_products,

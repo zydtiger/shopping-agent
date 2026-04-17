@@ -13,7 +13,8 @@ type ProgressCallback = Callable[[str], Awaitable[None] | None]
 type EmitProgressCallback = Callable[[ProgressCallback | None, str], Awaitable[None]]
 
 
-def build_retrieval_tool_specs() -> list[dict[str, Any]]:
+def build_retrieval_tool_specs(result_limit: int = 50) -> list[dict[str, Any]]:
+    normalized_limit = max(1, result_limit)
     return [
         {
             "type": "function",
@@ -63,7 +64,7 @@ def build_retrieval_tool_specs() -> list[dict[str, Any]]:
             "function": {
                 "name": "search_amazon",
                 "description": (
-                    "Search Amazon with one query string and return up to 50 "
+                    f"Search Amazon with one query string and return up to {normalized_limit} "
                     "normalized product results."
                 ),
                 "parameters": {
@@ -84,7 +85,7 @@ def build_retrieval_tool_specs() -> list[dict[str, Any]]:
             "function": {
                 "name": "search_ebay",
                 "description": (
-                    "Search eBay with one query string and return up to 50 "
+                    f"Search eBay with one query string and return up to {normalized_limit} "
                     "normalized product results."
                 ),
                 "parameters": {
@@ -105,7 +106,7 @@ def build_retrieval_tool_specs() -> list[dict[str, Any]]:
             "function": {
                 "name": "search_newegg",
                 "description": (
-                    "Search Newegg with one query string and return up to 50 "
+                    f"Search Newegg with one query string and return up to {normalized_limit} "
                     "normalized product results."
                 ),
                 "parameters": {
@@ -153,6 +154,7 @@ async def handle_search_amazon(
     *,
     arguments: dict[str, Any],
     adapter: ProductSourceAdapter,
+    result_limit: int,
     emit_progress: EmitProgressCallback,
     progress: ProgressCallback | None,
     retrieved_products: dict[str, Product],
@@ -166,6 +168,7 @@ async def handle_search_amazon(
         adapter=adapter,
         query=query,
         tool_name="search_amazon",
+        result_limit=result_limit,
         emit_progress=emit_progress,
         progress=progress,
         retrieved_products=retrieved_products,
@@ -177,6 +180,7 @@ async def handle_search_ebay(
     *,
     arguments: dict[str, Any],
     adapter: ProductSourceAdapter,
+    result_limit: int,
     emit_progress: EmitProgressCallback,
     progress: ProgressCallback | None,
     retrieved_products: dict[str, Product],
@@ -190,6 +194,7 @@ async def handle_search_ebay(
         adapter=adapter,
         query=query,
         tool_name="search_ebay",
+        result_limit=result_limit,
         emit_progress=emit_progress,
         progress=progress,
         retrieved_products=retrieved_products,
@@ -201,6 +206,7 @@ async def handle_search_newegg(
     *,
     arguments: dict[str, Any],
     adapter: ProductSourceAdapter,
+    result_limit: int,
     emit_progress: EmitProgressCallback,
     progress: ProgressCallback | None,
     retrieved_products: dict[str, Product],
@@ -214,6 +220,7 @@ async def handle_search_newegg(
         adapter=adapter,
         query=query,
         tool_name="search_newegg",
+        result_limit=result_limit,
         emit_progress=emit_progress,
         progress=progress,
         retrieved_products=retrieved_products,
@@ -226,6 +233,7 @@ async def run_search_tool(
     adapter: ProductSourceAdapter,
     query: str,
     tool_name: str,
+    result_limit: int,
     emit_progress: EmitProgressCallback,
     progress: ProgressCallback | None,
     retrieved_products: dict[str, Product],
@@ -236,7 +244,7 @@ async def run_search_tool(
         f"[plan] Search {adapter.source_name} for: {query}",
     )
     started = perf_counter()
-    products = await adapter.search(query, limit=50)
+    products = await adapter.search(query, limit=result_limit)
     latency_ms = int((perf_counter() - started) * 1000)
     retrieval_batches.append(
         RetrievalBatch(
