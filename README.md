@@ -28,6 +28,12 @@ uv sync
 uv run shopping-agent --config config.yaml
 ```
 
+Use `--limit` to cap how many products each scraper returns for a search:
+
+```bash
+uv run shopping-agent --config config.yaml --limit 10
+```
+
 Use the SQL-backed ranking path with:
 
 ```bash
