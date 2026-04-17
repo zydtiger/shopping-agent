@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import webbrowser
-from datetime import datetime
 
 from textual import work
 from textual.app import App, ComposeResult
@@ -264,8 +263,7 @@ class ShoppingAgentApp(App[None]):
         self.query_one("#status-copy", Static).update(status_message)
 
     def _append_log(self, message: str) -> None:
-        timestamp = datetime.now().strftime("%H:%M:%S")
-        self.query_one("#logs-view", RichLog).write(f"{timestamp}  {message}")
+        self.query_one("#logs-view", RichLog).write(message)
 
 
 def run_app(
