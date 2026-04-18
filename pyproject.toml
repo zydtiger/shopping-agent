@@ -12,6 +12,7 @@ dependencies = [
   "openai>=1.30.0",
   "playwright>=1.53.0",
   "pyyaml>=6.0.2",
+  "rich>=13.7.0",
   "textual>=0.60.0",
   "typer>=0.16.0",
 ]
@@ -28,6 +29,7 @@ dev = [
 [project.scripts]
 shopping-agent = "shopping_agent.main:run"
 shopping-agent-eval = "shopping_agent.evaluation.cli:run"
+shopping-agent-eval-vis = "shopping_agent.evaluation.visualize:run"
 
 [tool.uv]
 package = true
