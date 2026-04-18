@@ -16,7 +16,12 @@ from .api import (
     flatten_content,
 )
 from .errors import AgentHarnessError
-from .parsing import format_json_value, parse_json_payload, parse_json_value
+from .parsing import (
+    format_json_value,
+    parse_json_payload,
+    parse_json_value,
+    response_total_tokens,
+)
 from .sql import ProductSQLStore
 from .system_prompt import build_ranking_system_prompt
 from .tools import build_ranking_sql_tool_specs, run_product_store_query
@@ -29,6 +34,7 @@ class RankingOutcome:
     ranked_products: list[RankedProduct]
     status_message: str
     debug_notes: list[str]
+    total_tokens: int = 0
 
 
 class RankingAgent:
@@ -92,6 +98,7 @@ class RankingAgent:
             model=self.model_id,
             messages=messages,
         )
+        total_tokens = response_total_tokens(response)
         assistant_message, finish_reason = extract_choice(response)
         if finish_reason == "tool_calls":
             raise AgentHarnessError("Direct JSON RankingAgent must not request tools.")
@@ -122,6 +129,7 @@ class RankingAgent:
             debug_notes=[str(note) for note in final_payload.get("debug_notes", [])]
             if isinstance(final_payload.get("debug_notes"), list)
             else [],
+            total_tokens=total_tokens,
         )
 
     async def _run_sql(
@@ -154,12 +162,14 @@ class RankingAgent:
         ]
 
         final_payload: dict[str, Any] | None = None
+        total_tokens = 0
         while True:
             response = await self.response_runner(
                 model=self.model_id,
                 messages=messages,
                 tools=build_ranking_sql_tool_specs(),
             )
+            total_tokens += response_total_tokens(response)
             assistant_message, finish_reason = extract_choice(response)
             await emit_visible_content(progress, assistant_message, parse_json_value)
 
@@ -212,6 +222,7 @@ class RankingAgent:
             debug_notes=[str(note) for note in final_payload.get("debug_notes", [])]
             if isinstance(final_payload.get("debug_notes"), list)
             else [],
+            total_tokens=total_tokens,
         )
 
     async def _execute_tool_call(

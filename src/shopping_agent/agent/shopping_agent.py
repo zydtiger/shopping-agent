@@ -66,6 +66,7 @@ class ShoppingAgent:
                 retrieval_batches=retrieval.retrieval_batches,
                 ranked_products=[],
                 debug_notes=debug_notes,
+                total_tokens=retrieval.total_tokens,
             )
 
         await emit_progress(
@@ -99,6 +100,7 @@ class ShoppingAgent:
             retrieval_batches=retrieval.retrieval_batches,
             ranked_products=ranking.ranked_products,
             debug_notes=debug_notes,
+            total_tokens=retrieval.total_tokens + ranking.total_tokens,
         )
 
     async def _default_response_runner(self, **kwargs: Any) -> Any:

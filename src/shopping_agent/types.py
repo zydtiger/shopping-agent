@@ -100,6 +100,7 @@ class SearchResponse:
     retrieval_batches: list[RetrievalBatch] = field(default_factory=list)
     ranked_products: list[RankedProduct] = field(default_factory=list)
     debug_notes: list[str] = field(default_factory=list)
+    total_tokens: int = 0
 
 
 def _optional_float(value: Any) -> float | None:

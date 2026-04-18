@@ -29,6 +29,7 @@ from .parsing import (
     parse_json_payload,
     parse_json_value,
     profile_from_payload,
+    response_total_tokens,
     slugify,
 )
 from .sql import ProductSQLStore
@@ -52,6 +53,7 @@ class RetrievalOutcome:
     status_message: str
     retrieval_batches: list[RetrievalBatch]
     debug_notes: list[str]
+    total_tokens: int = 0
 
 
 class RetrievalAgent:
@@ -88,6 +90,7 @@ class RetrievalAgent:
         retrieved_products: dict[str, Product] = {}
         retrieval_batches: list[RetrievalBatch] = []
         debug_notes: list[str] = []
+        total_tokens = 0
 
         await emit_progress(
             progress,
@@ -102,6 +105,7 @@ class RetrievalAgent:
                 messages=messages,
                 tools=build_retrieval_tool_specs(self.result_limit),
             )
+            total_tokens += response_total_tokens(response)
             assistant_message, finish_reason = extract_choice(response)
             await emit_visible_content(progress, assistant_message, parse_json_value)
 
@@ -162,6 +166,7 @@ class RetrievalAgent:
             status_message=status_message,
             retrieval_batches=retrieval_batches,
             debug_notes=debug_notes,
+            total_tokens=total_tokens,
         )
 
     async def _execute_tool_call(

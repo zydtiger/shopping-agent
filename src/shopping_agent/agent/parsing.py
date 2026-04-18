@@ -119,3 +119,27 @@ def format_json_value(value: Any) -> str:
 def slugify(value: str) -> str:
     lowered = re.sub(r"[^a-z0-9]+", "_", value.lower()).strip("_")
     return lowered or "clarification"
+
+
+def response_total_tokens(response: Any) -> int:
+    usage = None
+    if isinstance(response, dict):
+        usage = response.get("usage")
+        if isinstance(usage, dict):
+            return _coerce_non_negative_int(usage.get("total_tokens"))
+        return 0
+
+    usage = getattr(response, "usage", None)
+    if usage is None:
+        return 0
+    if isinstance(usage, dict):
+        return _coerce_non_negative_int(usage.get("total_tokens"))
+    return _coerce_non_negative_int(getattr(usage, "total_tokens", 0))
+
+
+def _coerce_non_negative_int(value: Any) -> int:
+    try:
+        parsed = int(value)
+    except (TypeError, ValueError):
+        return 0
+    return parsed if parsed > 0 else 0
