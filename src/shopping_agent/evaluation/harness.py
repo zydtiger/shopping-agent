@@ -287,6 +287,7 @@ def _serialize_search_response(response: SearchResponse) -> ShoppingAgentRunReco
         retrieval_batches=retrieval_batches,
         ranked_products=ranked_products,
         debug_notes=response.debug_notes,
+        total_tokens=response.total_tokens,
     )
 
 

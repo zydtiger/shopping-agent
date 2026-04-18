@@ -30,6 +30,7 @@ class ShoppingAgentRunRecord:
     retrieval_batches: list[dict[str, Any]]
     ranked_products: list[dict[str, Any]]
     debug_notes: list[str] = field(default_factory=list)
+    total_tokens: int = 0
 
 
 @dataclass(slots=True)
