@@ -36,17 +36,6 @@ def normalize_choices(choice_payload: Any) -> list[ClarificationOption]:
     return choices
 
 
-def assistant_message_for_history(message: dict[str, Any]) -> dict[str, Any]:
-    payload: dict[str, Any] = {
-        "role": "assistant",
-        "content": message.get("content") or "",
-    }
-    tool_calls = message.get("tool_calls") or []
-    if tool_calls:
-        payload["tool_calls"] = tool_calls
-    return payload
-
-
 def parse_json_payload(payload: str) -> dict[str, Any]:
     parsed = parse_json_value(payload)
     if not isinstance(parsed, dict):
@@ -121,24 +110,6 @@ def profile_from_payload(query: str, payload: Any) -> UserPreferenceProfile:
         if isinstance(uncertainty_notes, list)
         else [],
     )
-
-
-def flatten_content(content: Any) -> str:
-    if content is None:
-        return ""
-    if isinstance(content, str):
-        return content.strip()
-    if isinstance(content, list):
-        text_parts: list[str] = []
-        for item in content:
-            if isinstance(item, dict) and item.get("type") == "text":
-                text = item.get("text")
-                if isinstance(text, str):
-                    text_parts.append(text)
-            elif hasattr(item, "text") and isinstance(item.text, str):  # type: ignore
-                text_parts.append(item.text)  # type: ignore
-        return "\n".join(part.strip() for part in text_parts if part.strip())
-    return str(content).strip()
 
 
 def format_json_value(value: Any) -> str:
