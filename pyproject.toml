@@ -27,6 +27,7 @@ dev = [
 
 [project.scripts]
 shopping-agent = "shopping_agent.main:run"
+shopping-agent-eval = "shopping_agent.evaluation.cli:run"
 
 [tool.uv]
 package = true
