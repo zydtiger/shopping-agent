@@ -29,8 +29,13 @@ Screen {
     padding: 1 2;
 }
 
-#top-panel {
-    height: 9;
+#input-panel {
+    height: auto;
+    margin-bottom: 1;
+}
+
+#status-panel {
+    height: auto;
     margin-bottom: 1;
 }
 
@@ -71,7 +76,7 @@ Screen {
 
 #status-copy {
     color: #c4d1ef;
-    padding-top: 1;
+    padding-top: 0;
 }
 
 TabbedContent {
