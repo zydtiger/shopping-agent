@@ -40,6 +40,12 @@ Use the SQL-backed ranking path with:
 uv run shopping-agent --config config.yaml --sql
 ```
 
+Run JSONL-driven evaluation artifacts with:
+
+```bash
+uv run shopping-agent-eval --config config.yaml --input items.jsonl --out-dir ./eval
+```
+
 Use `--head` to open a visible browser window instead of the default headless mode:
 
 ```bash
@@ -67,6 +73,42 @@ uv run python -m unittest discover -s tests
 - Retrieval tools append normalized `Product` rows into a shared in-memory store but return only compact status payloads back to `RetrievalAgent`.
 - `RankingAgent` never asks follow-up questions.
 - Direct JSON ranking is the default launch mode. Pass `--sql` to switch to the SQLite-backed comparison path.
+
+## Architecture Flow
+
+```mermaid
+flowchart TD
+    U[User in Textual UI] --> SA[ShoppingAgent.run_search]
+    SA --> RA[RetrievalAgent]
+
+    RA -->|ask_clarification| C[Clarification Callback]
+    C -->|answer| RA
+
+    RA -->|search_amazon / search_ebay / search_newegg| TOOLS[Retrieval Tools]
+    TOOLS --> ADP[Source Adapters]
+    ADP --> TOOLS
+    TOOLS -->|normalized products| STORE[(Shared In-Memory Product Store)]
+    TOOLS -->|status only| RA
+
+    RA -->|profile + retrieval status| RANK[RankingAgent]
+    STORE --> RANK
+
+    RANK -->|Direct JSON path| DJ[Evaluate injected full product list]
+    RANK -->|SQL path| SQL[query_product_store SELECTs]
+    SQL --> STORE
+
+    DJ --> RESP[Final SearchResponse<br/>ranked_products + debug_notes]
+    SQL --> RESP
+    RESP --> UIRES[UI Recommendations + Logs]
+
+    subgraph EVAL[Evaluation Harness End-to-End]
+      E1[JSONL item_summary] --> E2[Generate detailed hidden draft]
+      E2 --> E3[Compress to <= 3-word prompt]
+      E3 --> E4[Run ShoppingAgent.run_search<br/>with auto clarification callback]
+      E4 --> E5[LLM judge scores each recommendation<br/>against hidden draft]
+      E5 --> E6[Write artifact JSON to ./eval/*.json]
+    end
+```
 
 ## Project Layout
 
