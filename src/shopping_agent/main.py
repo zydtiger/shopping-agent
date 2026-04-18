@@ -38,7 +38,6 @@ def main(
     limit: Annotated[
         int,
         typer.Option(
-            "--limit",
             min=1,
             help="Maximum number of products each scraper should return per search.",
         ),
