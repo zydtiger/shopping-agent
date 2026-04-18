@@ -197,7 +197,11 @@ class RankingAgent:
 
             content = flatten_content(assistant_message.get("content"))
             if not content:
-                raise AgentHarnessError("RankingAgent returned no final payload.")
+                raise AgentHarnessError(
+                    "RankingAgent returned no final payload. "
+                    f"finish_reason={finish_reason} "
+                    f"assistant_message={json.dumps(assistant_message, ensure_ascii=True)}"
+                )
 
             final_payload = parse_json_payload(content)
             await emit_final_payload(
