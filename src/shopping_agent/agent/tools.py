@@ -21,7 +21,7 @@ def build_retrieval_tool_specs(result_limit: int = 50) -> list[dict[str, Any]]:
             "function": {
                 "name": "ask_clarification",
                 "description": (
-                    "Ask the user a popup clarification question with 3 to 5 "
+                    "Ask the user a clarification question with 3 to 5 "
                     "choices and an optional preference dimension."
                 ),
                 "parameters": {
@@ -33,7 +33,7 @@ def build_retrieval_tool_specs(result_limit: int = 50) -> list[dict[str, Any]]:
                         },
                         "suggested_choices": {
                             "type": "array",
-                            "description": "Three to five suggested options for the popup.",
+                            "description": "Three to five suggested options for the question.",
                             "items": {
                                 "type": "object",
                                 "properties": {
@@ -244,7 +244,24 @@ async def run_search_tool(
         f"[plan] Search {adapter.source_name} for: {query}",
     )
     started = perf_counter()
-    products = await adapter.search(query, limit=result_limit)
+    try:
+        products = await adapter.search(query, limit=result_limit)
+    except Exception as exc:
+        latency_ms = int((perf_counter() - started) * 1000)
+        await emit_progress(
+            progress,
+            f"[action] {tool_name} failed after {latency_ms} ms: {exc}",
+        )
+        return {
+            "query": query,
+            "source": adapter.source_name,
+            "result_count": 0,
+            "status": "source_error",
+            "message": (
+                f"{adapter.source_name} search for '{query}' failed in {latency_ms} ms: {exc}"
+            ),
+        }
+
     latency_ms = int((perf_counter() - started) * 1000)
     retrieval_batches.append(
         RetrievalBatch(
