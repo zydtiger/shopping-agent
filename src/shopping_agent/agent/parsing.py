@@ -10,6 +10,9 @@ from ..types import (
 )
 from .errors import AgentHarnessError
 
+JSON_FENCE_PATTERN = re.compile(r"```(?:json)?\s*([\s\S]*?)```", flags=re.IGNORECASE)
+JSON_LINE_START_PATTERN = re.compile(r"(?m)^[ \t]*([\{\[])")
+
 
 def normalize_choices(choice_payload: Any) -> list[ClarificationOption]:
     if not isinstance(choice_payload, list):
@@ -53,10 +56,49 @@ def parse_json_payload(payload: str) -> dict[str, Any]:
 
 def parse_json_value(payload: str) -> Any:
     stripped = payload.strip()
-    if stripped.startswith("```"):
-        stripped = re.sub(r"^```(?:json)?\s*", "", stripped)
-        stripped = re.sub(r"\s*```$", "", stripped)
+    decoder = json.JSONDecoder()
+    last_error: json.JSONDecodeError | None = None
+
+    for candidate in iter_json_candidates(stripped, decoder):
+        try:
+            return json.loads(candidate)
+        except json.JSONDecodeError as exc:
+            last_error = exc
+
+    if last_error is not None:
+        raise last_error
     return json.loads(stripped)
+
+
+def iter_json_candidates(payload: str, decoder: json.JSONDecoder) -> list[str]:
+    candidates: list[str] = []
+    seen: set[str] = set()
+
+    def add(candidate: str) -> None:
+        normalized = candidate.strip()
+        if not normalized or normalized in seen:
+            return
+        seen.add(normalized)
+        candidates.append(normalized)
+
+    add(payload)
+
+    fenced_match = re.fullmatch(JSON_FENCE_PATTERN, payload)
+    if fenced_match:
+        add(fenced_match.group(1))
+
+    for match in JSON_FENCE_PATTERN.finditer(payload):
+        add(match.group(1))
+
+    for match in JSON_LINE_START_PATTERN.finditer(payload):
+        start = match.start(1)
+        try:
+            _, end = decoder.raw_decode(payload[start:])
+        except json.JSONDecodeError:
+            continue
+        add(payload[start : start + end])
+
+    return candidates
 
 
 def profile_from_payload(query: str, payload: Any) -> UserPreferenceProfile:
@@ -97,6 +139,10 @@ def flatten_content(content: Any) -> str:
                 text_parts.append(item.text)  # type: ignore
         return "\n".join(part.strip() for part in text_parts if part.strip())
     return str(content).strip()
+
+
+def format_json_value(value: Any) -> str:
+    return json.dumps(value, indent=2, ensure_ascii=True)
 
 
 def slugify(value: str) -> str:

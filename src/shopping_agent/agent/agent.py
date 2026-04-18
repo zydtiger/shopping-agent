@@ -23,6 +23,7 @@ from .errors import AgentHarnessError
 from .parsing import (
     assistant_message_for_history,
     flatten_content,
+    format_json_value,
     normalize_choices,
     parse_json_payload,
     parse_json_value,
@@ -201,6 +202,7 @@ class ShoppingAgent:
             if not content:
                 raise AgentHarnessError("RetrievalAgent returned no final payload.")
             final_payload = parse_json_payload(content)
+            await self._emit_final_payload(progress, "RetrievalAgent", final_payload)
             break
 
         profile = profile_from_payload(query, final_payload.get("profile"))
@@ -284,6 +286,7 @@ class ShoppingAgent:
         if not content:
             raise AgentHarnessError("RankingAgent returned no final payload.")
         final_payload = parse_json_payload(content)
+        await self._emit_final_payload(progress, "RankingAgent", final_payload)
         return RankingOutcome(
             ranked_products=self._parse_ranked_products(
                 final_payload.get("recommendations"),
@@ -365,6 +368,7 @@ class ShoppingAgent:
             if not content:
                 raise AgentHarnessError("RankingAgent returned no final payload.")
             final_payload = parse_json_payload(content)
+            await self._emit_final_payload(progress, "RankingAgent", final_payload)
             break
 
         return RankingOutcome(
@@ -651,6 +655,15 @@ class ShoppingAgent:
             parse_json_value(content)
         except Exception:
             await self._emit_progress(progress, content)
+
+    async def _emit_final_payload(
+        self,
+        progress: ProgressCallback | None,
+        agent_name: str,
+        payload: dict[str, Any],
+    ) -> None:
+        await self._emit_progress(progress, format_json_value(payload))
+        await self._emit_progress(progress, f"[success] {agent_name} has completed")
 
     async def _emit_progress(
         self,
