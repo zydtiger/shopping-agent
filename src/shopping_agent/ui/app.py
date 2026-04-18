@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import webbrowser
 
-from textual import work
+from textual import events, work
 from textual.app import App, ComposeResult
 from textual.containers import Container, Horizontal, Vertical
 from textual.screen import ModalScreen
@@ -16,6 +16,7 @@ from textual.widgets import (
     TabbedContent,
     TabPane,
 )
+from textual.widgets.data_table import ColumnKey
 
 from ..agent import AgentHarnessError, ShoppingAgent
 from ..types import ClarificationQuestion, RankedProduct, RankingDesign
@@ -83,6 +84,12 @@ class ShoppingAgentApp(App[None]):
         self.selected_answers: dict[str, str] = {}
         self.result_urls: dict[str, str] = {}
         self.search_in_flight = False
+        self.recommendation_columns: dict[str, ColumnKey] = {}
+        self.compact_column_widths: dict[str, int] = {
+            "rank": len("RANK"),
+            "price": len("PRICE"),
+            "site": len("SITE"),
+        }
 
     def compose(self) -> ComposeResult:
         with Container(id="launch-view"):
@@ -131,7 +138,13 @@ class ShoppingAgentApp(App[None]):
         table = self.query_one("#recommendations-table", DataTable)
         table.cursor_type = "row"
         table.zebra_stripes = True
-        table.add_columns("RANK", "NAME", "PRICE", "SITE")
+        self.recommendation_columns = {
+            "rank": table.add_column("RANK", key="rank", width=len("RANK")),
+            "name": table.add_column("NAME", key="name", width=len("NAME")),
+            "price": table.add_column("PRICE", key="price", width=len("PRICE")),
+            "site": table.add_column("SITE", key="site", width=len("SITE")),
+        }
+        self.call_after_refresh(self._resize_recommendations_columns)
 
         self.query_one("#workspace-tabs", TabbedContent).active = "logs-tab"
         self._append_log("[plan] Waiting for the first user prompt.")
@@ -227,6 +240,15 @@ class ShoppingAgentApp(App[None]):
         self.result_urls = {}
 
         top_results = sorted(ranked_products, key=lambda item: item.score, reverse=True)[:10]
+        rank_values = [str(index) for index in range(len(top_results))]
+        price_values = [f"${item.product.price:.2f}" for item in top_results]
+        site_values = [item.product.source_site for item in top_results]
+
+        self.compact_column_widths = {
+            "rank": max([len("RANK"), *[len(value) for value in rank_values]]),
+            "price": max([len("PRICE"), *[len(value) for value in price_values]]),
+            "site": max([len("SITE"), *[len(value) for value in site_values]]),
+        }
 
         for display_rank, item in enumerate(top_results):
             row_key = f"result-{display_rank}"
@@ -243,6 +265,9 @@ class ShoppingAgentApp(App[None]):
             self._append_log(
                 "[action] No recommendations are available because retrieval returned no products."
             )
+
+        self._resize_recommendations_columns()
+        self.call_after_refresh(self._resize_recommendations_columns)
 
     def _reset_search_views(self) -> None:
         self.query_one("#workspace-tabs", TabbedContent).active = "logs-tab"
@@ -264,6 +289,39 @@ class ShoppingAgentApp(App[None]):
 
     def _append_log(self, message: str) -> None:
         self.query_one("#logs-view", RichLog).write(message)
+
+    def on_resize(self, _: events.Resize) -> None:
+        if not self.recommendation_columns:
+            return
+        self.call_after_refresh(self._resize_recommendations_columns)
+
+    def _resize_recommendations_columns(self) -> None:
+        table = self.query_one("#recommendations-table", DataTable)
+        if not self.recommendation_columns:
+            return
+
+        viewport_width = table.scrollable_content_region.width or table.content_region.width
+        if viewport_width <= 0:
+            viewport_width = table.size.width
+        if viewport_width <= 0:
+            return
+
+        cell_padding_width = table.cell_padding * 2
+        compact_render_width = 0
+        for column_name in ("rank", "price", "site"):
+            column_key = self.recommendation_columns[column_name]
+            column = table.columns[column_key]
+            column.width = self.compact_column_widths[column_name]
+            column.auto_width = False
+            compact_render_width += column.width + cell_padding_width
+
+        remaining_for_name = max(1, viewport_width - compact_render_width - cell_padding_width)
+        name_column = table.columns[self.recommendation_columns["name"]]
+        name_column.width = remaining_for_name
+        name_column.auto_width = False
+
+        table._require_update_dimensions = True
+        table.check_idle()
 
 
 def run_app(
