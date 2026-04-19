@@ -104,16 +104,9 @@ Complexity and success assessment:
 
 = Methods and architecture
 
-User interaction flow:
-1. User enters a vague shopping query in the terminal.
-2. `RetrievalAgent` decides whether clarification is needed.
-3. If needed, it calls `ask_clarification` with 3--5 choices + freeform fallback.
-4. Harness executes retrieval tools (`search_amazon`, `search_ebay`, `search_newegg`) and stores normalized `Product` objects.
-5. Retrieval agent receives only compact execution status strings, not raw product payloads.
-6. Harness invokes `RankingAgent` with either:
-  - full JSON product list (direct JSON design), or
-  - SQL query interface over in-memory SQLite (SQL design).
-7. `RankingAgent` returns strict top-10 JSON objects of shape `{ "score": int, "product": Product }`.
+User interaction flow: The end-to-end interaction is shown in the flowchart below. \
+
+In short: the user provides a vague query, `RetrievalAgent` runs clarification and source retrieval (`search_amazon`, `search_ebay`, `search_newegg`), and `RankingAgent` outputs strict top-10 JSON in one of two modes (direct JSON context or SQL-backed querying).
 
 #figure(
   image("./user_flow.png", height: 7in),
@@ -124,11 +117,7 @@ User interaction flow:
 
 Evaluation setup used in this project:
 - Input: a JSONL list of shopping intents (`eval.jsonl`)
-- Process:
-  - produce detailed hidden demand draft
-  - compress to a fuzzy short user prompt
-  - run full shopping-agent pipeline
-  - judge recommendation relevance against hidden detailed demand
+- Process: generate hidden detailed demand, convert it to a concise prompt, run the full agent pipeline, and score relevance with an LLM judge
 - Outputs: per-case JSON artifacts in `eval-json/` (direct JSON design) and `eval-sql/` (SQL design)
 
 #figure(
@@ -169,12 +158,12 @@ Observed quantitative summary from current artifacts:
 )
 
 Interpretation:
-- In this run, SQL outperforms Direct JSON on average ranking quality at \@1/\@5/\@10 (+13.3 / +6.1 / +4.4 points).
+- In this run, SQL outperforms Direct JSON on average ranking quality at `@1` / `@5` / `@10` (+13.3 / +6.1 / +4.4 points).
 - Direct JSON is more token-efficient, using about 5,143.5 fewer tokens per task on average.
 - Both modes completed all 10/10 cases in this snapshot.
 - Direct JSON shows a clearer upward trend as `k` increases, suggesting relevant items are often present but not always placed at the very top initially.
-- SQL curves are comparatively flatter across `score\@k`, which indicates the best guess is usually already captured at \@1 and later ranks add less incremental gain.
-- Error distribution is mode-specific: SQL is very strong on most tasks but weak on `smart-desk-lamp` (55.0 at score\@10), while Direct JSON is weaker on `acoustic-privacy-panel` (60.0 at score\@10).
+- SQL curves are comparatively flatter across `score@k`, which indicates the best guess is usually already captured at `@1` and later ranks add less incremental gain.
+- Error distribution is mode-specific: SQL is very strong on most tasks but weak on `smart-desk-lamp` (55.0 at `score@10`), while Direct JSON is weaker on `acoustic-privacy-panel` (60.0 at `score@10`).
 
 = Outside components and reuse disclosure
 
