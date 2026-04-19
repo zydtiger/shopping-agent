@@ -1,0 +1,604 @@
+{
+  "item_summary": "$80-120 high-resolution 4K webcam with AI auto-framing, low-light correction, and dual noise-canceling microphones",
+  "detailed_item_draft": "Procurement Requirement: Professional 4K Webcam. Budget Cap: $80-$120 USD. Resolution: Native 4K (3840x2160) at 30fps minimum with HDR support. Smart Features: AI auto-framing for subject tracking and centering; advanced low-light correction for dim environments. Audio: Dual-array noise-canceling microphones for background suppression and voice isolation. Connectivity: Plug-and-play USB 3.0/2.0 (Type-A or Type-C). Field of View: Adjustable (78-120 degrees). Mounting: Universal monitor clip with 1/4-inch tripod thread. OS Compatibility: Windows, macOS, ChromeOS. Preferred Extras: Privacy shutter, autofocus, automatic white balance.",
+  "compressed_prompt": "Professional 4K Webcam",
+  "shopping_agent_run": {
+    "design": "direct_json",
+    "status_message": "Ranked top 10 professional 4K webcams within $100-$200 budget.",
+    "profile": {
+      "raw_query": "Professional 4K Webcam",
+      "clarified_answers": {
+        "budget": "$100-$200"
+      },
+      "inferred_requirements": [
+        "4K resolution",
+        "Professional grade features",
+        "USB 3.0 or compatible interface",
+        "Budget cap $200"
+      ],
+      "uncertainty_notes": [
+        "Specific use case (streaming vs conferencing) not specified",
+        "Brand preference not indicated",
+        "Low-light performance requirements unknown"
+      ]
+    },
+    "retrieval_batches": [
+      {
+        "source": "Amazon",
+        "latency_ms": 3457,
+        "products": [
+          {
+            "title": "SVPRO USB Camera 1080P 120fps High Speed Camera for Golf Swing Simulator,12MP 4K Webcam with 3X Manual Zoom Lens USB Plug and Play for Computer Laptop Compatible with Windows Linux MacOS Android",
+            "price": 123.99,
+            "source_site": "Amazon",
+            "product_url": "https://www.amazon.com/dp/B0DY4TXWM5",
+            "rating": 3.2
+          },
+          {
+            "title": "EMEET S600 4K Webcam for Streaming - Sony 1/2.55'' Sensor, PDAF Autofocus, 1080P@60FPS, 2 Noise Reduction Mics, Built-in Privacy Cover, 73\u00b0 FOV, Streaming Camera for Live Commerce/Gaming/Beauty",
+            "price": 53.18,
+            "source_site": "Amazon",
+            "product_url": "https://www.amazon.com/dp/B0CYQ5P6T7",
+            "rating": 4.5
+          },
+          {
+            "title": "acer 4K Webcam for PC/Mac with All-Metal Unibody Sculpted, Sony 1/2\" Sensor, PDAF, 2 Noise Reduction Mics, Privacy Cover, Lightweight, Fast Cooling, Streaming Camera for Live Meeting Commerce Gaming",
+            "price": 49.98,
+            "source_site": "Amazon",
+            "product_url": "https://www.amazon.com/dp/B00605BYCW",
+            "rating": 4.4
+          },
+          {
+            "title": "EMEET NOVA 4K Webcam for PC - Ultra 4K HD, PDAF Autofocus, Dual Omnidirectional Mics, 73\u00b0 FOV, Auto Light Correction, USB-A, Privacy Cover, Ideal for High-End Business Meetings&Live Streaming",
+            "price": 49.39,
+            "source_site": "Amazon",
+            "product_url": "https://www.amazon.com/dp/B0CY2C7H6S",
+            "rating": 4.5
+          },
+          {
+            "title": "AOC 4k Webcam for PC with Microphone, Computer Camera with Noise Cancellation, Privacy Cover, 99\u00b0 FOV, Plug & Play USB Webcam for Streaming, Conferencing, Zoom, Skype, Facetime, Laptop, PC, Skype",
+            "price": 27.99,
+            "source_site": "Amazon",
+            "product_url": "https://www.amazon.com/dp/B0FQ57MYVH",
+            "rating": 4.4
+          },
+          {
+            "title": "EMEET C960 4K Webcam for PC, 4K UHD CMOS Sensor, PDAF Auto Focus, Dual Omnidirectional Mics, Auto Light Correction, 73\u00b0 FOV, Plug&Play Webcam w/Privacy Cover, Works w/Zoom/Teams/Skype/Google Meet",
+            "price": 47.99,
+            "source_site": "Amazon",
+            "product_url": "https://www.amazon.com/dp/B0CJHZ92P6",
+            "rating": 4.5
+          },
+          {
+            "title": "EMEET C980 PRO 3-in-1 4K Webcam with Microphone and Speaker, 60\u00b0-98\u00b0 Wide Angle Webcam w/ 4 Noise Cancel Mics, 2 Speakers, Fixed Focus, Magnetic Privacy Cover, Great for Group and Personal Video Calls",
+            "price": 89.99,
+            "source_site": "Amazon",
+            "product_url": "https://www.amazon.com/dp/B0DCFGC6NJ",
+            "rating": 4.1
+          },
+          {
+            "title": "SVPRO HDMI Camera 4K USB3.0 Webcam 60FPS Wide Angle USB Camera 120 Degree M12 Lens Streaming Camera 4K 60FPS H.264 External Computer Camera,TV Camera",
+            "price": 127.99,
+            "source_site": "Amazon",
+            "product_url": "https://www.amazon.com/dp/B0D22B5XNR",
+            "rating": 4.4
+          },
+          {
+            "title": "Logitech Brio 4K Webcam, Video Calling, Noise-Cancelling mic, HD Auto Light Correction, Wide Field of View, Windows Hello Works with Microsoft Teams, Zoom, Google Meet, PC/Mac/Laptop/MacBook/Tablet",
+            "price": 169.99,
+            "source_site": "Amazon",
+            "product_url": "https://www.amazon.com/dp/B09NBWWP79",
+            "rating": 4.5
+          },
+          {
+            "title": "EMEET C960 4K Webcam with Tripod, 4K UHD Sony Sensor, 3 Adjustable Height Mini Tripod w/Privacy Cover, PDAF Auto Focus, Dual Noise-Cancelling Mics, Auto Light Correction, Perfect for Online Meetings",
+            "price": 69.98,
+            "source_site": "Amazon",
+            "product_url": "https://www.amazon.com/dp/B0CP6BG9QW",
+            "rating": 4.4
+          }
+        ]
+      },
+      {
+        "source": "Newegg",
+        "latency_ms": 4675,
+        "products": [
+          {
+            "title": "AUSDOM 4K Webcam, Autofocus Webcam with Microphone, Privacy Cover, Plug and Play USB Computer Web Camera for Pro Streaming/Online Teaching/Video Calling/Zoom/Skype (Black-4K)",
+            "price": 39.99,
+            "source_site": "Newegg",
+            "product_url": "https://www.newegg.com/ausdom-af640-4k/p/1EF-003Z-00128",
+            "rating": 3.0
+          },
+          {
+            "title": "Insta360 Link 2 Pro 4K Ultra HD 2-Axis Gimbal AI-Powered Webcam, Graphite Black",
+            "price": 249.99,
+            "source_site": "Newegg",
+            "product_url": "https://www.newegg.com/p/1EF-00J0-00022",
+            "rating": null
+          },
+          {
+            "title": "WYRESTORM 4K Webcam with AI Tracking, 120\u00b0 FOV Wide Angle, Auto Framing, 90fps, 8X Digital Zoom, Dual AI Noise-canceling Mics, Video Conference Room Camera, Zoom Certified, Works for Microsoft Teams",
+            "price": 139.99,
+            "source_site": "Newegg",
+            "product_url": "https://www.newegg.com/wyrestorm-focus-210-gray-usb-up-to-4k-30fps-1080p-60fps-720p-90fps-720p-60fps/p/1EF-01VE-00005",
+            "rating": null
+          },
+          {
+            "title": "Insta360 Link 2C Pro 4K Ultra HD AI-Powered Webcam, Graphite Black",
+            "price": 199.99,
+            "source_site": "Newegg",
+            "product_url": "https://www.newegg.com/p/1EF-00J0-00021",
+            "rating": null
+          },
+          {
+            "title": "Logitech 4K Pro Webcam with HDR and Noise-canceling Mics 960-001390",
+            "price": 145.92,
+            "source_site": "Newegg",
+            "product_url": "https://www.newegg.com/p/1EF-000C-007A9",
+            "rating": 4.3
+          },
+          {
+            "title": "Logitech Miro 4K Pro Webcam with Webcam Stand and 4-Port 3.0 USB Hub",
+            "price": 229.99,
+            "source_site": "Newegg",
+            "product_url": "https://www.newegg.com/p/1EF-000C-00DV6",
+            "rating": null
+          },
+          {
+            "title": "Logitech 4K Pro Webcam and Knox Gear Selfie Ring Light With Webcam Stand",
+            "price": 209.99,
+            "source_site": "Newegg",
+            "product_url": "https://www.newegg.com/p/1EF-000C-00DW4",
+            "rating": null
+          },
+          {
+            "title": "Lenovo 4K Pro Webcam",
+            "price": 145.74,
+            "source_site": "Newegg",
+            "product_url": "https://www.newegg.com/lenovo-4xc1q25246-27890358-black-usb-2k/p/1EF-0057-001G1",
+            "rating": null
+          },
+          {
+            "title": "4K Webcam, Webcam 8MP HD Computer Camera with Microphone, Pro Streaming Web Camera with Privacy Shutter and Tripod, Desktop Laptop USB Webcams",
+            "price": 49.49,
+            "source_site": "Newegg",
+            "product_url": "https://www.newegg.com/p/1EF-020H-000F1",
+            "rating": 2.0
+          },
+          {
+            "title": "EMEET C980 Pro 4K - Plug & Play 3-in-1 Webcam with 4K lens, Four Noise Reduction Mics, Two 1W Speakers, and Magnetic Privacy Cover. 60\u00b0-98\u00b0 adjustable Field of View with Auto Low L",
+            "price": 99.99,
+            "source_site": "Newegg",
+            "product_url": "https://www.newegg.com/p/1EF-0235-00005",
+            "rating": null
+          }
+        ]
+      },
+      {
+        "source": "eBay",
+        "latency_ms": 4634,
+        "products": [
+          {
+            "title": "Logitech 4K Pro Webcam 960-001105 Web Camera (BRIO)",
+            "price": 50.0,
+            "source_site": "eBay",
+            "product_url": "https://www.ebay.com/itm/406723808627",
+            "rating": 5.0
+          },
+          {
+            "title": "Logitech 4K Pro Ultra HD Magnetic Webcam Pro Display XDR + Extended Cable!!",
+            "price": 89.99,
+            "source_site": "eBay",
+            "product_url": "https://www.ebay.com/itm/256346654001",
+            "rating": 5.0
+          },
+          {
+            "title": "Logitech 4K Pro 4K Webcam Noise-Canceling Mic PC/MAC 960-001390 Sealed Brand New",
+            "price": 99.5,
+            "source_site": "eBay",
+            "product_url": "https://www.ebay.com/itm/227299553919",
+            "rating": 5.0
+          },
+          {
+            "title": "Razer Kiyo Pro Ultra 4K Ultra HD Webcam USB 3.0 Autofocus Built-in Microphone",
+            "price": 250.0,
+            "source_site": "eBay",
+            "product_url": "https://www.ebay.com/itm/318152492803",
+            "rating": null
+          },
+          {
+            "title": "Logitech Brio 4K Ultra HD Pro Webcam We don't ship outside the US",
+            "price": 98.99,
+            "source_site": "eBay",
+            "product_url": "https://www.ebay.com/itm/175395106478",
+            "rating": 4.5
+          },
+          {
+            "title": "Logitech Brio PRO X 4K Webcam",
+            "price": 69.95,
+            "source_site": "eBay",
+            "product_url": "https://www.ebay.com/itm/197347238856",
+            "rating": null
+          },
+          {
+            "title": "LOGITECH Brio 4K Pro Webcam V-U0040 Ultra HD Video HDR Pre-Owned",
+            "price": 59.99,
+            "source_site": "eBay",
+            "product_url": "https://www.ebay.com/itm/226372217947",
+            "rating": 5.0
+          },
+          {
+            "title": "Professional 4K USB Webcam with Autofocus & Tripod for Live Streaming and Gaming",
+            "price": 34.19,
+            "source_site": "eBay",
+            "product_url": "https://www.ebay.com/itm/336428272710",
+            "rating": null
+          },
+          {
+            "title": "Razer Kiyo Pro Ultra 4K Ultra HD Webcam USB Wide Angle Lens Black",
+            "price": 325.0,
+            "source_site": "eBay",
+            "product_url": "https://www.ebay.com/itm/137221014204",
+            "rating": null
+          },
+          {
+            "title": "OBSBOT Tiny 2 Lite AI Powered 4K PTZ Webcam Advanced CMOS Sensor Vlogger PRO",
+            "price": 119.0,
+            "source_site": "eBay",
+            "product_url": "https://www.ebay.com/itm/285998937594",
+            "rating": null
+          }
+        ]
+      }
+    ],
+    "ranked_products": [
+      {
+        "rank": 1,
+        "score": 95,
+        "rationale": "Logitech Brio 4K matches budget perfectly ($169.99), high rating (4.5), and recognized professional brand with 4K features.",
+        "product": {
+          "title": "Logitech Brio 4K Webcam, Video Calling, Noise-Cancelling mic, HD Auto Light Correction, Wide Field of View, Windows Hello Works with Microsoft Teams, Zoom, Google Meet, PC/Mac/Laptop/MacBook/Tablet",
+          "price": 169.99,
+          "source_site": "Amazon",
+          "product_url": "https://www.amazon.com/dp/B09NBWWP79",
+          "rating": 4.5
+        }
+      },
+      {
+        "rank": 2,
+        "score": 92,
+        "rationale": "WYRESTORM 4K fits budget ($139.99), features AI tracking and wide angle, ideal for conferences though rating is null.",
+        "product": {
+          "title": "WYRESTORM 4K Webcam with AI Tracking, 120\u00b0 FOV Wide Angle, Auto Framing, 90fps, 8X Digital Zoom, Dual AI Noise-canceling Mics, Video Conference Room Camera, Zoom Certified, Works for Microsoft Teams",
+          "price": 139.99,
+          "source_site": "Newegg",
+          "product_url": "https://www.newegg.com/wyrestorm-focus-210-gray-usb-up-to-4k-30fps-1080p-60fps-720p-90fps-720p-60fps/p/1EF-01VE-00005",
+          "rating": null
+        }
+      },
+      {
+        "rank": 3,
+        "score": 90,
+        "rationale": "Logitech 4K Pro fits budget ($145.92), professional grade with HDR and noise-canceling mics, strong 4.3 rating.",
+        "product": {
+          "title": "Logitech 4K Pro Webcam with HDR and Noise-canceling Mics 960-001390",
+          "price": 145.92,
+          "source_site": "Newegg",
+          "product_url": "https://www.newegg.com/p/1EF-000C-007A9",
+          "rating": 4.3
+        }
+      },
+      {
+        "rank": 4,
+        "score": 88,
+        "rationale": "Insta360 Link 2C Pro at upper budget limit ($199.99), premium AI-powered features, null rating but high-end specs.",
+        "product": {
+          "title": "Insta360 Link 2C Pro 4K Ultra HD AI-Powered Webcam, Graphite Black",
+          "price": 199.99,
+          "source_site": "Newegg",
+          "product_url": "https://www.newegg.com/p/1EF-00J0-00021",
+          "rating": null
+        }
+      },
+      {
+        "rank": 5,
+        "score": 85,
+        "rationale": "SVPRO HDMI Camera 4K USB3.0 fits budget ($127.99), includes 4K 60FPS and wide angle, good rating (4.4) for pro streaming.",
+        "product": {
+          "title": "SVPRO HDMI Camera 4K USB3.0 Webcam 60FPS Wide Angle USB Camera 120 Degree M12 Lens Streaming Camera 4K 60FPS H.264 External Computer Camera,TV Camera",
+          "price": 127.99,
+          "source_site": "Amazon",
+          "product_url": "https://www.amazon.com/dp/B0D22B5XNR",
+          "rating": 4.4
+        }
+      },
+      {
+        "rank": 6,
+        "score": 82,
+        "rationale": "SVPRO USB Camera 1080P/4K fits budget ($123.99), explicitly mentions 4K and manual zoom, though rating is lower (3.2).",
+        "product": {
+          "title": "SVPRO USB Camera 1080P 120fps High Speed Camera for Golf Swing Simulator,12MP 4K Webcam with 3X Manual Zoom Lens USB Plug and Play for Computer Laptop Compatible with Windows Linux MacOS Android",
+          "price": 123.99,
+          "source_site": "Amazon",
+          "product_url": "https://www.amazon.com/dp/B0DY4TXWM5",
+          "rating": 3.2
+        }
+      },
+      {
+        "rank": 7,
+        "score": 78,
+        "rationale": "EMEET C980 PRO 3-in-1 fits budget ($89.99), includes microphone and speaker, good features for conferencing, decent rating (4.1).",
+        "product": {
+          "title": "EMEET C980 PRO 3-in-1 4K Webcam with Microphone and Speaker, 60\u00b0-98\u00b0 Wide Angle Webcam w/ 4 Noise Cancel Mics, 2 Speakers, Fixed Focus, Magnetic Privacy Cover, Great for Group and Personal Video Calls",
+          "price": 89.99,
+          "source_site": "Amazon",
+          "product_url": "https://www.amazon.com/dp/B0DCFGC6NJ",
+          "rating": 4.1
+        }
+      },
+      {
+        "rank": 8,
+        "score": 75,
+        "rationale": "EMEET C960 4K Webcam with Tripod fits budget ($69.98), solid 4K specs with tripod included, high rating (4.4).",
+        "product": {
+          "title": "EMEET C960 4K Webcam with Tripod, 4K UHD Sony Sensor, 3 Adjustable Height Mini Tripod w/Privacy Cover, PDAF Auto Focus, Dual Noise-Cancelling Mics, Auto Light Correction, Perfect for Online Meetings",
+          "price": 69.98,
+          "source_site": "Amazon",
+          "product_url": "https://www.amazon.com/dp/B0CP6BG9QW",
+          "rating": 4.4
+        }
+      },
+      {
+        "rank": 9,
+        "score": 72,
+        "rationale": "Logitech Brio 4K on eBay ($98.99) fits budget, strong rating (4.5) despite being used/pre-owned context.",
+        "product": {
+          "title": "Logitech Brio 4K Ultra HD Pro Webcam We don't ship outside the US",
+          "price": 98.99,
+          "source_site": "eBay",
+          "product_url": "https://www.ebay.com/itm/175395106478",
+          "rating": 4.5
+        }
+      },
+      {
+        "rank": 10,
+        "score": 70,
+        "rationale": "EMEET NOVA 4K Webcam fits budget ($49.39), high rating (4.5), but significantly under budget, good value option.",
+        "product": {
+          "title": "EMEET NOVA 4K Webcam for PC - Ultra 4K HD, PDAF Autofocus, Dual Omnidirectional Mics, 73\u00b0 FOV, Auto Light Correction, USB-A, Privacy Cover, Ideal for High-End Business Meetings&Live Streaming",
+          "price": 49.39,
+          "source_site": "Amazon",
+          "product_url": "https://www.amazon.com/dp/B0CY2C7H6S",
+          "rating": 4.5
+        }
+      }
+    ],
+    "debug_notes": [
+      "Selected ranking design: Direct JSON Ranking.",
+      "Amazon search: 'professional 4K webcam USB 3.0' - 10 results",
+      "Newegg search: 'professional 4K webcam' - 10 results",
+      "eBay search: 'professional 4K webcam' - 10 results",
+      "Total pool: 30 products ready for downstream ranking",
+      "Prioritized Logitech Brio and Pro models for professional grade reliability.",
+      "Excluded Insta360 Link 2 Pro ($249.99) as it exceeds $200 budget cap.",
+      "Included lower-rated but feature-rich options within budget range.",
+      "Balanced Amazon vs Newegg/eBay sources based on price and rating availability.",
+      "Excluded products with unclear 4K claims or very low ratings (<3.0)."
+    ],
+    "total_tokens": 14791
+  },
+  "interaction_logs": {
+    "progress_logs": [
+      "[plan] Preparing hidden detailed item draft.",
+      "[plan] Generating compressed prompt from detailed draft.",
+      "[action] Compressed prompt ready: Professional 4K Webcam",
+      "[plan] RetrievalAgent is analyzing the raw shopping request and deciding whether clarification is needed.",
+      "[plan] Need to clarify budget range for \"Professional\" tier to guide search queries effectively.",
+      "[action] Clarification requested: What's your budget range for this professional 4K webcam?",
+      "[action] Clarification captured for budget: $100-$200",
+      "[plan] Budget clarified as $100-$200. Next, check if specific connectivity (USB-C vs USB-A) or use case (streaming vs conferencing) is needed. Since \"Professional\" often implies streaming/production, I'll search first and see if results vary significantly by interface type. If not, I can assume USB 3.0/USB-C is standard for 4K. Let's start searching Amazon for \"4K webcam professional $100-$200\" to see what's available.",
+      "[plan] Search Amazon for: professional 4K webcam USB 3.0",
+      "[action] search_amazon returned 10 product(s) in 3457 ms.",
+      "[plan] Amazon search returned 10 usable results. To ensure broader coverage for the $100-$200 price segment, I'll also search Newegg which often has different stock for tech peripherals.",
+      "[plan] Search Newegg for: professional 4K webcam",
+      "[action] search_newegg returned 10 product(s) in 4675 ms.",
+      "[plan] Search eBay for: professional 4K webcam",
+      "[action] search_ebay returned 10 product(s) in 4634 ms.",
+      "{\n  \"status_message\": \"Retrieved 30 products across Amazon, Newegg, and eBay for professional 4K webcams in the $100-$200 budget range.\",\n  \"profile\": {\n    \"raw_query\": \"Professional 4K Webcam\",\n    \"clarified_answers\": {\n      \"budget\": \"$100-$200\"\n    },\n    \"inferred_requirements\": [\n      \"4K resolution\",\n      \"Professional grade features\",\n      \"USB 3.0 or compatible interface\",\n      \"Budget cap $200\"\n    ],\n    \"uncertainty_notes\": [\n      \"Specific use case (streaming vs conferencing) not specified\",\n      \"Brand preference not indicated\",\n      \"Low-light performance requirements unknown\"\n    ]\n  },\n  \"debug_notes\": [\n    \"Amazon search: 'professional 4K webcam USB 3.0' - 10 results\",\n    \"Newegg search: 'professional 4K webcam' - 10 results\",\n    \"eBay search: 'professional 4K webcam' - 10 results\",\n    \"Total pool: 30 products ready for downstream ranking\"\n  ]\n}",
+      "[success] RetrievalAgent has completed",
+      "[plan] RetrievalAgent finished. Handing the shared product store to RankingAgent using Direct JSON Ranking.",
+      "[plan] RankingAgent is evaluating the full normalized product payload directly.",
+      "{\n  \"status_message\": \"Ranked top 10 professional 4K webcams within $100-$200 budget.\",\n  \"recommendations\": [\n    {\n      \"score\": 95,\n      \"rationale\": \"Logitech Brio 4K matches budget perfectly ($169.99), high rating (4.5), and recognized professional brand with 4K features.\",\n      \"product\": {\n        \"title\": \"Logitech Brio 4K Webcam, Video Calling, Noise-Cancelling mic, HD Auto Light Correction, Wide Field of View, Windows Hello Works with Microsoft Teams, Zoom, Google Meet, PC/Mac/Laptop/MacBook/Tablet\",\n        \"price\": 169.99,\n        \"source_site\": \"Amazon\",\n        \"product_url\": \"https://www.amazon.com/dp/B09NBWWP79\",\n        \"rating\": 4.5\n      }\n    },\n    {\n      \"score\": 92,\n      \"rationale\": \"WYRESTORM 4K fits budget ($139.99), features AI tracking and wide angle, ideal for conferences though rating is null.\",\n      \"product\": {\n        \"title\": \"WYRESTORM 4K Webcam with AI Tracking, 120\\u00b0 FOV Wide Angle, Auto Framing, 90fps, 8X Digital Zoom, Dual AI Noise-canceling Mics, Video Conference Room Camera, Zoom Certified, Works for Microsoft Teams\",\n        \"price\": 139.99,\n        \"source_site\": \"Newegg\",\n        \"product_url\": \"https://www.newegg.com/wyrestorm-focus-210-gray-usb-up-to-4k-30fps-1080p-60fps-720p-90fps-720p-60fps/p/1EF-01VE-00005\",\n        \"rating\": null\n      }\n    },\n    {\n      \"score\": 90,\n      \"rationale\": \"Logitech 4K Pro fits budget ($145.92), professional grade with HDR and noise-canceling mics, strong 4.3 rating.\",\n      \"product\": {\n        \"title\": \"Logitech 4K Pro Webcam with HDR and Noise-canceling Mics 960-001390\",\n        \"price\": 145.92,\n        \"source_site\": \"Newegg\",\n        \"product_url\": \"https://www.newegg.com/p/1EF-000C-007A9\",\n        \"rating\": 4.3\n      }\n    },\n    {\n      \"score\": 88,\n      \"rationale\": \"Insta360 Link 2C Pro at upper budget limit ($199.99), premium AI-powered features, null rating but high-end specs.\",\n      \"product\": {\n        \"title\": \"Insta360 Link 2C Pro 4K Ultra HD AI-Powered Webcam, Graphite Black\",\n        \"price\": 199.99,\n        \"source_site\": \"Newegg\",\n        \"product_url\": \"https://www.newegg.com/p/1EF-00J0-00021\",\n        \"rating\": null\n      }\n    },\n    {\n      \"score\": 85,\n      \"rationale\": \"SVPRO HDMI Camera 4K USB3.0 fits budget ($127.99), includes 4K 60FPS and wide angle, good rating (4.4) for pro streaming.\",\n      \"product\": {\n        \"title\": \"SVPRO HDMI Camera 4K USB3.0 Webcam 60FPS Wide Angle USB Camera 120 Degree M12 Lens Streaming Camera 4K 60FPS H.264 External Computer Camera,TV Camera\",\n        \"price\": 127.99,\n        \"source_site\": \"Amazon\",\n        \"product_url\": \"https://www.amazon.com/dp/B0D22B5XNR\",\n        \"rating\": 4.4\n      }\n    },\n    {\n      \"score\": 82,\n      \"rationale\": \"SVPRO USB Camera 1080P/4K fits budget ($123.99), explicitly mentions 4K and manual zoom, though rating is lower (3.2).\",\n      \"product\": {\n        \"title\": \"SVPRO USB Camera 1080P 120fps High Speed Camera for Golf Swing Simulator,12MP 4K Webcam with 3X Manual Zoom Lens USB Plug and Play for Computer Laptop Compatible with Windows Linux MacOS Android\",\n        \"price\": 123.99,\n        \"source_site\": \"Amazon\",\n        \"product_url\": \"https://www.amazon.com/dp/B0DY4TXWM5\",\n        \"rating\": 3.2\n      }\n    },\n    {\n      \"score\": 78,\n      \"rationale\": \"EMEET C980 PRO 3-in-1 fits budget ($89.99), includes microphone and speaker, good features for conferencing, decent rating (4.1).\",\n      \"product\": {\n        \"title\": \"EMEET C980 PRO 3-in-1 4K Webcam with Microphone and Speaker, 60\\u00b0-98\\u00b0 Wide Angle Webcam w/ 4 Noise Cancel Mics, 2 Speakers, Fixed Focus, Magnetic Privacy Cover, Great for Group and Personal Video Calls\",\n        \"price\": 89.99,\n        \"source_site\": \"Amazon\",\n        \"product_url\": \"https://www.amazon.com/dp/B0DCFGC6NJ\",\n        \"rating\": 4.1\n      }\n    },\n    {\n      \"score\": 75,\n      \"rationale\": \"EMEET C960 4K Webcam with Tripod fits budget ($69.98), solid 4K specs with tripod included, high rating (4.4).\",\n      \"product\": {\n        \"title\": \"EMEET C960 4K Webcam with Tripod, 4K UHD Sony Sensor, 3 Adjustable Height Mini Tripod w/Privacy Cover, PDAF Auto Focus, Dual Noise-Cancelling Mics, Auto Light Correction, Perfect for Online Meetings\",\n        \"price\": 69.98,\n        \"source_site\": \"Amazon\",\n        \"product_url\": \"https://www.amazon.com/dp/B0CP6BG9QW\",\n        \"rating\": 4.4\n      }\n    },\n    {\n      \"score\": 72,\n      \"rationale\": \"Logitech Brio 4K on eBay ($98.99) fits budget, strong rating (4.5) despite being used/pre-owned context.\",\n      \"product\": {\n        \"title\": \"Logitech Brio 4K Ultra HD Pro Webcam We don't ship outside the US\",\n        \"price\": 98.99,\n        \"source_site\": \"eBay\",\n        \"product_url\": \"https://www.ebay.com/itm/175395106478\",\n        \"rating\": 4.5\n      }\n    },\n    {\n      \"score\": 70,\n      \"rationale\": \"EMEET NOVA 4K Webcam fits budget ($49.39), high rating (4.5), but significantly under budget, good value option.\",\n      \"product\": {\n        \"title\": \"EMEET NOVA 4K Webcam for PC - Ultra 4K HD, PDAF Autofocus, Dual Omnidirectional Mics, 73\\u00b0 FOV, Auto Light Correction, USB-A, Privacy Cover, Ideal for High-End Business Meetings&Live Streaming\",\n        \"price\": 49.39,\n        \"source_site\": \"Amazon\",\n        \"product_url\": \"https://www.amazon.com/dp/B0CY2C7H6S\",\n        \"rating\": 4.5\n      }\n    }\n  ],\n  \"debug_notes\": [\n    \"Prioritized Logitech Brio and Pro models for professional grade reliability.\",\n    \"Excluded Insta360 Link 2 Pro ($249.99) as it exceeds $200 budget cap.\",\n    \"Included lower-rated but feature-rich options within budget range.\",\n    \"Balanced Amazon vs Newegg/eBay sources based on price and rating availability.\",\n    \"Excluded products with unclear 4K claims or very low ratings (<3.0).\"\n  ]\n}",
+      "[success] RankingAgent has completed",
+      "[action] Final ranking prepared with 10 recommendation(s)."
+    ],
+    "clarification_turns": [
+      {
+        "question_id": "budget",
+        "prompt": "What's your budget range for this professional 4K webcam?",
+        "reason": "Preference dimension: budget.",
+        "options": [
+          {
+            "id": "budget_100_200",
+            "label": "$100-$200",
+            "description": "Entry-level professional quality"
+          },
+          {
+            "id": "budget_200_350",
+            "label": "$200-$350",
+            "description": "Mid-range professional"
+          },
+          {
+            "id": "budget_350_500",
+            "label": "$350-$500",
+            "description": "High-end professional"
+          },
+          {
+            "id": "budget_500_plus",
+            "label": "$500+",
+            "description": "Top-tier broadcast/prosumer"
+          }
+        ],
+        "answer": "$100-$200",
+        "selected_choice_id": "budget_100_200",
+        "selected_choice_label": "$100-$200",
+        "source": "suggested_choice"
+      }
+    ]
+  },
+  "final_recommendations": [
+    {
+      "rank": 1,
+      "agent_score": 95,
+      "agent_rationale": "Logitech Brio 4K matches budget perfectly ($169.99), high rating (4.5), and recognized professional brand with 4K features.",
+      "product": {
+        "title": "Logitech Brio 4K Webcam, Video Calling, Noise-Cancelling mic, HD Auto Light Correction, Wide Field of View, Windows Hello Works with Microsoft Teams, Zoom, Google Meet, PC/Mac/Laptop/MacBook/Tablet",
+        "price": 169.99,
+        "source_site": "Amazon",
+        "product_url": "https://www.amazon.com/dp/B09NBWWP79",
+        "rating": 4.5
+      },
+      "eval_score": 70,
+      "eval_rationale": "Excellent professional specs (4K, HDR, Noise-cancelling) but price ($169.99) significantly exceeds the $80-$120 budget cap."
+    },
+    {
+      "rank": 2,
+      "agent_score": 92,
+      "agent_rationale": "WYRESTORM 4K fits budget ($139.99), features AI tracking and wide angle, ideal for conferences though rating is null.",
+      "product": {
+        "title": "WYRESTORM 4K Webcam with AI Tracking, 120\u00b0 FOV Wide Angle, Auto Framing, 90fps, 8X Digital Zoom, Dual AI Noise-canceling Mics, Video Conference Room Camera, Zoom Certified, Works for Microsoft Teams",
+        "price": 139.99,
+        "source_site": "Newegg",
+        "product_url": "https://www.newegg.com/wyrestorm-focus-210-gray-usb-up-to-4k-30fps-1080p-60fps-720p-90fps-720p-60fps/p/1EF-01VE-00005",
+        "rating": null
+      },
+      "eval_score": 75,
+      "eval_rationale": "Matches AI auto-framing and FOV requirements perfectly, but price ($139.99) is slightly over the $120 budget cap."
+    },
+    {
+      "rank": 3,
+      "agent_score": 90,
+      "agent_rationale": "Logitech 4K Pro fits budget ($145.92), professional grade with HDR and noise-canceling mics, strong 4.3 rating.",
+      "product": {
+        "title": "Logitech 4K Pro Webcam with HDR and Noise-canceling Mics 960-001390",
+        "price": 145.92,
+        "source_site": "Newegg",
+        "product_url": "https://www.newegg.com/p/1EF-000C-007A9",
+        "rating": 4.3
+      },
+      "eval_score": 72,
+      "eval_rationale": "Professional grade with HDR and audio features, but price ($145.92) exceeds the $120 budget limit."
+    },
+    {
+      "rank": 4,
+      "agent_score": 88,
+      "agent_rationale": "Insta360 Link 2C Pro at upper budget limit ($199.99), premium AI-powered features, null rating but high-end specs.",
+      "product": {
+        "title": "Insta360 Link 2C Pro 4K Ultra HD AI-Powered Webcam, Graphite Black",
+        "price": 199.99,
+        "source_site": "Newegg",
+        "product_url": "https://www.newegg.com/p/1EF-00J0-00021",
+        "rating": null
+      },
+      "eval_score": 65,
+      "eval_rationale": "Premium AI features and specs, but price ($199.99) is well above the $120 maximum budget cap."
+    },
+    {
+      "rank": 5,
+      "agent_score": 85,
+      "agent_rationale": "SVPRO HDMI Camera 4K USB3.0 fits budget ($127.99), includes 4K 60FPS and wide angle, good rating (4.4) for pro streaming.",
+      "product": {
+        "title": "SVPRO HDMI Camera 4K USB3.0 Webcam 60FPS Wide Angle USB Camera 120 Degree M12 Lens Streaming Camera 4K 60FPS H.264 External Computer Camera,TV Camera",
+        "price": 127.99,
+        "source_site": "Amazon",
+        "product_url": "https://www.amazon.com/dp/B0D22B5XNR",
+        "rating": 4.4
+      },
+      "eval_score": 80,
+      "eval_rationale": "Fits near the upper budget limit ($127.99) and meets 4K/FOV specs, though price slightly exceeds the $120 cap."
+    },
+    {
+      "rank": 6,
+      "agent_score": 82,
+      "agent_rationale": "SVPRO USB Camera 1080P/4K fits budget ($123.99), explicitly mentions 4K and manual zoom, though rating is lower (3.2).",
+      "product": {
+        "title": "SVPRO USB Camera 1080P 120fps High Speed Camera for Golf Swing Simulator,12MP 4K Webcam with 3X Manual Zoom Lens USB Plug and Play for Computer Laptop Compatible with Windows Linux MacOS Android",
+        "price": 123.99,
+        "source_site": "Amazon",
+        "product_url": "https://www.amazon.com/dp/B0DY4TXWM5",
+        "rating": 3.2
+      },
+      "eval_score": 75,
+      "eval_rationale": "Price ($123.99) is slightly over budget and manual zoom is less preferred than autofocus; low user rating (3.2) impacts confidence."
+    },
+    {
+      "rank": 7,
+      "agent_score": 78,
+      "agent_rationale": "EMEET C980 PRO 3-in-1 fits budget ($89.99), includes microphone and speaker, good features for conferencing, decent rating (4.1).",
+      "product": {
+        "title": "EMEET C980 PRO 3-in-1 4K Webcam with Microphone and Speaker, 60\u00b0-98\u00b0 Wide Angle Webcam w/ 4 Noise Cancel Mics, 2 Speakers, Fixed Focus, Magnetic Privacy Cover, Great for Group and Personal Video Calls",
+        "price": 89.99,
+        "source_site": "Amazon",
+        "product_url": "https://www.amazon.com/dp/B0DCFGC6NJ",
+        "rating": 4.1
+      },
+      "eval_score": 85,
+      "eval_rationale": "Fits budget perfectly ($89.99) with good audio features, but lacks autofocus (Fixed Focus) which was a preferred feature."
+    },
+    {
+      "rank": 8,
+      "agent_score": 75,
+      "agent_rationale": "EMEET C960 4K Webcam with Tripod fits budget ($69.98), solid 4K specs with tripod included, high rating (4.4).",
+      "product": {
+        "title": "EMEET C960 4K Webcam with Tripod, 4K UHD Sony Sensor, 3 Adjustable Height Mini Tripod w/Privacy Cover, PDAF Auto Focus, Dual Noise-Cancelling Mics, Auto Light Correction, Perfect for Online Meetings",
+        "price": 69.98,
+        "source_site": "Amazon",
+        "product_url": "https://www.amazon.com/dp/B0CP6BG9QW",
+        "rating": 4.4
+      },
+      "eval_score": 88,
+      "eval_rationale": "Strong feature match including PDAF and noise-canceling; price ($69.98) is slightly under the $80 minimum budget threshold."
+    },
+    {
+      "rank": 9,
+      "agent_score": 72,
+      "agent_rationale": "Logitech Brio 4K on eBay ($98.99) fits budget, strong rating (4.5) despite being used/pre-owned context.",
+      "product": {
+        "title": "Logitech Brio 4K Ultra HD Pro Webcam We don't ship outside the US",
+        "price": 98.99,
+        "source_site": "eBay",
+        "product_url": "https://www.ebay.com/itm/175395106478",
+        "rating": 4.5
+      },
+      "eval_score": 92,
+      "eval_rationale": "Ideal budget fit ($98.99) for a professional 4K brand with autofocus; condition (used) is a minor consideration but specs align perfectly."
+    },
+    {
+      "rank": 10,
+      "agent_score": 70,
+      "agent_rationale": "EMEET NOVA 4K Webcam fits budget ($49.39), high rating (4.5), but significantly under budget, good value option.",
+      "product": {
+        "title": "EMEET NOVA 4K Webcam for PC - Ultra 4K HD, PDAF Autofocus, Dual Omnidirectional Mics, 73\u00b0 FOV, Auto Light Correction, USB-A, Privacy Cover, Ideal for High-End Business Meetings&Live Streaming",
+        "price": 49.39,
+        "source_site": "Amazon",
+        "product_url": "https://www.amazon.com/dp/B0CY2C7H6S",
+        "rating": 4.5
+      },
+      "eval_score": 82,
+      "eval_rationale": "Good value ($49.39) within budget range, but FOV (73\u00b0) is narrower than the requested adjustable 78-120 degrees."
+    }
+  ],
+  "timestamps": {
+    "started_at": "2026-04-18T19:12:28.339796+00:00",
+    "completed_at": "2026-04-18T19:15:06.460053+00:00"
+  },
+  "meta": {
+    "design": "direct_json",
+    "model_id": "qwen3.5-122a10b-uncensored",
+    "result_limit": 10,
+    "source_file": "/Users/zyd/Code/Devs/shopping-agent/eval.jsonl",
+    "source_line": 3
+  },
+  "error": null
+}

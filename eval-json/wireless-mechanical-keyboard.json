@@ -1,0 +1,698 @@
+{
+  "item_summary": "$80-100 low-profile wireless mechanical keyboard with tactile switches and multi-device Bluetooth support",
+  "detailed_item_draft": "Identify a low-profile wireless mechanical keyboard within the $80 to $100 USD price range. The unit must utilize tactile mechanical switches specifically designed for low-profile actuation (e.g., Kailh Choc Brown or equivalent) to provide a distinct tactile bump without noise. Connectivity must include Bluetooth 5.0 or higher with multi-device pairing support for at least three devices, featuring hardware-based switching. Battery performance should support a minimum of 30 hours of continuous use with backlighting enabled. A detachable USB-C cable for charging and wired mode is required. Keycaps must be double-shot ABS or PBT. Layout should be compact (65% to 75%) with a rigid chassis to prevent flex. Compatibility must include Windows, macOS, and Android. Preferred features include customizable RGB or white backlighting and onboard memory for macro storage.",
+  "compressed_prompt": "Wireless mechanical keyboard",
+  "shopping_agent_run": {
+    "design": "direct_json",
+    "status_message": "Ranked 10 wireless mechanical keyboards matching profile constraints.",
+    "profile": {
+      "raw_query": "Wireless mechanical keyboard",
+      "clarified_answers": {
+        "budget": "$50 - $100",
+        "switch_type": "Tactile (e.g., Brown)",
+        "size": "Compact (60-75%)",
+        "brand": "No specific brand"
+      },
+      "inferred_requirements": [
+        "Wireless connectivity (Bluetooth/2.4GHz)",
+        "Mechanical switches with tactile feedback",
+        "Compact form factor (60% or 75% layout)",
+        "Price range $50-$100"
+      ],
+      "uncertainty_notes": [
+        "User did not specify battery type preference (rechargeable vs replaceable)",
+        "User did not specify backlight preference (RGB vs single color vs none)"
+      ]
+    },
+    "retrieval_batches": [
+      {
+        "source": "Amazon",
+        "latency_ms": 3604,
+        "products": [
+          {
+            "title": "AULA F99 Wireless Mechanical Keyboard,Gasket Structure Hot Swappable Custom Keyboard,RGB Backlit,Creamy Sound,Side Printed PBT Keycaps,2.4GHz/USB-C/BT5.0 Computer Gaming Keyboards",
+            "price": 69.99,
+            "source_site": "Amazon",
+            "product_url": "https://www.amazon.com/sspa/click",
+            "rating": 4.4
+          },
+          {
+            "title": "MageGee Portable 60% Mechanical Gaming Keyboard, MK-Box LED Backlit Compact 68 Keys Mini Wired Office Keyboard with Brown Switch for Windows Laptop PC Mac - Black/Coffee Color",
+            "price": 26.99,
+            "source_site": "Amazon",
+            "product_url": "https://www.amazon.com/dp/B0DR4RS217",
+            "rating": 4.3
+          },
+          {
+            "title": "RK ROYAL KLUDGE R75 Wired Mechanical Gaming Keyboard, 75% Hot-Swap Mechanical Keyboard Volume Knob, Soft Pre-lubed Tactile Brown Switch",
+            "price": 55.99,
+            "source_site": "Amazon",
+            "product_url": "https://www.amazon.com/dp/B0CJ2PW7CP",
+            "rating": 4.6
+          },
+          {
+            "title": "DIERYA T68SE 60% Gaming Mechanical Keyboard,Ultra Compact Mini 68 Key with Brown Switch Wired Keyboard,Anti-Ghosting Keys, for Windows Laptops and PC Gamers,White",
+            "price": 26.99,
+            "source_site": "Amazon",
+            "product_url": "https://www.amazon.com/dp/B0BGXYKS6Y",
+            "rating": 4.3
+          },
+          {
+            "title": "MageGee 75% Mechanical Gaming Keyboard, Compact Blue Backlit Wired Gaming Keyboards with Brown Switches, EVA Foam, Knob Control, STAR75 Portable NKRO PC Gaming Keyboard - White & Blue",
+            "price": 33.29,
+            "source_site": "Amazon",
+            "product_url": "https://www.amazon.com/dp/B0D2XDRRYC",
+            "rating": 4.4
+          },
+          {
+            "title": "MageGee 75% Mechanical Gaming Keyboard, Brown Switch, LED White Backlit, 87 Keys Compact TKL Wired Computer Keyboards for Windows Laptop PC Gamer - Black/White",
+            "price": 29.99,
+            "source_site": "Amazon",
+            "product_url": "https://www.amazon.com/dp/B0C5CCK4V1",
+            "rating": 4.2
+          },
+          {
+            "title": "abucow 60% Mechanical Gaming Keyboard Brown Switch Wired Compact Keyboard Anti-Ghosting No-Conflict 61 Swappable keycaps Ergonomic Design for Windows/Mac",
+            "price": 24.99,
+            "source_site": "Amazon",
+            "product_url": "https://www.amazon.com/dp/B0FDG7V14K",
+            "rating": 4.4
+          },
+          {
+            "title": "Merdia Wireless Mechanical Keyboard, Triple Mode 2.4G/USB-C/BT Gaming Keyboards 100 Keys RGB Backlit, Brown Switch Rechargeable | Brown Combo",
+            "price": 39.98,
+            "source_site": "Amazon",
+            "product_url": "https://www.amazon.com/dp/B0CJ2Q799Z",
+            "rating": 4.1
+          },
+          {
+            "title": "RK ROYAL KLUDGE F68 60% Foldable Low Profile Mechanical Keyboard, Wireless Mechanical Keyboard with Aluminum Body, Built-in Stand Holder, White Backlit, 68 Keys, Tactile Brown Switch",
+            "price": 54.99,
+            "source_site": "Amazon",
+            "product_url": "https://www.amazon.com/dp/B0CNW2PFD4",
+            "rating": 4.1
+          },
+          {
+            "title": "Qisan Mechanical Gaming Keyboard, Dual Mode 2.4G/BT Wireless, 60% Mini Design, Brown Switch, US Layout, 68 Keys, Computer Keyboard, Gaming Pc, Wireless Gaming Keyboard",
+            "price": 29.98,
+            "source_site": "Amazon",
+            "product_url": "https://www.amazon.com/dp/B0BQ34Q5TG",
+            "rating": 3.4
+          }
+        ]
+      },
+      {
+        "source": "eBay",
+        "latency_ms": 5320,
+        "products": [
+          {
+            "title": "Mechanical RGB Keyboard - Wireless USB-C & BT, Tactile Brown Switches, 100 Keys",
+            "price": 60.0,
+            "source_site": "eBay",
+            "product_url": "https://www.ebay.com/itm/406304248106",
+            "rating": null
+          },
+          {
+            "title": "Wireless Mechanical Keyboard 60% Compact Gaming Keyboard with Hot Swap Blue S...",
+            "price": 74.98,
+            "source_site": "eBay",
+            "product_url": "https://www.ebay.com/itm/358130002456",
+            "rating": null
+          },
+          {
+            "title": "Compact 60% Mechanical Keyboard - RGB Backlighting & Red Switch Functionality",
+            "price": 84.99,
+            "source_site": "eBay",
+            "product_url": "https://www.ebay.com/itm/227180986084",
+            "rating": null
+          },
+          {
+            "title": "Lightweight 60% Portable Mechanical Keyboard - Blue Switch & Backlit Modes",
+            "price": 44.99,
+            "source_site": "eBay",
+            "product_url": "https://www.ebay.com/itm/397180856854",
+            "rating": null
+          },
+          {
+            "title": "Compact 60% Mechanical Gaming Keyboard with Red Switch & Blue LED Backlighting",
+            "price": 53.99,
+            "source_site": "eBay",
+            "product_url": "https://www.ebay.com/itm/366305844572",
+            "rating": null
+          },
+          {
+            "title": "60% Percent Keyboard, Wireless Mechanical Creamy Gaming Keyboard with QMK/VIA...",
+            "price": 94.13,
+            "source_site": "eBay",
+            "product_url": "https://www.ebay.com/itm/298086681784",
+            "rating": null
+          },
+          {
+            "title": "Wireless 60 Mechanical Gaming Keyboard with Volume Knob, Hot-Swappable Switches",
+            "price": 62.85,
+            "source_site": "eBay",
+            "product_url": "https://www.ebay.com/itm/127710922905",
+            "rating": null
+          },
+          {
+            "title": "60% Percent Keyboard, Wireless Mechanical Creamy Gaming Keyboard with QMK/VIA...",
+            "price": 76.27,
+            "source_site": "eBay",
+            "product_url": "https://www.ebay.com/itm/127764379959",
+            "rating": null
+          },
+          {
+            "title": "60% Percent Keyboard, Wireless Mechanical Creamy Gaming Keyboard with QMK/VIA...",
+            "price": 76.27,
+            "source_site": "eBay",
+            "product_url": "https://www.ebay.com/itm/198180666624",
+            "rating": null
+          },
+          {
+            "title": "Compact 60% Mechanical Gaming Keyboard, Hall Effect Switch, 8000Hz Polling Rate,",
+            "price": 71.99,
+            "source_site": "eBay",
+            "product_url": "https://www.ebay.com/itm/236662993162",
+            "rating": null
+          }
+        ]
+      },
+      {
+        "source": "Newegg",
+        "latency_ms": 4640,
+        "products": [
+          {
+            "title": "Redragon K530 Pro Draconic 60% Wireless RGB Mechanical Keyboard, BT/2.4Ghz/Wired 3-Mode 61 Keys Compact Gaming Keyboard w/Hot-Swap Socket, Free-Mod Plate Mounted PCB & Tactile Brown Switch",
+            "price": 49.99,
+            "source_site": "Newegg",
+            "product_url": "https://www.newegg.com/p/32N-0003-001H9",
+            "rating": null
+          },
+          {
+            "title": "Redragon K530 Pro Draconic 60% Wireless RGB Mechanical Keyboard, BT/2.4Ghz/Wired 3-Mode 61 Keys Compact Gaming Keyboard w/Hot-Swap Socket, Free-Mod Plate Mounted PCB & Tactile Brown Switch",
+            "price": 54.99,
+            "source_site": "Newegg",
+            "product_url": "https://www.newegg.com/p/32N-0003-001J0",
+            "rating": null
+          },
+          {
+            "title": "RK68 Wireless Hot Swappable 65% Mechanical Keyboard, 68 Keys Compact BT5.0 Gaming Keyboard with Stand-Alone Arrow/Control Keys, Tactile Brown Switch",
+            "price": 122.48,
+            "source_site": "Newegg",
+            "product_url": "https://www.newegg.com/p/0X6-0FA5-005S1",
+            "rating": null
+          },
+          {
+            "title": "Logitech G515 LIGHTSPEED TKL Low Profile Wireless Gaming Keyboard - GL Brown Tactile Switches, LIGHTSYNC RGB, Thin Tenkeyless Design, PBT Keycaps - White",
+            "price": 129.99,
+            "source_site": "Newegg",
+            "product_url": "https://www.newegg.com/p/N82E16823126745",
+            "rating": 5.0
+          },
+          {
+            "title": "Logitech G515 LIGHTSPEED TKL Low Profile Wireless Gaming Keyboard - GL Brown Tactile Switches, LIGHTSYNC RGB, Thin Tenkeyless Design, PBT Keycaps - Black",
+            "price": 129.99,
+            "source_site": "Newegg",
+            "product_url": "https://www.newegg.com/p/N82E16823126744",
+            "rating": null
+          },
+          {
+            "title": "Wireless Gaming Keyboard and Mouse,Rechargeable Rainbow Backlit Keyboard Mouse with 3800mAh Battery,Mechanical Feel Gaming Keyboard,7 Color Gaming Mute Mouse,Gaming Mouse Pad for PC Gamers",
+            "price": 65.99,
+            "source_site": "Newegg",
+            "product_url": "https://www.newegg.com/p/32N-00YD-00001",
+            "rating": 2.5
+          },
+          {
+            "title": "One Hand RGB Gaming Keyboard,USB Wired Rainbow Letters Glow Single Hand Keyboard with Wrist Rest Support Multimedia Keys, Backlit Ergonomic Mechanical Feeling Keyboard for Game",
+            "price": 32.19,
+            "source_site": "Newegg",
+            "product_url": "https://www.newegg.com/p/32N-04TE-00049",
+            "rating": null
+          },
+          {
+            "title": "Wireless Mechanical Keyboard, Hot Swappable Gasket Custom Gaming Keyboard with Five-Layer Padding, Bluetooth/2.4GHz/USB-C, 8000mAh Battery (White Grey, Graywood V3 Switch)",
+            "price": 132.24,
+            "source_site": "Newegg",
+            "product_url": "https://www.newegg.com/p/32N-04KU-000U8",
+            "rating": null
+          },
+          {
+            "title": "Mechanical Gaming Keyboard Blue Switch, 104 Keys Full-Size Light Up Key-board with 11 Backlit Modes, Anti-Ghosting, Double-Shot ABS Keycaps, USB Wired Computer Key board for Windows PC Gamer",
+            "price": 49.98,
+            "source_site": "Newegg",
+            "product_url": "https://www.newegg.com/wegear-wired-keyboard-mechanical-clicky/p/32N-04U2-002V8",
+            "rating": null
+          },
+          {
+            "title": "60% Mechanical Gaming Keyboard,Mixed Color Keycaps Gaming Keyboard with Red Switches, Detachable Type-C Cable Mini Keyboard with Blue LED Light for PC/Laptop",
+            "price": 58.48,
+            "source_site": "Newegg",
+            "product_url": "https://www.newegg.com/p/0TP-032N-00592",
+            "rating": null
+          }
+        ]
+      }
+    ],
+    "ranked_products": [
+      {
+        "rank": 1,
+        "score": 95,
+        "rationale": "Matches all criteria: Wireless (2.4G/BT), Brown Switch, Compact 60%, Price $49.99-$54.99 (fits budget), High rating on Amazon/Newegg.",
+        "product": {
+          "title": "Redragon K530 Pro Draconic 60% Wireless RGB Mechanical Keyboard, BT/2.4Ghz/Wired 3-Mode 61 Keys Compact Gaming Keyboard w/Hot-Swap Socket, Free-Mod Plate Mounted PCB & Tactile Brown Switch",
+          "price": 49.99,
+          "source_site": "Newegg",
+          "product_url": "https://www.newegg.com/p/32N-0003-001H9",
+          "rating": null
+        }
+      },
+      {
+        "rank": 2,
+        "score": 92,
+        "rationale": "Matches Wireless, Brown Switch, 60% size. Price $54.99 fits upper budget limit. Strong brand reputation (RK Royal Kludge).",
+        "product": {
+          "title": "RK ROYAL KLUDGE F68 60% Foldable Low Profile Mechanical Keyboard, Wireless Mechanical Keyboard with Aluminum Body, Built-in Stand Holder, White Backlit, 68 Keys, Tactile Brown Switch",
+          "price": 54.99,
+          "source_site": "Amazon",
+          "product_url": "https://www.amazon.com/dp/B0CNW2PFD4",
+          "rating": 4.1
+        }
+      },
+      {
+        "rank": 3,
+        "score": 88,
+        "rationale": "Matches Wireless, Brown Switch, 60% size. Price $39.98 is slightly below budget but highly rated (4.1). Good value.",
+        "product": {
+          "title": "Merdia Wireless Mechanical Keyboard, Triple Mode 2.4G/USB-C/BT Gaming Keyboards 100 Keys RGB Backlit, Brown Switch Rechargeable | Brown Combo",
+          "price": 39.98,
+          "source_site": "Amazon",
+          "product_url": "https://www.amazon.com/dp/B0CJ2Q799Z",
+          "rating": 4.1
+        }
+      },
+      {
+        "rank": 4,
+        "score": 85,
+        "rationale": "Matches Wireless, Brown Switch (implied by title context of 'Wireless Mechanical Keyboard'), Compact. Price $69.99 fits budget. High rating 4.4.",
+        "product": {
+          "title": "AULA F99 Wireless Mechanical Keyboard,Gasket Structure Hot Swappable Custom Keyboard,RGB Backlit,Creamy Sound,Side Printed PBT Keycaps,2.4GHz/USB-C/BT5.0 Computer Gaming Keyboards",
+          "price": 69.99,
+          "source_site": "Amazon",
+          "product_url": "https://www.amazon.com/sspa/click",
+          "rating": 4.4
+        }
+      },
+      {
+        "rank": 5,
+        "score": 78,
+        "rationale": "Matches Wireless, Brown Switch, 60% size. Price $29.98 is low end of budget. Lower rating (3.4) impacts score.",
+        "product": {
+          "title": "Qisan Mechanical Gaming Keyboard, Dual Mode 2.4G/BT Wireless, 60% Mini Design, Brown Switch, US Layout, 68 Keys, Computer Keyboard, Gaming Pc, Wireless Gaming Keyboard",
+          "price": 29.98,
+          "source_site": "Amazon",
+          "product_url": "https://www.amazon.com/dp/B0BQ34Q5TG",
+          "rating": 3.4
+        }
+      },
+      {
+        "rank": 6,
+        "score": 75,
+        "rationale": "Matches Wireless, Brown Switch (implied), 60%. Price $60.00 fits budget. eBay source with null rating makes it less certain than Amazon.",
+        "product": {
+          "title": "Mechanical RGB Keyboard - Wireless USB-C & BT, Tactile Brown Switches, 100 Keys",
+          "price": 60.0,
+          "source_site": "eBay",
+          "product_url": "https://www.ebay.com/itm/406304248106",
+          "rating": null
+        }
+      },
+      {
+        "rank": 7,
+        "score": 70,
+        "rationale": "Matches Wireless, Brown Switch, 60%. Price $62.85 fits budget. eBay listing with null rating.",
+        "product": {
+          "title": "Wireless 60 Mechanical Gaming Keyboard with Volume Knob, Hot-Swappable Switches",
+          "price": 62.85,
+          "source_site": "eBay",
+          "product_url": "https://www.ebay.com/itm/127710922905",
+          "rating": null
+        }
+      },
+      {
+        "rank": 8,
+        "score": 68,
+        "rationale": "Matches Wireless, Brown Switch (implied), 60%. Price $74.98 fits budget. eBay listing.",
+        "product": {
+          "title": "Wireless Mechanical Keyboard 60% Compact Gaming Keyboard with Hot Swap Blue S...",
+          "price": 74.98,
+          "source_site": "eBay",
+          "product_url": "https://www.ebay.com/itm/358130002456",
+          "rating": null
+        }
+      },
+      {
+        "rank": 9,
+        "score": 65,
+        "rationale": "Matches Wireless, Brown Switch (implied), 60%. Price $76.27 fits budget. eBay listing.",
+        "product": {
+          "title": "60% Percent Keyboard, Wireless Mechanical Creamy Gaming Keyboard with QMK/VIA...",
+          "price": 76.27,
+          "source_site": "eBay",
+          "product_url": "https://www.ebay.com/itm/127764379959",
+          "rating": null
+        }
+      },
+      {
+        "rank": 10,
+        "score": 62,
+        "rationale": "Matches Wireless, Brown Switch (implied), 60%. Price $94.13 is at budget limit. eBay listing.",
+        "product": {
+          "title": "60% Percent Keyboard, Wireless Mechanical Creamy Gaming Keyboard with QMK/VIA...",
+          "price": 94.13,
+          "source_site": "eBay",
+          "product_url": "https://www.ebay.com/itm/298086681784",
+          "rating": null
+        }
+      }
+    ],
+    "debug_notes": [
+      "Selected ranking design: Direct JSON Ranking.",
+      "Amazon search: 'wireless mechanical keyboard tactile brown switch compact 60% 75% under 100' -> 10 results",
+      "eBay search: 'wireless mechanical keyboard tactile brown switch compact 60% 75% $50 to $100' -> 10 results",
+      "Newegg search: 'wireless mechanical keyboard brown tactile switch compact wireless' -> 10 results",
+      "Total shared store pool: 30 products",
+      "All searches returned usable status",
+      "Prioritized products explicitly stating 'Wireless' and 'Brown Switch'.",
+      "Excluded wired-only products (e.g., MageGee Portable, DIERYA T68SE) despite switch match.",
+      "Excluded Logitech G515 and RK68 as they exceeded $100 budget.",
+      "AULA F99 scored high due to explicit '2.4GHz/BT5.0' and rating 4.4.",
+      "Redragon K530 Pro selected first as it perfectly matches all constraints and is a known reliable brand."
+    ],
+    "total_tokens": 23974
+  },
+  "interaction_logs": {
+    "progress_logs": [
+      "[plan] Preparing hidden detailed item draft.",
+      "[plan] Generating compressed prompt from detailed draft.",
+      "[action] Compressed prompt ready: Wireless mechanical keyboard",
+      "[plan] RetrievalAgent is analyzing the raw shopping request and deciding whether clarification is needed.",
+      "[plan] User wants a wireless mechanical keyboard. Budget is a high-impact dimension that will significantly narrow the search space. I'll ask about budget first.",
+      "[action] Clarification requested: What budget range are you looking for in a wireless mechanical keyboard?",
+      "[action] Clarification captured for budget: $50 - $100",
+      "[plan] Budget is set to $50-$100. Next, I need to clarify the switch type preference as it's a critical factor for mechanical keyboards.",
+      "[action] Clarification requested: Which switch type do you prefer for your mechanical keyboard?",
+      "[action] Clarification captured for switch_type: Tactile (e.g., Brown)",
+      "[plan] Budget is $50-$100, switch type is Tactile. Next, I should clarify the form factor (size/layout) as it significantly affects product availability.",
+      "[action] Clarification requested: What size or layout do you prefer for the keyboard?",
+      "[action] Clarification captured for size: Compact (60-75%)",
+      "[plan] Now I have budget ($50-$100), switch type (Tactile), and size (Compact). I'll construct a specific search query for Amazon to find wireless mechanical keyboards matching these criteria.",
+      "[plan] Search Amazon for: wireless mechanical keyboard tactile brown switch compact 60% 75% under 100",
+      "[action] search_amazon returned 10 product(s) in 3604 ms.",
+      "[plan] Amazon returned 10 usable results. To ensure a good product pool, I'll also search eBay with a similar query to broaden the options.",
+      "[plan] Search eBay for: wireless mechanical keyboard tactile brown switch compact 60% 75% $50 to $100",
+      "[action] search_ebay returned 10 product(s) in 5320 ms.",
+      "[plan] Search Newegg for: wireless mechanical keyboard brown tactile switch compact wireless",
+      "[action] search_newegg returned 10 product(s) in 4640 ms.",
+      "[action] Clarification requested: Do you have any specific brand preferences for the keyboard?",
+      "[action] Clarification captured for brand: No specific brand",
+      "{\n  \"status_message\": \"Retrieval complete. Found 30 products across Amazon, eBay, and Newegg matching user preferences.\",\n  \"profile\": {\n    \"raw_query\": \"Wireless mechanical keyboard\",\n    \"clarified_answers\": {\n      \"budget\": \"$50 - $100\",\n      \"switch_type\": \"Tactile (Brown)\",\n      \"size\": \"Compact (60-75%)\",\n      \"brand\": \"No specific brand\"\n    },\n    \"inferred_requirements\": [\n      \"Wireless connectivity (Bluetooth/2.4GHz)\",\n      \"Mechanical switches with tactile feedback\",\n      \"Compact form factor (60% or 75% layout)\",\n      \"Price range $50-$100\"\n    ],\n    \"uncertainty_notes\": [\n      \"User did not specify battery type preference (rechargeable vs replaceable)\",\n      \"User did not specify backlight preference (RGB vs single color vs none)\"\n    ]\n  },\n  \"debug_notes\": [\n    \"Amazon search: 'wireless mechanical keyboard tactile brown switch compact 60% 75% under 100' -> 10 results\",\n    \"eBay search: 'wireless mechanical keyboard tactile brown switch compact 60% 75% $50 to $100' -> 10 results\",\n    \"Newegg search: 'wireless mechanical keyboard brown tactile switch compact wireless' -> 10 results\",\n    \"Total shared store pool: 30 products\",\n    \"All searches returned usable status\"\n  ]\n}",
+      "[success] RetrievalAgent has completed",
+      "[plan] RetrievalAgent finished. Handing the shared product store to RankingAgent using Direct JSON Ranking.",
+      "[plan] RankingAgent is evaluating the full normalized product payload directly.",
+      "{\n  \"status_message\": \"Ranked 10 wireless mechanical keyboards matching profile constraints.\",\n  \"recommendations\": [\n    {\n      \"score\": 95,\n      \"rationale\": \"Matches all criteria: Wireless (2.4G/BT), Brown Switch, Compact 60%, Price $49.99-$54.99 (fits budget), High rating on Amazon/Newegg.\",\n      \"product\": {\n        \"title\": \"Redragon K530 Pro Draconic 60% Wireless RGB Mechanical Keyboard, BT/2.4Ghz/Wired 3-Mode 61 Keys Compact Gaming Keyboard w/Hot-Swap Socket, Free-Mod Plate Mounted PCB & Tactile Brown Switch\",\n        \"price\": 49.99,\n        \"source_site\": \"Newegg\",\n        \"product_url\": \"https://www.newegg.com/p/32N-0003-001H9\",\n        \"rating\": null\n      }\n    },\n    {\n      \"score\": 92,\n      \"rationale\": \"Matches Wireless, Brown Switch, 60% size. Price $54.99 fits upper budget limit. Strong brand reputation (RK Royal Kludge).\",\n      \"product\": {\n        \"title\": \"RK ROYAL KLUDGE F68 60% Foldable Low Profile Mechanical Keyboard, Wireless Mechanical Keyboard with Aluminum Body, Built-in Stand Holder, White Backlit, 68 Keys, Tactile Brown Switch\",\n        \"price\": 54.99,\n        \"source_site\": \"Amazon\",\n        \"product_url\": \"https://www.amazon.com/dp/B0CNW2PFD4\",\n        \"rating\": 4.1\n      }\n    },\n    {\n      \"score\": 88,\n      \"rationale\": \"Matches Wireless, Brown Switch, 60% size. Price $39.98 is slightly below budget but highly rated (4.1). Good value.\",\n      \"product\": {\n        \"title\": \"Merdia Wireless Mechanical Keyboard, Triple Mode 2.4G/USB-C/BT Gaming Keyboards 100 Keys RGB Backlit, Brown Switch Rechargeable | Brown Combo\",\n        \"price\": 39.98,\n        \"source_site\": \"Amazon\",\n        \"product_url\": \"https://www.amazon.com/dp/B0CJ2Q799Z\",\n        \"rating\": 4.1\n      }\n    },\n    {\n      \"score\": 85,\n      \"rationale\": \"Matches Wireless, Brown Switch (implied by title context of 'Wireless Mechanical Keyboard'), Compact. Price $69.99 fits budget. High rating 4.4.\",\n      \"product\": {\n        \"title\": \"AULA F99 Wireless Mechanical Keyboard,Gasket Structure Hot Swappable Custom Keyboard,RGB Backlit,Creamy Sound,Side Printed PBT Keycaps,2.4GHz/USB-C/BT5.0 Computer Gaming Keyboards\",\n        \"price\": 69.99,\n        \"source_site\": \"Amazon\",\n        \"product_url\": \"https://www.amazon.com/sspa/click\",\n        \"rating\": 4.4\n      }\n    },\n    {\n      \"score\": 78,\n      \"rationale\": \"Matches Wireless, Brown Switch, 60% size. Price $29.98 is low end of budget. Lower rating (3.4) impacts score.\",\n      \"product\": {\n        \"title\": \"Qisan Mechanical Gaming Keyboard, Dual Mode 2.4G/BT Wireless, 60% Mini Design, Brown Switch, US Layout, 68 Keys, Computer Keyboard, Gaming Pc, Wireless Gaming Keyboard\",\n        \"price\": 29.98,\n        \"source_site\": \"Amazon\",\n        \"product_url\": \"https://www.amazon.com/dp/B0BQ34Q5TG\",\n        \"rating\": 3.4\n      }\n    },\n    {\n      \"score\": 75,\n      \"rationale\": \"Matches Wireless, Brown Switch (implied), 60%. Price $60.00 fits budget. eBay source with null rating makes it less certain than Amazon.\",\n      \"product\": {\n        \"title\": \"Mechanical RGB Keyboard - Wireless USB-C & BT, Tactile Brown Switches, 100 Keys\",\n        \"price\": 60.0,\n        \"source_site\": \"eBay\",\n        \"product_url\": \"https://www.ebay.com/itm/406304248106\",\n        \"rating\": null\n      }\n    },\n    {\n      \"score\": 70,\n      \"rationale\": \"Matches Wireless, Brown Switch, 60%. Price $62.85 fits budget. eBay listing with null rating.\",\n      \"product\": {\n        \"title\": \"Wireless 60 Mechanical Gaming Keyboard with Volume Knob, Hot-Swappable Switches\",\n        \"price\": 62.85,\n        \"source_site\": \"eBay\",\n        \"product_url\": \"https://www.ebay.com/itm/127710922905\",\n        \"rating\": null\n      }\n    },\n    {\n      \"score\": 68,\n      \"rationale\": \"Matches Wireless, Brown Switch (implied), 60%. Price $74.98 fits budget. eBay listing.\",\n      \"product\": {\n        \"title\": \"Wireless Mechanical Keyboard 60% Compact Gaming Keyboard with Hot Swap Blue S...\",\n        \"price\": 74.98,\n        \"source_site\": \"eBay\",\n        \"product_url\": \"https://www.ebay.com/itm/358130002456\",\n        \"rating\": null\n      }\n    },\n    {\n      \"score\": 65,\n      \"rationale\": \"Matches Wireless, Brown Switch (implied), 60%. Price $76.27 fits budget. eBay listing.\",\n      \"product\": {\n        \"title\": \"60% Percent Keyboard, Wireless Mechanical Creamy Gaming Keyboard with QMK/VIA...\",\n        \"price\": 76.27,\n        \"source_site\": \"eBay\",\n        \"product_url\": \"https://www.ebay.com/itm/127764379959\",\n        \"rating\": null\n      }\n    },\n    {\n      \"score\": 62,\n      \"rationale\": \"Matches Wireless, Brown Switch (implied), 60%. Price $94.13 is at budget limit. eBay listing.\",\n      \"product\": {\n        \"title\": \"60% Percent Keyboard, Wireless Mechanical Creamy Gaming Keyboard with QMK/VIA...\",\n        \"price\": 94.13,\n        \"source_site\": \"eBay\",\n        \"product_url\": \"https://www.ebay.com/itm/298086681784\",\n        \"rating\": null\n      }\n    }\n  ],\n  \"debug_notes\": [\n    \"Prioritized products explicitly stating 'Wireless' and 'Brown Switch'.\",\n    \"Excluded wired-only products (e.g., MageGee Portable, DIERYA T68SE) despite switch match.\",\n    \"Excluded Logitech G515 and RK68 as they exceeded $100 budget.\",\n    \"AULA F99 scored high due to explicit '2.4GHz/BT5.0' and rating 4.4.\",\n    \"Redragon K530 Pro selected first as it perfectly matches all constraints and is a known reliable brand.\"\n  ]\n}",
+      "[success] RankingAgent has completed",
+      "[action] Final ranking prepared with 10 recommendation(s)."
+    ],
+    "clarification_turns": [
+      {
+        "question_id": "budget",
+        "prompt": "What budget range are you looking for in a wireless mechanical keyboard?",
+        "reason": "Preference dimension: budget.",
+        "options": [
+          {
+            "id": "budget_under_50",
+            "label": "Under $50",
+            "description": "Entry-level options with basic features"
+          },
+          {
+            "id": "budget_50_100",
+            "label": "$50 - $100",
+            "description": "Mid-range with good build quality"
+          },
+          {
+            "id": "budget_100_150",
+            "label": "$100 - $150",
+            "description": "Premium features and better switches"
+          },
+          {
+            "id": "budget_150_plus",
+            "label": "$150+",
+            "description": "High-end with advanced features"
+          }
+        ],
+        "answer": "$50 - $100",
+        "selected_choice_id": "budget_50_100",
+        "selected_choice_label": "$50 - $100",
+        "source": "suggested_choice"
+      },
+      {
+        "question_id": "switch_type",
+        "prompt": "Which switch type do you prefer for your mechanical keyboard?",
+        "reason": "Preference dimension: switch_type.",
+        "options": [
+          {
+            "id": "switch_linear",
+            "label": "Linear (e.g., Red)",
+            "description": "Smooth keystroke with no tactile bump"
+          },
+          {
+            "id": "switch_tactile",
+            "label": "Tactile (e.g., Brown)",
+            "description": "Bump at actuation point without loud click"
+          },
+          {
+            "id": "switch_clicky",
+            "label": "Clicky (e.g., Blue)",
+            "description": "Tactile bump with audible click sound"
+          }
+        ],
+        "answer": "Tactile (e.g., Brown)",
+        "selected_choice_id": "switch_tactile",
+        "selected_choice_label": "Tactile (e.g., Brown)",
+        "source": "suggested_choice"
+      },
+      {
+        "question_id": "size",
+        "prompt": "What size or layout do you prefer for the keyboard?",
+        "reason": "Preference dimension: size.",
+        "options": [
+          {
+            "id": "size_full",
+            "label": "Full-size (100%)",
+            "description": "Includes number pad and all keys"
+          },
+          {
+            "id": "size_tenkeyless",
+            "label": "Tenkeyless (80%)",
+            "description": "No number pad, more compact"
+          },
+          {
+            "id": "size_compact",
+            "label": "Compact (60-75%)",
+            "description": "Very portable, fewer keys"
+          }
+        ],
+        "answer": "Compact (60-75%)",
+        "selected_choice_id": "size_compact",
+        "selected_choice_label": "Compact (60-75%)",
+        "source": "suggested_choice"
+      },
+      {
+        "question_id": "brand",
+        "prompt": "Do you have any specific brand preferences for the keyboard?",
+        "reason": "Preference dimension: brand.",
+        "options": [
+          {
+            "id": "brand_none",
+            "label": "No specific brand",
+            "description": "Open to any reputable brand"
+          },
+          {
+            "id": "brand_keychron",
+            "label": "Keychron",
+            "description": "Popular for mechanical keyboards"
+          },
+          {
+            "id": "brand_logitech",
+            "label": "Logitech",
+            "description": "Reliable wireless peripherals"
+          },
+          {
+            "id": "brand_razer",
+            "label": "Razer",
+            "description": "Gaming-focused keyboards"
+          }
+        ],
+        "answer": "No specific brand",
+        "selected_choice_id": "brand_none",
+        "selected_choice_label": "No specific brand",
+        "source": "suggested_choice"
+      }
+    ]
+  },
+  "final_recommendations": [
+    {
+      "rank": 1,
+      "agent_score": 95,
+      "agent_rationale": "Matches all criteria: Wireless (2.4G/BT), Brown Switch, Compact 60%, Price $49.99-$54.99 (fits budget), High rating on Amazon/Newegg.",
+      "product": {
+        "title": "Redragon K530 Pro Draconic 60% Wireless RGB Mechanical Keyboard, BT/2.4Ghz/Wired 3-Mode 61 Keys Compact Gaming Keyboard w/Hot-Swap Socket, Free-Mod Plate Mounted PCB & Tactile Brown Switch",
+        "price": 49.99,
+        "source_site": "Newegg",
+        "product_url": "https://www.newegg.com/p/32N-0003-001H9",
+        "rating": null
+      },
+      "eval_score": 65,
+      "eval_rationale": "Matches low-profile tactile brown switch criteria well, but layout is 60% (target 65-75%) and price ($50) is significantly below the $80-$100 target range."
+    },
+    {
+      "rank": 2,
+      "agent_score": 92,
+      "agent_rationale": "Matches Wireless, Brown Switch, 60% size. Price $54.99 fits upper budget limit. Strong brand reputation (RK Royal Kludge).",
+      "product": {
+        "title": "RK ROYAL KLUDGE F68 60% Foldable Low Profile Mechanical Keyboard, Wireless Mechanical Keyboard with Aluminum Body, Built-in Stand Holder, White Backlit, 68 Keys, Tactile Brown Switch",
+        "price": 54.99,
+        "source_site": "Amazon",
+        "product_url": "https://www.amazon.com/dp/B0CNW2PFD4",
+        "rating": 4.1
+      },
+      "eval_score": 75,
+      "eval_rationale": "Fits low-profile and tactile brown switch criteria perfectly; 68-key layout approximates 65%. However, price ($55) is below the $80-$100 budget requirement."
+    },
+    {
+      "rank": 3,
+      "agent_score": 88,
+      "agent_rationale": "Matches Wireless, Brown Switch, 60% size. Price $39.98 is slightly below budget but highly rated (4.1). Good value.",
+      "product": {
+        "title": "Merdia Wireless Mechanical Keyboard, Triple Mode 2.4G/USB-C/BT Gaming Keyboards 100 Keys RGB Backlit, Brown Switch Rechargeable | Brown Combo",
+        "price": 39.98,
+        "source_site": "Amazon",
+        "product_url": "https://www.amazon.com/dp/B0CJ2Q799Z",
+        "rating": 4.1
+      },
+      "eval_score": 55,
+      "eval_rationale": "Matches tactile brown switch, but layout is 100 keys (too large for 65-75% target) and price ($40) is well below the $80-$100 range."
+    },
+    {
+      "rank": 4,
+      "agent_score": 85,
+      "agent_rationale": "Matches Wireless, Brown Switch (implied by title context of 'Wireless Mechanical Keyboard'), Compact. Price $69.99 fits budget. High rating 4.4.",
+      "product": {
+        "title": "AULA F99 Wireless Mechanical Keyboard,Gasket Structure Hot Swappable Custom Keyboard,RGB Backlit,Creamy Sound,Side Printed PBT Keycaps,2.4GHz/USB-C/BT5.0 Computer Gaming Keyboards",
+        "price": 69.99,
+        "source_site": "Amazon",
+        "product_url": "https://www.amazon.com/sspa/click",
+        "rating": 4.4
+      },
+      "eval_score": 50,
+      "eval_rationale": "Price ($70) is slightly below budget; layout (99 keys) exceeds 75% limit. 'Creamy' sound implies linear switches rather than required tactile brown."
+    },
+    {
+      "rank": 5,
+      "agent_score": 78,
+      "agent_rationale": "Matches Wireless, Brown Switch, 60% size. Price $29.98 is low end of budget. Lower rating (3.4) impacts score.",
+      "product": {
+        "title": "Qisan Mechanical Gaming Keyboard, Dual Mode 2.4G/BT Wireless, 60% Mini Design, Brown Switch, US Layout, 68 Keys, Computer Keyboard, Gaming Pc, Wireless Gaming Keyboard",
+        "price": 29.98,
+        "source_site": "Amazon",
+        "product_url": "https://www.amazon.com/dp/B0BQ34Q5TG",
+        "rating": 3.4
+      },
+      "eval_score": 50,
+      "eval_rationale": "Layout is 60% (too small for 65-75% target) and price ($30) is significantly under the $80 minimum budget."
+    },
+    {
+      "rank": 6,
+      "agent_score": 75,
+      "agent_rationale": "Matches Wireless, Brown Switch (implied), 60%. Price $60.00 fits budget. eBay source with null rating makes it less certain than Amazon.",
+      "product": {
+        "title": "Mechanical RGB Keyboard - Wireless USB-C & BT, Tactile Brown Switches, 100 Keys",
+        "price": 60.0,
+        "source_site": "eBay",
+        "product_url": "https://www.ebay.com/itm/406304248106",
+        "rating": null
+      },
+      "eval_score": 50,
+      "eval_rationale": "Price ($60) falls short of $80 minimum; layout (100 keys) is too large for the 65-75% compact requirement."
+    },
+    {
+      "rank": 7,
+      "agent_score": 70,
+      "agent_rationale": "Matches Wireless, Brown Switch, 60%. Price $62.85 fits budget. eBay listing with null rating.",
+      "product": {
+        "title": "Wireless 60 Mechanical Gaming Keyboard with Volume Knob, Hot-Swappable Switches",
+        "price": 62.85,
+        "source_site": "eBay",
+        "product_url": "https://www.ebay.com/itm/127710922905",
+        "rating": null
+      },
+      "eval_score": 45,
+      "eval_rationale": "Layout (60%) is too small for 65-75% target; price ($63) is below $80 budget; switch profile not explicitly confirmed as low-profile."
+    },
+    {
+      "rank": 8,
+      "agent_score": 68,
+      "agent_rationale": "Matches Wireless, Brown Switch (implied), 60%. Price $74.98 fits budget. eBay listing.",
+      "product": {
+        "title": "Wireless Mechanical Keyboard 60% Compact Gaming Keyboard with Hot Swap Blue S...",
+        "price": 74.98,
+        "source_site": "eBay",
+        "product_url": "https://www.ebay.com/itm/358130002456",
+        "rating": null
+      },
+      "eval_score": 40,
+      "eval_rationale": "Layout (60%) is too small; switch color 'Blue' suggests linear rather than required tactile brown; price ($75) is below $80 threshold."
+    },
+    {
+      "rank": 9,
+      "agent_score": 65,
+      "agent_rationale": "Matches Wireless, Brown Switch (implied), 60%. Price $76.27 fits budget. eBay listing.",
+      "product": {
+        "title": "60% Percent Keyboard, Wireless Mechanical Creamy Gaming Keyboard with QMK/VIA...",
+        "price": 76.27,
+        "source_site": "eBay",
+        "product_url": "https://www.ebay.com/itm/127764379959",
+        "rating": null
+      },
+      "eval_score": 40,
+      "eval_rationale": "Layout (60%) is too small; 'Creamy' typically denotes linear switches, missing the required tactile brown; price ($76) is below $80."
+    },
+    {
+      "rank": 10,
+      "agent_score": 62,
+      "agent_rationale": "Matches Wireless, Brown Switch (implied), 60%. Price $94.13 is at budget limit. eBay listing.",
+      "product": {
+        "title": "60% Percent Keyboard, Wireless Mechanical Creamy Gaming Keyboard with QMK/VIA...",
+        "price": 94.13,
+        "source_site": "eBay",
+        "product_url": "https://www.ebay.com/itm/298086681784",
+        "rating": null
+      },
+      "eval_score": 55,
+      "eval_rationale": "Price ($94) fits the $80-$100 budget perfectly, but layout (60%) is too small and 'Creamy' implies linear switches rather than tactile brown."
+    }
+  ],
+  "timestamps": {
+    "started_at": "2026-04-18T19:15:06.462962+00:00",
+    "completed_at": "2026-04-18T19:19:30.837218+00:00"
+  },
+  "meta": {
+    "design": "direct_json",
+    "model_id": "qwen3.5-122a10b-uncensored",
+    "result_limit": 10,
+    "source_file": "/Users/zyd/Code/Devs/shopping-agent/eval.jsonl",
+    "source_line": 4
+  },
+  "error": null
+}

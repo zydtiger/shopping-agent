@@ -1,0 +1,604 @@
+{
+  "item_summary": "$120-160 portable 24,000mAh USB-C power bank with 100W output suitable for extending the battery life of productivity laptops",
+  "detailed_item_draft": "Procure a high-capacity portable USB-C power bank featuring a nominal 24,000mAh (approx. 88Wh) cell configuration, compatible with TSA carry-on regulations. The unit must deliver up to 100W via USB-C Power Delivery (PD) 3.0/3.1 protocol, ensuring sufficient wattage for charging productivity laptops like MacBook Pro 16\", Dell XPS 15, or HP ZBook during extended use. Target price range is $120-$160. Physical constraints include a lightweight design under 550g with dimensions suitable for easy portability. Essential features include a built-in intelligent digital display for battery state-of-charge accuracy, support for PPS (Programmable Power Supply) for efficient charging, and robust thermal management to prevent overheating at max output. Must include at least one 100W rated USB-C to USB-C cable. Build quality should prioritize scratch-resistant aluminum alloy or high-grade polycarbonate. Safety certifications (UL, CE, FCC) and a minimum 18-month warranty are required. The power bank should support simultaneous input/output charging (pass-through) and possess multi-protection safety circuits.",
+  "compressed_prompt": "100W Power Bank",
+  "shopping_agent_run": {
+    "design": "sql",
+    "status_message": "Ranked top 10 100W power banks with 20k-26k mAh capacity, prioritizing match to profile, portability, and ratings.",
+    "profile": {
+      "raw_query": "100W Power Bank",
+      "clarified_answers": {
+        "capacity": "Standard (20,000-26,000mAh)"
+      },
+      "inferred_requirements": [
+        "100W USB-C Power Delivery output",
+        "Capacity between 20,000mAh and 26,000mAh",
+        "Portable form factor suitable for travel"
+      ],
+      "uncertainty_notes": [
+        "Specific brand or color preferences not requested",
+        "Input charging speed (e.g., 60W vs 100W input) not specified"
+      ]
+    },
+    "retrieval_batches": [
+      {
+        "source": "Amazon",
+        "latency_ms": 3915,
+        "products": [
+          {
+            "title": "Baseus 100W Power Bank 20000mAh, Portable Laptop Charger with Built-in USB-C Dual Cables, Travel Essential PD QC Fast Charging for MacBook, iPad, iPhone 17/16, Samsung, Steam Deck, TSA-Approved",
+            "price": 49.99,
+            "source_site": "Amazon",
+            "product_url": "https://www.amazon.com/sspa/click",
+            "rating": 4.6
+          },
+          {
+            "title": "UGREEN 20000mAh 100W Power Bank, Nexode Portable Charger USB C 3-Port PD Fast Charging Battery Pack Digital Display for iPhone 17/16, MacBook, iPad, Galaxy S26 Ultra, Steam Deck, Dell XPS and More",
+            "price": 56.99,
+            "source_site": "Amazon",
+            "product_url": "https://www.amazon.com/dp/B0C3GTMX5M",
+            "rating": 4.5
+          },
+          {
+            "title": "Baseus 100W Power Bank 20000mAh, Portable Laptop Charger with Built-in USB-C Dual Cables, Travel Essential PD QC Fast Charging for MacBook, iPad, iPhone 17/16, Samsung, Steam Deck, TSA-Approved",
+            "price": 49.99,
+            "source_site": "Amazon",
+            "product_url": "https://www.amazon.com/dp/B0GGH5YC94",
+            "rating": 4.6
+          },
+          {
+            "title": "REWONDER 100W Fast Charging Power Bank 20000mAh with Built-in Retractable USB-C Cable, Portable Charger for MacBook Laptop, iPhone 17/16 Series, Samsung, TSA Approved for Air Travel",
+            "price": 39.99,
+            "source_site": "Amazon",
+            "product_url": "https://www.amazon.com/dp/B0FN2MTWN4",
+            "rating": 4.2
+          },
+          {
+            "title": "INIU Power Bank, 25000mAh 100W USB C Laptop Portable Charger, PD QC Fast Charging 3-Output Battery Pack, Travel Charger for Laptop MacBook iPad Tablet Steam Deck iPhone 17 16 15 14 Pro Samsung S25 etc",
+            "price": 59.99,
+            "source_site": "Amazon",
+            "product_url": "https://www.amazon.com/dp/B08VDJP7WN",
+            "rating": 4.4
+          },
+          {
+            "title": "Anker Laptop Power Bank, 25,000mAh Portable Charger with Triple 100W USB-C Ports, Built-in Retractable Cables, Flight-Approved for Travel, iPhone 17/16 Series, MacBook, Samsung, and More",
+            "price": 95.99,
+            "source_site": "Amazon",
+            "product_url": "https://www.amazon.com/dp/B0DCBB2YTR",
+            "rating": 4.5
+          },
+          {
+            "title": "UGREEN Nexode Power Bank, 20000mAh 145W Laptop Portable Charger with Built-in USB-C Cable 72Wh Fast Charging Business Travel Battery Pack for MacBook Pro/Air/ipad/iPhone 17/Samsung S25/Dell/HP/Lenovo",
+            "price": 53.99,
+            "source_site": "Amazon",
+            "product_url": "https://www.amazon.com/dp/B0DSPVP337",
+            "rating": 4.5
+          },
+          {
+            "title": "Baseus Laptop Portable Charger 100W 20000mAh, Blade Travel Power Bank Fast Charging 2 USB-C & 2 USB-A Port, Steam Deck Battery Pack for MacBook iPad iPhone 17/16/15/14/13 Samsung S24 etc.",
+            "price": 53.99,
+            "source_site": "Amazon",
+            "product_url": "https://www.amazon.com/dp/B0DK8V9LSV",
+            "rating": 4.5
+          },
+          {
+            "title": "UGREEN Nexode Power Bank 20000mAh 165W with Built-in USB C Cable Laptop Travel Portable Charger, 100W Input, Fast Charging for MacBook Pro/Air/iPhone 17/16/iPad Pro/Galaxy S26 Ultra/Dell/HP and More",
+            "price": 79.99,
+            "source_site": "Amazon",
+            "product_url": "https://www.amazon.com/dp/B0DSPXHFBM",
+            "rating": 4.6
+          },
+          {
+            "title": "UGREEN Power Bank 25,000mAh 145W Laptop Portable Charger, Nexode 3-Port USB C PD Battery Pack, for MacBook Pro/Air, Dell XPS, iPhone 17/16/15/14, Galaxy S26 Steam Deck, iPad, and More",
+            "price": 69.99,
+            "source_site": "Amazon",
+            "product_url": "https://www.amazon.com/dp/B0BJQ7F16T",
+            "rating": 4.4
+          }
+        ]
+      },
+      {
+        "source": "eBay",
+        "latency_ms": 4001,
+        "products": [
+          {
+            "title": "20000mAh Portable Power Bank 45W PD Charging External Battery Charger For Phone",
+            "price": 24.79,
+            "source_site": "eBay",
+            "product_url": "https://www.ebay.com/itm/305665438872",
+            "rating": null
+          },
+          {
+            "title": "20000mAh Power Bank Fast Charging Battery LCD Digital Display Large Capacity",
+            "price": 12.99,
+            "source_site": "eBay",
+            "product_url": "https://www.ebay.com/itm/357887427055",
+            "rating": null
+          },
+          {
+            "title": "JUOVI Orange Power Bank 20000mAh 65W Charging Portable External Battery Backup",
+            "price": 39.99,
+            "source_site": "eBay",
+            "product_url": "https://www.ebay.com/itm/168309943188",
+            "rating": null
+          },
+          {
+            "title": "JUOVI Blue Power Bank 20000mAh 65W Charging Portable External Battery Backup US",
+            "price": 39.99,
+            "source_site": "eBay",
+            "product_url": "https://www.ebay.com/itm/168309919910",
+            "rating": null
+          },
+          {
+            "title": "BASEUS POWER BANK, 20000MAH 100W PD FAST CHARGING, PPBLD100HD-BLK - BLACK",
+            "price": 69.54,
+            "source_site": "eBay",
+            "product_url": "https://www.ebay.com/itm/167780652350",
+            "rating": null
+          },
+          {
+            "title": "New Omnicharge Omni 20+ 20000mAh Portable Power Bank AC Outlet USB-C 100W Laptop",
+            "price": 99.95,
+            "source_site": "eBay",
+            "product_url": "https://www.ebay.com/itm/257368772956",
+            "rating": 4.5
+          },
+          {
+            "title": "Baseus Blade Series Power Bank 100W USB C Portable Charger 20000mAh NEW",
+            "price": 45.0,
+            "source_site": "eBay",
+            "product_url": "https://www.ebay.com/itm/227247633425",
+            "rating": null
+          },
+          {
+            "title": "Baseus Blade H1 20000 mAh 100W Digital Display Laptop Charger/Power Bank USB-C",
+            "price": 40.0,
+            "source_site": "eBay",
+            "product_url": "https://www.ebay.com/itm/287272312590",
+            "rating": null
+          },
+          {
+            "title": "20000mAh 100W Portable Charger Power Bank Super Fast Charging For Laptop Phone",
+            "price": 40.99,
+            "source_site": "eBay",
+            "product_url": "https://www.ebay.com/itm/298177873220",
+            "rating": null
+          },
+          {
+            "title": "20000mAh 100W Power Bank Portable Charger Fast Charging USB C For Laptop Phone",
+            "price": 38.99,
+            "source_site": "eBay",
+            "product_url": "https://www.ebay.com/itm/358308156856",
+            "rating": null
+          }
+        ]
+      },
+      {
+        "source": "Newegg",
+        "latency_ms": 4195,
+        "products": [
+          {
+            "title": "UGREEN Nexode Power Bank 20000mAh 165W with Built-in USB C Cable Laptop Travel Portable Charger, 100W Input, Fast Charging for MacBook Pro/Air/iPhone 16/iPad Pro/Galaxy S25 Ultra/Dell/HP and More",
+            "price": 95.99,
+            "source_site": "Newegg",
+            "product_url": "https://www.newegg.com/p/39G-01GV-00001",
+            "rating": null
+          },
+          {
+            "title": "Nexode Power Bank 20000mAh 165W with Built-in USB C Cable Laptop Travel Portable Charger, 100W Input, Fast Charging for MacBook Pro/Air/iPhone 17/16/iPad Pro/Galaxy S26 Ultra/Dell/HP and More",
+            "price": 77.99,
+            "source_site": "Newegg",
+            "product_url": "https://www.newegg.com/black-ugreen-pb726-20000-milliamp-hours/p/39G-01H0-003S7",
+            "rating": null
+          },
+          {
+            "title": "UGREEN 100W 20000mAh Power Bank, Nexode Portable Charger USB C 3-Port PD3.0 Battery Pack Digital Display, Compatible with MacBook Pro, Laptop, iPhone 15/14/13/12 Series, Samsung, AirPods, and More",
+            "price": 105.99,
+            "source_site": "Newegg",
+            "product_url": "https://www.newegg.com/p/39G-00M7-00006",
+            "rating": null
+          },
+          {
+            "title": "JAENFONG 20000mAh 100W Power Bank Nexode Portable Charger USB C 3-Port PD Fast Charging Battery Pack Digital Display for MacBook iPad iPhone 16 Galaxy S24 Ultra Steam Deck XPS and Mor",
+            "price": 158.58,
+            "source_site": "Newegg",
+            "product_url": "https://www.newegg.com/p/39G-01H2-00138",
+            "rating": null
+          },
+          {
+            "title": "JAENFONG Nexode Power Bank 20000mAh 165W with Built-in USB C Cable Laptop Travel Portable Charger 100W Input Fast Charging for MacBook Pro/Air/iPhone 16/iPad Pro/Galaxy S25 Ultra//HP and More",
+            "price": 169.95,
+            "source_site": "Newegg",
+            "product_url": "https://www.newegg.com/p/39G-01H2-00183",
+            "rating": null
+          },
+          {
+            "title": "Laptop Power Bank 100W Blade USB C Portable Charger Super Fast Charging 20000mAh Slim Battery Pack for Laptop MacBook Air IPad HP iPhone Galaxy Switch Steam Deck",
+            "price": 164.11,
+            "source_site": "Newegg",
+            "product_url": "https://www.newegg.com/p/39G-001E-00144",
+            "rating": null
+          },
+          {
+            "title": "Portable Laptop Power Bank 100W AC Outlet, 72Wh/20000mAh with 65W PD USB C Portable Laptop Charger, External Battery Pack for MacBook, Notebooks, Laptops",
+            "price": 116.98,
+            "source_site": "Newegg",
+            "product_url": "https://www.newegg.com/p/39G-01GT-003T7",
+            "rating": null
+          },
+          {
+            "title": "Nexode Power Bank 20000mAh 165W with Built-in USB C Cable Laptop Travel Portable Charger 100W Input Fast Charging for MacBook Pro/Air/iPhone 16/iPad Pro/Galaxy S25 Ultra//HP and More",
+            "price": 170.95,
+            "source_site": "Newegg",
+            "product_url": "https://www.newegg.com/p/39G-001E-000V5",
+            "rating": null
+          },
+          {
+            "title": "20000mAh/74Wh Power Bank with AC Outlet for Laptop 80W(Peak 100W) Laptop Charger Smartphone Power Bank 30W Type-C/USB-A Ports Fast Charging Lightweight Portable Power Station for Home/Travel",
+            "price": 159.58,
+            "source_site": "Newegg",
+            "product_url": "https://www.newegg.com/p/39G-01GU-000V3",
+            "rating": null
+          },
+          {
+            "title": "Portable Laptop Power Bank 100W AC Outlet, 72Wh/20000mAh with 65W PD USB C Portable Laptop Charger, External Battery Pack for MacBook, Notebooks, Laptops",
+            "price": 116.98,
+            "source_site": "Newegg",
+            "product_url": "https://www.newegg.com/p/39G-01GZ-002T0",
+            "rating": null
+          }
+        ]
+      }
+    ],
+    "ranked_products": [
+      {
+        "rank": 1,
+        "score": 95,
+        "rationale": "Anker 25,000mAh 100W explicitly matches capacity and 100W PD, travel-approved with built-in cables, high rating 4.5",
+        "product": {
+          "title": "Anker Laptop Power Bank, 25,000mAh Portable Charger with Triple 100W USB-C Ports, Built-in Retractable Cables, Flight-Approved for Travel, iPhone 17/16 Series, MacBook, Samsung, and More",
+          "price": 95.99,
+          "source_site": "Amazon",
+          "product_url": "https://www.amazon.com/dp/B0DCBB2YTR",
+          "rating": 4.5
+        }
+      },
+      {
+        "rank": 2,
+        "score": 93,
+        "rationale": "Baseus 20,000mAh 100W matches capacity and 100W PD, TSA-approved, high rating 4.6, good value",
+        "product": {
+          "title": "Baseus 100W Power Bank 20000mAh, Portable Laptop Charger with Built-in USB-C Dual Cables, Travel Essential PD QC Fast Charging for MacBook, iPad, iPhone 17/16, Samsung, Steam Deck, TSA-Approved",
+          "price": 49.99,
+          "source_site": "Amazon",
+          "product_url": "https://www.amazon.com/sspa/click",
+          "rating": 4.6
+        }
+      },
+      {
+        "rank": 3,
+        "score": 92,
+        "rationale": "UGREEN 20,000mAh 100W matches capacity and 100W PD, strong brand reputation, rating 4.5",
+        "product": {
+          "title": "UGREEN 20000mAh 100W Power Bank, Nexode Portable Charger USB C 3-Port PD Fast Charging Battery Pack Digital Display for iPhone 17/16, MacBook, iPad, Galaxy S26 Ultra, Steam Deck, Dell XPS and More",
+          "price": 56.99,
+          "source_site": "Amazon",
+          "product_url": "https://www.amazon.com/dp/B0C3GTMX5M",
+          "rating": 4.5
+        }
+      },
+      {
+        "rank": 4,
+        "score": 88,
+        "rationale": "INIU 25,000mAh 100W matches capacity and 100W PD, rating 4.4, portable design",
+        "product": {
+          "title": "INIU Power Bank, 25000mAh 100W USB C Laptop Portable Charger, PD QC Fast Charging 3-Output Battery Pack, Travel Charger for Laptop MacBook iPad Tablet Steam Deck iPhone 17 16 15 14 Pro Samsung S25 etc",
+          "price": 59.99,
+          "source_site": "Amazon",
+          "product_url": "https://www.amazon.com/dp/B08VDJP7WN",
+          "rating": 4.4
+        }
+      },
+      {
+        "rank": 5,
+        "score": 85,
+        "rationale": "UGREEN 25,000mAh 145W within capacity range, high power output, rating 4.4, slightly higher price but premium features",
+        "product": {
+          "title": "UGREEN Power Bank 25,000mAh 145W Laptop Portable Charger, Nexode 3-Port USB C PD Battery Pack, for MacBook Pro/Air, Dell XPS, iPhone 17/16/15/14, Galaxy S26 Steam Deck, iPad, and More",
+          "price": 69.99,
+          "source_site": "Amazon",
+          "product_url": "https://www.amazon.com/dp/B0BJQ7F16T",
+          "rating": 4.4
+        }
+      },
+      {
+        "rank": 6,
+        "score": 83,
+        "rationale": "Baseus 20,000mAh 100W matches specs, rating 4.5, slightly higher price than other Baseus variant",
+        "product": {
+          "title": "Baseus Laptop Portable Charger 100W 20000mAh, Blade Travel Power Bank Fast Charging 2 USB-C & 2 USB-A Port, Steam Deck Battery Pack for MacBook iPad iPhone 17/16/15/14/13 Samsung S24 etc.",
+          "price": 53.99,
+          "source_site": "Amazon",
+          "product_url": "https://www.amazon.com/dp/B0DK8V9LSV",
+          "rating": 4.5
+        }
+      },
+      {
+        "rank": 7,
+        "score": 80,
+        "rationale": "UGREEN 20,000mAh 165W within capacity, high power, rating 4.6, premium build with built-in cable",
+        "product": {
+          "title": "UGREEN Nexode Power Bank 20000mAh 165W with Built-in USB C Cable Laptop Travel Portable Charger, 100W Input, Fast Charging for MacBook Pro/Air/iPhone 17/16/iPad Pro/Galaxy S26 Ultra/Dell/HP and More",
+          "price": 79.99,
+          "source_site": "Amazon",
+          "product_url": "https://www.amazon.com/dp/B0DSPXHFBM",
+          "rating": 4.6
+        }
+      },
+      {
+        "rank": 8,
+        "score": 78,
+        "rationale": "REWONDER 20,000mAh 100W matches capacity and 100W PD, TSA-approved, rating 4.2, lower cost option",
+        "product": {
+          "title": "REWONDER 100W Fast Charging Power Bank 20000mAh with Built-in Retractable USB-C Cable, Portable Charger for MacBook Laptop, iPhone 17/16 Series, Samsung, TSA Approved for Air Travel",
+          "price": 39.99,
+          "source_site": "Amazon",
+          "product_url": "https://www.amazon.com/dp/B0FN2MTWN4",
+          "rating": 4.2
+        }
+      },
+      {
+        "rank": 9,
+        "score": 75,
+        "rationale": "Baseus 20,000mAh 100W duplicate listing, same specs as higher ranked variant, rating 4.6",
+        "product": {
+          "title": "Baseus 100W Power Bank 20000mAh, Portable Laptop Charger with Built-in USB-C Dual Cables, Travel Essential PD QC Fast Charging for MacBook, iPad, iPhone 17/16, Samsung, Steam Deck, TSA-Approved",
+          "price": 49.99,
+          "source_site": "Amazon",
+          "product_url": "https://www.amazon.com/dp/B0GGH5YC94",
+          "rating": 4.6
+        }
+      },
+      {
+        "rank": 10,
+        "score": 72,
+        "rationale": "UGREEN 20,000mAh 145W within capacity, high power, rating 4.5, slightly higher price",
+        "product": {
+          "title": "UGREEN Nexode Power Bank, 20000mAh 145W Laptop Portable Charger with Built-in USB-C Cable 72Wh Fast Charging Business Travel Battery Pack for MacBook Pro/Air/ipad/iPhone 17/Samsung S25/Dell/HP/Lenovo",
+          "price": 53.99,
+          "source_site": "Amazon",
+          "product_url": "https://www.amazon.com/dp/B0DSPVP337",
+          "rating": 4.5
+        }
+      }
+    ],
+    "debug_notes": [
+      "Selected ranking design: SQL-backed Ranking.",
+      "Amazon search '100W power bank 20000mAh' returned 10 items.",
+      "eBay search '100W power bank 20000mAh' returned 10 items.",
+      "Newegg search '100W power bank 20000mAh' returned 10 items.",
+      "Total pool size: 30 products.",
+      "All selected products explicitly state 100W+ output and capacity 20k-26k mAh",
+      "Prioritized Amazon listings with high ratings and travel-friendly features",
+      "Excluded products with ambiguous 'peak' power or lower capacity",
+      "Price fit considered; no explicit budget constraint, so balanced on value and performance"
+    ],
+    "total_tokens": 17966
+  },
+  "interaction_logs": {
+    "progress_logs": [
+      "[plan] Preparing hidden detailed item draft.",
+      "[plan] Generating compressed prompt from detailed draft.",
+      "[action] Compressed prompt ready: 100W Power Bank",
+      "[plan] RetrievalAgent is analyzing the raw shopping request and deciding whether clarification is needed.",
+      "[plan] Starting with 100W power bank request. Need to clarify capacity/use case to focus search effectively.\n\n[plan] Asking about capacity preference since this is the most impactful dimension for 100W power banks (ranges from ~10,000mAh to 30,000mAh+).",
+      "[action] Clarification requested: What capacity range are you looking for in a 100W power bank?",
+      "[action] Clarification captured for capacity: Standard (20,000-26,000mAh)",
+      "[plan] Capacity clarified as 20,000-26,000mAh. Now searching for 100W power banks in this capacity range across major retailers to build a product pool.\n\n[plan] Starting with Amazon search for \"100W power bank 20000mAh\" to find relevant products.",
+      "[plan] Search Amazon for: 100W power bank 20000mAh",
+      "[action] search_amazon returned 10 product(s) in 3915 ms.",
+      "[plan] Amazon returned 10 usable results. Broadening search to eBay to get more options and compare availability.\n\n[plan] Searching eBay for \"100W power bank 20000mAh\" to expand the product pool.",
+      "[plan] Search eBay for: 100W power bank 20000mAh",
+      "[action] search_ebay returned 10 product(s) in 4001 ms.",
+      "[plan] eBay returned 10 usable results, total pool now 20 products. Checking Newegg for additional options, as it often has tech-specific inventory.\n\n[plan] Searching Newegg for \"100W power bank 20000mAh\" to complete the source coverage.",
+      "[plan] Search Newegg for: 100W power bank 20000mAh",
+      "[action] search_newegg returned 10 product(s) in 4195 ms.",
+      "{\n  \"status_message\": \"Retrieval complete. Found 30 products across Amazon, eBay, and Newegg matching the 100W power bank and 20k-26k mAh capacity criteria.\",\n  \"profile\": {\n    \"raw_query\": \"100W Power Bank\",\n    \"clarified_answers\": {\n      \"capacity\": \"Standard (20,000-26,000mAh)\"\n    },\n    \"inferred_requirements\": [\n      \"100W USB-C Power Delivery output\",\n      \"Capacity between 20,000mAh and 26,000mAh\",\n      \"Portable form factor suitable for travel\"\n    ],\n    \"uncertainty_notes\": [\n      \"Specific brand or color preferences not requested\",\n      \"Input charging speed (e.g., 60W vs 100W input) not specified\"\n    ]\n  },\n  \"debug_notes\": [\n    \"Amazon search '100W power bank 20000mAh' returned 10 items.\",\n    \"eBay search '100W power bank 20000mAh' returned 10 items.\",\n    \"Newegg search '100W power bank 20000mAh' returned 10 items.\",\n    \"Total pool size: 30 products.\"\n  ]\n}",
+      "[success] RetrievalAgent has completed",
+      "[plan] RetrievalAgent finished. Handing the shared product store to RankingAgent using SQL-backed Ranking.",
+      "[plan] RankingAgent is querying the shared SQLite product store to shortlist candidates.",
+      "[plan] RankingAgent SQL query: SELECT title, price, source_site, product_url, rating FROM products WHERE LOWER(title) LIKE '%power bank%' OR LOWER(title) LIKE '%100W%' ORDER BY title ASC",
+      "[action] query_product_store returned 30 row(s).",
+      "{\n  \"status_message\": \"Ranked top 10 100W power banks with 20k-26k mAh capacity, prioritizing match to profile, portability, and ratings.\",\n  \"recommendations\": [\n    {\n      \"score\": 95,\n      \"rationale\": \"Anker 25,000mAh 100W explicitly matches capacity and 100W PD, travel-approved with built-in cables, high rating 4.5\",\n      \"product\": {\n        \"title\": \"Anker Laptop Power Bank, 25,000mAh Portable Charger with Triple 100W USB-C Ports, Built-in Retractable Cables, Flight-Approved for Travel, iPhone 17/16 Series, MacBook, Samsung, and More\",\n        \"price\": 95.99,\n        \"source_site\": \"Amazon\",\n        \"product_url\": \"https://www.amazon.com/dp/B0DCBB2YTR\",\n        \"rating\": 4.5\n      }\n    },\n    {\n      \"score\": 93,\n      \"rationale\": \"Baseus 20,000mAh 100W matches capacity and 100W PD, TSA-approved, high rating 4.6, good value\",\n      \"product\": {\n        \"title\": \"Baseus 100W Power Bank 20000mAh, Portable Laptop Charger with Built-in USB-C Dual Cables, Travel Essential PD QC Fast Charging for MacBook, iPad, iPhone 17/16, Samsung, Steam Deck, TSA-Approved\",\n        \"price\": 49.99,\n        \"source_site\": \"Amazon\",\n        \"product_url\": \"https://www.amazon.com/sspa/click\",\n        \"rating\": 4.6\n      }\n    },\n    {\n      \"score\": 92,\n      \"rationale\": \"UGREEN 20,000mAh 100W matches capacity and 100W PD, strong brand reputation, rating 4.5\",\n      \"product\": {\n        \"title\": \"UGREEN 20000mAh 100W Power Bank, Nexode Portable Charger USB C 3-Port PD Fast Charging Battery Pack Digital Display for iPhone 17/16, MacBook, iPad, Galaxy S26 Ultra, Steam Deck, Dell XPS and More\",\n        \"price\": 56.99,\n        \"source_site\": \"Amazon\",\n        \"product_url\": \"https://www.amazon.com/dp/B0C3GTMX5M\",\n        \"rating\": 4.5\n      }\n    },\n    {\n      \"score\": 88,\n      \"rationale\": \"INIU 25,000mAh 100W matches capacity and 100W PD, rating 4.4, portable design\",\n      \"product\": {\n        \"title\": \"INIU Power Bank, 25000mAh 100W USB C Laptop Portable Charger, PD QC Fast Charging 3-Output Battery Pack, Travel Charger for Laptop MacBook iPad Tablet Steam Deck iPhone 17 16 15 14 Pro Samsung S25 etc\",\n        \"price\": 59.99,\n        \"source_site\": \"Amazon\",\n        \"product_url\": \"https://www.amazon.com/dp/B08VDJP7WN\",\n        \"rating\": 4.4\n      }\n    },\n    {\n      \"score\": 85,\n      \"rationale\": \"UGREEN 25,000mAh 145W within capacity range, high power output, rating 4.4, slightly higher price but premium features\",\n      \"product\": {\n        \"title\": \"UGREEN Power Bank 25,000mAh 145W Laptop Portable Charger, Nexode 3-Port USB C PD Battery Pack, for MacBook Pro/Air, Dell XPS, iPhone 17/16/15/14, Galaxy S26 Steam Deck, iPad, and More\",\n        \"price\": 69.99,\n        \"source_site\": \"Amazon\",\n        \"product_url\": \"https://www.amazon.com/dp/B0BJQ7F16T\",\n        \"rating\": 4.4\n      }\n    },\n    {\n      \"score\": 83,\n      \"rationale\": \"Baseus 20,000mAh 100W matches specs, rating 4.5, slightly higher price than other Baseus variant\",\n      \"product\": {\n        \"title\": \"Baseus Laptop Portable Charger 100W 20000mAh, Blade Travel Power Bank Fast Charging 2 USB-C & 2 USB-A Port, Steam Deck Battery Pack for MacBook iPad iPhone 17/16/15/14/13 Samsung S24 etc.\",\n        \"price\": 53.99,\n        \"source_site\": \"Amazon\",\n        \"product_url\": \"https://www.amazon.com/dp/B0DK8V9LSV\",\n        \"rating\": 4.5\n      }\n    },\n    {\n      \"score\": 80,\n      \"rationale\": \"UGREEN 20,000mAh 165W within capacity, high power, rating 4.6, premium build with built-in cable\",\n      \"product\": {\n        \"title\": \"UGREEN Nexode Power Bank 20000mAh 165W with Built-in USB C Cable Laptop Travel Portable Charger, 100W Input, Fast Charging for MacBook Pro/Air/iPhone 17/16/iPad Pro/Galaxy S26 Ultra/Dell/HP and More\",\n        \"price\": 79.99,\n        \"source_site\": \"Amazon\",\n        \"product_url\": \"https://www.amazon.com/dp/B0DSPXHFBM\",\n        \"rating\": 4.6\n      }\n    },\n    {\n      \"score\": 78,\n      \"rationale\": \"REWONDER 20,000mAh 100W matches capacity and 100W PD, TSA-approved, rating 4.2, lower cost option\",\n      \"product\": {\n        \"title\": \"REWONDER 100W Fast Charging Power Bank 20000mAh with Built-in Retractable USB-C Cable, Portable Charger for MacBook Laptop, iPhone 17/16 Series, Samsung, TSA Approved for Air Travel\",\n        \"price\": 39.99,\n        \"source_site\": \"Amazon\",\n        \"product_url\": \"https://www.amazon.com/dp/B0FN2MTWN4\",\n        \"rating\": 4.2\n      }\n    },\n    {\n      \"score\": 75,\n      \"rationale\": \"Baseus 20,000mAh 100W duplicate listing, same specs as higher ranked variant, rating 4.6\",\n      \"product\": {\n        \"title\": \"Baseus 100W Power Bank 20000mAh, Portable Laptop Charger with Built-in USB-C Dual Cables, Travel Essential PD QC Fast Charging for MacBook, iPad, iPhone 17/16, Samsung, Steam Deck, TSA-Approved\",\n        \"price\": 49.99,\n        \"source_site\": \"Amazon\",\n        \"product_url\": \"https://www.amazon.com/dp/B0GGH5YC94\",\n        \"rating\": 4.6\n      }\n    },\n    {\n      \"score\": 72,\n      \"rationale\": \"UGREEN 20,000mAh 145W within capacity, high power, rating 4.5, slightly higher price\",\n      \"product\": {\n        \"title\": \"UGREEN Nexode Power Bank, 20000mAh 145W Laptop Portable Charger with Built-in USB-C Cable 72Wh Fast Charging Business Travel Battery Pack for MacBook Pro/Air/ipad/iPhone 17/Samsung S25/Dell/HP/Lenovo\",\n        \"price\": 53.99,\n        \"source_site\": \"Amazon\",\n        \"product_url\": \"https://www.amazon.com/dp/B0DSPVP337\",\n        \"rating\": 4.5\n      }\n    }\n  ],\n  \"debug_notes\": [\n    \"All selected products explicitly state 100W+ output and capacity 20k-26k mAh\",\n    \"Prioritized Amazon listings with high ratings and travel-friendly features\",\n    \"Excluded products with ambiguous 'peak' power or lower capacity\",\n    \"Price fit considered; no explicit budget constraint, so balanced on value and performance\"\n  ]\n}",
+      "[success] RankingAgent has completed",
+      "[action] Final ranking prepared with 10 recommendation(s)."
+    ],
+    "clarification_turns": [
+      {
+        "question_id": "capacity",
+        "prompt": "What capacity range are you looking for in a 100W power bank?",
+        "reason": "Preference dimension: capacity.",
+        "options": [
+          {
+            "id": "compact",
+            "label": "Compact (10,000-20,000mAh)",
+            "description": "Portable, lighter weight, fewer charges per full power bank"
+          },
+          {
+            "id": "standard",
+            "label": "Standard (20,000-26,000mAh)",
+            "description": "Balanced portability and capacity, good for travel"
+          },
+          {
+            "id": "high",
+            "label": "High Capacity (27,000mAh+)",
+            "description": "Maximum charges, heavier, suitable for extended trips"
+          },
+          {
+            "id": "flexible",
+            "label": "Flexible - capacity not my main concern",
+            "description": "I care more about other features like ports or brand"
+          }
+        ],
+        "answer": "Standard (20,000-26,000mAh)",
+        "selected_choice_id": "standard",
+        "selected_choice_label": "Standard (20,000-26,000mAh)",
+        "source": "suggested_choice"
+      }
+    ]
+  },
+  "final_recommendations": [
+    {
+      "rank": 1,
+      "agent_score": 95,
+      "agent_rationale": "Anker 25,000mAh 100W explicitly matches capacity and 100W PD, travel-approved with built-in cables, high rating 4.5",
+      "product": {
+        "title": "Anker Laptop Power Bank, 25,000mAh Portable Charger with Triple 100W USB-C Ports, Built-in Retractable Cables, Flight-Approved for Travel, iPhone 17/16 Series, MacBook, Samsung, and More",
+        "price": 95.99,
+        "source_site": "Amazon",
+        "product_url": "https://www.amazon.com/dp/B0DCBB2YTR",
+        "rating": 4.5
+      },
+      "eval_score": 92,
+      "eval_rationale": "Matches 24k capacity target well with 25k and 100W PD. Includes built-in cable. Price ($95) is slightly under $120 target but acceptable. Lacks explicit 'digital display' mention in title, typically uses LED indicators."
+    },
+    {
+      "rank": 2,
+      "agent_score": 93,
+      "agent_rationale": "Baseus 20,000mAh 100W matches capacity and 100W PD, TSA-approved, high rating 4.6, good value",
+      "product": {
+        "title": "Baseus 100W Power Bank 20000mAh, Portable Laptop Charger with Built-in USB-C Dual Cables, Travel Essential PD QC Fast Charging for MacBook, iPad, iPhone 17/16, Samsung, Steam Deck, TSA-Approved",
+        "price": 49.99,
+        "source_site": "Amazon",
+        "product_url": "https://www.amazon.com/sspa/click",
+        "rating": 4.6
+      },
+      "eval_score": 84,
+      "eval_rationale": "Meets 100W PD and includes built-in cables. Capacity 20k is slightly below 24k target. Price ($49) is significantly under target range. Display not explicitly confirmed."
+    },
+    {
+      "rank": 3,
+      "agent_score": 92,
+      "agent_rationale": "UGREEN 20,000mAh 100W matches capacity and 100W PD, strong brand reputation, rating 4.5",
+      "product": {
+        "title": "UGREEN 20000mAh 100W Power Bank, Nexode Portable Charger USB C 3-Port PD Fast Charging Battery Pack Digital Display for iPhone 17/16, MacBook, iPad, Galaxy S26 Ultra, Steam Deck, Dell XPS and More",
+        "price": 56.99,
+        "source_site": "Amazon",
+        "product_url": "https://www.amazon.com/dp/B0C3GTMX5M",
+        "rating": 4.5
+      },
+      "eval_score": 86,
+      "eval_rationale": "Explicitly features 'Digital Display' matching draft. Capacity 20k is below 24k target. Price ($57) is well under $120 target. Strong 100W PD support."
+    },
+    {
+      "rank": 4,
+      "agent_score": 88,
+      "agent_rationale": "INIU 25,000mAh 100W matches capacity and 100W PD, rating 4.4, portable design",
+      "product": {
+        "title": "INIU Power Bank, 25000mAh 100W USB C Laptop Portable Charger, PD QC Fast Charging 3-Output Battery Pack, Travel Charger for Laptop MacBook iPad Tablet Steam Deck iPhone 17 16 15 14 Pro Samsung S25 etc",
+        "price": 59.99,
+        "source_site": "Amazon",
+        "product_url": "https://www.amazon.com/dp/B08VDJP7WN",
+        "rating": 4.4
+      },
+      "eval_score": 85,
+      "eval_rationale": "Matches capacity (25k) and 100W PD well. Price ($59) is under target. Title does not explicitly confirm built-in cable or digital display, though cable likely included in box."
+    },
+    {
+      "rank": 5,
+      "agent_score": 85,
+      "agent_rationale": "UGREEN 25,000mAh 145W within capacity range, high power output, rating 4.4, slightly higher price but premium features",
+      "product": {
+        "title": "UGREEN Power Bank 25,000mAh 145W Laptop Portable Charger, Nexode 3-Port USB C PD Battery Pack, for MacBook Pro/Air, Dell XPS, iPhone 17/16/15/14, Galaxy S26 Steam Deck, iPad, and More",
+        "price": 69.99,
+        "source_site": "Amazon",
+        "product_url": "https://www.amazon.com/dp/B0BJQ7F16T",
+        "rating": 4.4
+      },
+      "eval_score": 90,
+      "eval_rationale": "Best capacity match (25k) and exceeds power requirement (145W). Price ($69) is under $120 target. Nexode series typically includes digital display and robust build quality."
+    },
+    {
+      "rank": 6,
+      "agent_score": 83,
+      "agent_rationale": "Baseus 20,000mAh 100W matches specs, rating 4.5, slightly higher price than other Baseus variant",
+      "product": {
+        "title": "Baseus Laptop Portable Charger 100W 20000mAh, Blade Travel Power Bank Fast Charging 2 USB-C & 2 USB-A Port, Steam Deck Battery Pack for MacBook iPad iPhone 17/16/15/14/13 Samsung S24 etc.",
+        "price": 53.99,
+        "source_site": "Amazon",
+        "product_url": "https://www.amazon.com/dp/B0DK8V9LSV",
+        "rating": 4.5
+      },
+      "eval_score": 82,
+      "eval_rationale": "Slim 'Blade' design aids portability. Capacity 20k is below 24k target. 100W PD supported. Price ($54) is under target. Display not explicitly mentioned."
+    },
+    {
+      "rank": 7,
+      "agent_score": 80,
+      "agent_rationale": "UGREEN 20,000mAh 165W within capacity, high power, rating 4.6, premium build with built-in cable",
+      "product": {
+        "title": "UGREEN Nexode Power Bank 20000mAh 165W with Built-in USB C Cable Laptop Travel Portable Charger, 100W Input, Fast Charging for MacBook Pro/Air/iPhone 17/16/iPad Pro/Galaxy S26 Ultra/Dell/HP and More",
+        "price": 79.99,
+        "source_site": "Amazon",
+        "product_url": "https://www.amazon.com/dp/B0DSPXHFBM",
+        "rating": 4.6
+      },
+      "eval_score": 88,
+      "eval_rationale": "High power output (165W) exceeds 100W requirement. Includes built-in cable. Capacity 20k is below 24k target. Price ($79) remains under $120 target."
+    },
+    {
+      "rank": 8,
+      "agent_score": 78,
+      "agent_rationale": "REWONDER 20,000mAh 100W matches capacity and 100W PD, TSA-approved, rating 4.2, lower cost option",
+      "product": {
+        "title": "REWONDER 100W Fast Charging Power Bank 20000mAh with Built-in Retractable USB-C Cable, Portable Charger for MacBook Laptop, iPhone 17/16 Series, Samsung, TSA Approved for Air Travel",
+        "price": 39.99,
+        "source_site": "Amazon",
+        "product_url": "https://www.amazon.com/dp/B0FN2MTWN4",
+        "rating": 4.2
+      },
+      "eval_score": 76,
+      "eval_rationale": "Meets 100W and capacity specs with built-in cable. Brand reputation lower than Anker/UGREEN. Price ($39) is significantly under target. Display not specified."
+    },
+    {
+      "rank": 9,
+      "agent_score": 75,
+      "agent_rationale": "Baseus 20,000mAh 100W duplicate listing, same specs as higher ranked variant, rating 4.6",
+      "product": {
+        "title": "Baseus 100W Power Bank 20000mAh, Portable Laptop Charger with Built-in USB-C Dual Cables, Travel Essential PD QC Fast Charging for MacBook, iPad, iPhone 17/16, Samsung, Steam Deck, TSA-Approved",
+        "price": 49.99,
+        "source_site": "Amazon",
+        "product_url": "https://www.amazon.com/dp/B0GGH5YC94",
+        "rating": 4.6
+      },
+      "eval_score": 84,
+      "eval_rationale": "Duplicate of Rank 2 item. Meets 100W and built-in cable specs. Capacity 20k is below 24k target. Price ($49) is well under target range."
+    },
+    {
+      "rank": 10,
+      "agent_score": 72,
+      "agent_rationale": "UGREEN 20,000mAh 145W within capacity, high power, rating 4.5, slightly higher price",
+      "product": {
+        "title": "UGREEN Nexode Power Bank, 20000mAh 145W Laptop Portable Charger with Built-in USB-C Cable 72Wh Fast Charging Business Travel Battery Pack for MacBook Pro/Air/ipad/iPhone 17/Samsung S25/Dell/HP/Lenovo",
+        "price": 53.99,
+        "source_site": "Amazon",
+        "product_url": "https://www.amazon.com/dp/B0DSPVP337",
+        "rating": 4.5
+      },
+      "eval_score": 87,
+      "eval_rationale": "High power (145W) and built-in cable match requirements. Capacity 20k is below 24k target. Price ($53) is under target. Nexode series typically includes digital display."
+    }
+  ],
+  "timestamps": {
+    "started_at": "2026-04-19T01:55:31.176417+00:00",
+    "completed_at": "2026-04-19T01:58:42.399122+00:00"
+  },
+  "meta": {
+    "design": "sql",
+    "model_id": "qwen3.5-122a10b-uncensored",
+    "result_limit": 10,
+    "source_file": "/Users/zyd/Code/Devs/shopping-agent/eval-1.jsonl",
+    "source_line": 1
+  },
+  "error": null
+}

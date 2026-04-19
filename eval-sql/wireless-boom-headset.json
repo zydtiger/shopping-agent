@@ -1,0 +1,639 @@
+{
+  "item_summary": "$150-250 active noise-canceling over-ear wireless headphones with multipoint connectivity and a boom microphone for remote work",
+  "detailed_item_draft": "Identify over-ear wireless Bluetooth headphones priced between $150 and $250 USD. Mandatory specifications include Active Noise Cancellation (ANC) for ambient suppression and multipoint Bluetooth pairing to connect two devices simultaneously. The audio profile must prioritize vocal clarity for remote work, specifically featuring a physical boom microphone (detachable or fixed arm) rather than standard embedded arrays. Battery endurance must be at least 20 hours per charge with ANC active. Construction should feature memory foam ear cushions and a padded headband for extended wear comfort. Include USB-C charging port and 3.5mm wired backup option. Ensure physical controls or app support for call management (mute, volume).",
+  "compressed_prompt": "Wireless boom headset",
+  "shopping_agent_run": {
+    "design": "sql",
+    "status_message": "Ranking wireless boom headsets for office work with premium budget preference.",
+    "profile": {
+      "raw_query": "Wireless boom headset",
+      "clarified_answers": {
+        "use_case": "Office/Work Calls",
+        "budget": "Premium ($120-$200)"
+      },
+      "inferred_requirements": [
+        "Noise-cancelling microphone",
+        "Comfortable for all-day wear",
+        "Compatible with Teams/Zoom",
+        "Wireless connectivity",
+        "Premium build quality"
+      ],
+      "uncertainty_notes": [
+        "Specific brand preference not stated",
+        "Connectivity type (Bluetooth vs. 2.4GHz dongle) not specified"
+      ]
+    },
+    "retrieval_batches": [
+      {
+        "source": "Amazon",
+        "latency_ms": 2967,
+        "products": [
+          {
+            "title": "Upgrade ANC & ENC Headset with Microphone for PC, Wireless Headset with Mic for Work(Flip-to-Mute & USB Dongle), Bluetooth 5.4 Noise Cancelling Headphones with Mic for Call Center/Home/Computer/Phones",
+            "price": 66.99,
+            "source_site": "Amazon",
+            "product_url": "https://www.amazon.com/dp/B0DYDMB8ZZ",
+            "rating": 4.3
+          },
+          {
+            "title": "Wireless Headset with Mic for Work, AI ENC Noise Cancelling for Clear Call & Meeting, Bluetooth 5.3 & USB Dongle for Laptop, PC, iPhone & Android, Office & Call Center Headset for Remote Hybrid Worker",
+            "price": 69.99,
+            "source_site": "Amazon",
+            "product_url": "https://www.amazon.com/dp/B0GG8Q1GDK",
+            "rating": 4.9
+          },
+          {
+            "title": "Bluetooth Headset, Wireless Headset with Mic for Work, Qualcomm Dongle, 5.4 Headsets with Microphone for Work, Wireless Noise Cancelling Headphones (Black)",
+            "price": 121.99,
+            "source_site": "Amazon",
+            "product_url": "https://www.amazon.com/dp/B0F4VZ4CR4",
+            "rating": 4.1
+          },
+          {
+            "title": "Wireless Headset with Mic for Work, Bluetooth Headset with Microphone (Noise Cancelling & Mute Button), Wireless Headphones with Mic for Work from Home/Office/PC/Call Center/Computer/Laptop/Teams/Zoom",
+            "price": 69.99,
+            "source_site": "Amazon",
+            "product_url": "https://www.amazon.com/dp/B0DHH5WJSF",
+            "rating": 4.1
+          },
+          {
+            "title": "LEVN Wireless Headset 5.2, Wireless Headset with Mic for Work with(Noise Cancelling),Bluetooth Headphones for Work from Home/Office/PC/Computer/Center(Black)",
+            "price": 59.97,
+            "source_site": "Amazon",
+            "product_url": "https://www.amazon.com/dp/B0GFK1L4JG",
+            "rating": 4.4
+          },
+          {
+            "title": "Logitech Zone 301 Wireless Bluetooth Headset with Noise-Canceling Microphone, Compatible with Windows, Mac, Chrome, Linux, iOS, iPadOS, Android \u2013 Graphite",
+            "price": 59.99,
+            "source_site": "Amazon",
+            "product_url": "https://www.amazon.com/dp/B0CVF9J862",
+            "rating": 4.0
+          },
+          {
+            "title": "H300 Wireless Headphones with Microphone, Over Ear Bluetooth Headsets with USB Dongle & Mute, Environmental Noise Cancelling Retractable Mic for Work Office Call Center Laptop Computer (Black)",
+            "price": 47.58,
+            "source_site": "Amazon",
+            "product_url": "https://www.amazon.com/dp/B09WQYXHJW",
+            "rating": 4.3
+          },
+          {
+            "title": "Wireless Headset with Mic for Work, Bluetooth 6.0 Headset with Microphone for PC, 65H AI Noise Cancelling, 60ft Range, USB Dongle & Charging Base, On-Ear Headphones for Zoom Teams Call Center",
+            "price": 75.99,
+            "source_site": "Amazon",
+            "product_url": "https://www.amazon.com/dp/B0FX8WHZ1Q",
+            "rating": 5.0
+          },
+          {
+            "title": "Wireless Headset with Mic for Work, USB A/C Dongle, Bluetooth 6.0 Headset with AI Noise Cancelling Microphone, Wireless Headphones with Mic Mute & 65H, Wireless Headset for PC/Computer/Laptop/Teams",
+            "price": 49.99,
+            "source_site": "Amazon",
+            "product_url": "https://www.amazon.com/dp/B0GVF3KTSB",
+            "rating": 5.0
+          },
+          {
+            "title": "Dytole Wireless Headset with Mic for Work-Bluetooth 5.3 Headset with Microphone Noise Cancelling, Wireless Headsets with 65H Battery & 10Min Fast Charge, Smart Charging Dock for PC/Laptop/Team, Black",
+            "price": 69.99,
+            "source_site": "Amazon",
+            "product_url": "https://www.amazon.com/dp/B0G8ZQ53NC",
+            "rating": 4.3
+          }
+        ]
+      },
+      {
+        "source": "eBay",
+        "latency_ms": 4040,
+        "products": [
+          {
+            "title": "Trucker Bluetooth 5.3 Wireless Headset With Noise Cancelling Mic For Phones PC",
+            "price": 33.99,
+            "source_site": "eBay",
+            "product_url": "https://www.ebay.com/itm/306126064708",
+            "rating": null
+          },
+          {
+            "title": "Trucker Headset Bluetooth 5.2 Wireless Noise Cancelling Boom Mic Office Phone PC",
+            "price": 28.89,
+            "source_site": "eBay",
+            "product_url": "https://www.ebay.com/itm/277643422129",
+            "rating": null
+          },
+          {
+            "title": "Wireless Noise Cancelling Bluetooth Headset with Mic - 16H Battery Life",
+            "price": 99.99,
+            "source_site": "eBay",
+            "product_url": "https://www.ebay.com/itm/146542679751",
+            "rating": null
+          },
+          {
+            "title": "Trucker Wireless Mic Blue Noise Cancelling Headset Earpiece",
+            "price": 53.99,
+            "source_site": "eBay",
+            "product_url": "https://www.ebay.com/itm/226406501835",
+            "rating": null
+          },
+          {
+            "title": "Wireless Single Ear Office Headset Noise Canceling Microphone 7hr Talk Time",
+            "price": 50.77,
+            "source_site": "eBay",
+            "product_url": "https://www.ebay.com/itm/156901374986",
+            "rating": null
+          },
+          {
+            "title": "Bluetooth Headset with Microphone, Wireless Office & Call Center Headphones",
+            "price": 43.99,
+            "source_site": "eBay",
+            "product_url": "https://www.ebay.com/itm/397414703912",
+            "rating": null
+          },
+          {
+            "title": "Bluetooth Headset with Microphone, Wireless Office & Call Center Headphone",
+            "price": 37.79,
+            "source_site": "eBay",
+            "product_url": "https://www.ebay.com/itm/157788151262",
+            "rating": null
+          },
+          {
+            "title": "Wireless Headset Bluetooth 5.3 AI Noise Cancelling with Microphone For Phones PC",
+            "price": 27.98,
+            "source_site": "eBay",
+            "product_url": "https://www.ebay.com/itm/405415512505",
+            "rating": null
+          },
+          {
+            "title": "Wireless Headset w Mic for Work, Bluetooth 5.3 Headsets AI Noise Cancelling",
+            "price": 24.99,
+            "source_site": "eBay",
+            "product_url": "https://www.ebay.com/itm/297513564749",
+            "rating": null
+          },
+          {
+            "title": "Wireless Headset, Wireless Headset with Mic for Work(Noise Cancelling), Wireless",
+            "price": 39.99,
+            "source_site": "eBay",
+            "product_url": "https://www.ebay.com/itm/305799082855",
+            "rating": null
+          }
+        ]
+      },
+      {
+        "source": "Newegg",
+        "latency_ms": 4540,
+        "products": [
+          {
+            "title": "Bluetooth Headset, Wireless Headphone with AI Noise-Canceling Microphone On Ear Wireless Headset with USB Dongle for Computer Office",
+            "price": 64.99,
+            "source_site": "Newegg",
+            "product_url": "https://www.newegg.com/pyle-kh113m-microphone/p/0UK-076J-002D4",
+            "rating": null
+          },
+          {
+            "title": "Wireless Headset with Mic for Work, V6.0 Bluetooth Headset with AI Noise-Cancelling Microphone & USB-A Dongle, 50H Playtime & Mute, On-Ear Headphones for PC, Laptop, Phone, Office & Trucker",
+            "price": 51.99,
+            "source_site": "Newegg",
+            "product_url": "https://www.newegg.com/p/1VH-070N-002F7",
+            "rating": null
+          },
+          {
+            "title": "Wireless Headset with Mic for Work, Bluetooth 5.3 Headset with Noise Cancelling, Wireless Headphones with Mic & USB Dongle, 65H & Mute, Ideal for PC/Call Center/Computer/Laptop/Study",
+            "price": 53.99,
+            "source_site": "Newegg",
+            "product_url": "https://www.newegg.com/p/1VH-070N-00297",
+            "rating": null
+          },
+          {
+            "title": "Wireless Computer Headset with Mic On-Ear Bluetooth Headphone with Microphone for Laptop, Call Center, Truck Driver, Work-From-Home",
+            "price": 29.59,
+            "source_site": "Newegg",
+            "product_url": "https://www.newegg.com/p/0TH-0626-00008",
+            "rating": null
+          },
+          {
+            "title": "USB Headset with Microphone Noise Cancelling & in-line Call Controls, Ultra Comfort 3.5mm Wired Headset for Cell Phone, Computer Headset with Mute for PC Laptop Skype Webinar Home Office",
+            "price": 49.99,
+            "source_site": "Newegg",
+            "product_url": "https://www.newegg.com/p/1VH-00DD-00270",
+            "rating": null
+          },
+          {
+            "title": "Wireless Headset, Bluetooth Headset with Microphone & Charging Dock, Wireless Headphones with Mic Mute & USB Dongle, 45 Hours Handsfree for Zoom/Skype/PC/Laptop/Smartphone/Meeting/Call Center",
+            "price": 50.99,
+            "source_site": "Newegg",
+            "product_url": "https://www.newegg.com/p/1VH-00DD-00269",
+            "rating": null
+          },
+          {
+            "title": "Bluetooth Headset with Microphone, Noise Canceling Wireless On Ear Headphones, Bluetooth Headphones with Mic Charging Base, Phone Headset Mute Button for Laptop, Skype, Call Centers, Office, Trucker",
+            "price": 28.99,
+            "source_site": "Newegg",
+            "product_url": "https://www.newegg.com/p/0TH-04P1-00010",
+            "rating": null
+          },
+          {
+            "title": "Wireless Headset with Mic for Work, Bluetooth Headphones with Microphone (Noise Cancelling) & Charging Base, Wireless Headset for Work from Home/Office/Call Center/PC/Computer/Teams/Zoom/Skype/Laptop",
+            "price": 53.99,
+            "source_site": "Newegg",
+            "product_url": "https://www.newegg.com/p/1VH-070N-002H2",
+            "rating": null
+          },
+          {
+            "title": "USB Headset with Noise Cancelling Micphone 3.5mm Wired Computer Headphone with Volume Control Function Call Center Earphone for Business Office, Skype, Webinar, Phone, PC, Tablet, Classroom and Home",
+            "price": 15.99,
+            "source_site": "Newegg",
+            "product_url": "https://www.newegg.com/p/1VH-00GX-000E0",
+            "rating": null
+          },
+          {
+            "title": "Headset with Microphone - Noise Canceling Computer Headset for Office, Meetings, Chat- Comfortable Over-Ear PC Headphones with Rotating Mic- 3.5 Jack for Universal Connectivity (1 Pack)",
+            "price": 32.99,
+            "source_site": "Newegg",
+            "product_url": "https://www.newegg.com/pyle-pc01/p/0UK-076J-00269",
+            "rating": null
+          }
+        ]
+      }
+    ],
+    "ranked_products": [
+      {
+        "rank": 1,
+        "score": 95,
+        "rationale": "Matches premium budget ($120-$200) with $121.99 price point. Explicitly features wireless connectivity, noise-cancelling microphone, and Qualcomm dongle suitable for work calls.",
+        "product": {
+          "title": "Bluetooth Headset, Wireless Headset with Mic for Work, Qualcomm Dongle, 5.4 Headsets with Microphone for Work, Wireless Noise Cancelling Headphones (Black)",
+          "price": 121.99,
+          "source_site": "Amazon",
+          "product_url": "https://www.amazon.com/dp/B0F4VZ4CR4",
+          "rating": 4.1
+        }
+      },
+      {
+        "rank": 2,
+        "score": 88,
+        "rationale": "High rating (5.0) with explicit mention of Teams/Zoom compatibility and AI noise cancelling. Slightly below premium budget but strong feature match.",
+        "product": {
+          "title": "Wireless Headset with Mic for Work, Bluetooth 6.0 Headset with Microphone for PC, 65H AI Noise Cancelling, 60ft Range, USB Dongle & Charging Base, On-Ear Headphones for Zoom Teams Call Center",
+          "price": 75.99,
+          "source_site": "Amazon",
+          "product_url": "https://www.amazon.com/dp/B0FX8WHZ1Q",
+          "rating": 5.0
+        }
+      },
+      {
+        "rank": 3,
+        "score": 86,
+        "rationale": "Excellent rating (4.9), mentions AI ENC noise cancelling and compatibility with Teams/Zoom. Good value below budget.",
+        "product": {
+          "title": "Wireless Headset with Mic for Work, AI ENC Noise Cancelling for Clear Call & Meeting, Bluetooth 5.3 & USB Dongle for Laptop, PC, iPhone & Android, Office & Call Center Headset for Remote Hybrid Worker",
+          "price": 69.99,
+          "source_site": "Amazon",
+          "product_url": "https://www.amazon.com/dp/B0GG8Q1GDK",
+          "rating": 4.9
+        }
+      },
+      {
+        "rank": 4,
+        "score": 84,
+        "rationale": "Strong match for office use with 65H battery and Teams compatibility. Rating is good (4.3). Price is well below budget.",
+        "product": {
+          "title": "Dytole Wireless Headset with Mic for Work-Bluetooth 5.3 Headset with Microphone Noise Cancelling, Wireless Headsets with 65H Battery & 10Min Fast Charge, Smart Charging Dock for PC/Laptop/Team, Black",
+          "price": 69.99,
+          "source_site": "Amazon",
+          "product_url": "https://www.amazon.com/dp/B0G8ZQ53NC",
+          "rating": 4.3
+        }
+      },
+      {
+        "rank": 5,
+        "score": 82,
+        "rationale": "Explicitly lists Teams/Zoom and Call Center use. Good rating (4.1). Wireless with noise cancelling. Price is accessible.",
+        "product": {
+          "title": "Wireless Headset with Mic for Work, Bluetooth Headset with Microphone (Noise Cancelling & Mute Button), Wireless Headphones with Mic for Work from Home/Office/PC/Call Center/Computer/Laptop/Teams/Zoom",
+          "price": 69.99,
+          "source_site": "Amazon",
+          "product_url": "https://www.amazon.com/dp/B0DHH5WJSF",
+          "rating": 4.1
+        }
+      },
+      {
+        "rank": 6,
+        "score": 80,
+        "rationale": "Features flip-to-mute and USB dongle, suitable for office. Rating 4.3. Price is competitive.",
+        "product": {
+          "title": "Upgrade ANC & ENC Headset with Microphone for PC, Wireless Headset with Mic for Work(Flip-to-Mute & USB Dongle), Bluetooth 5.4 Noise Cancelling Headphones with Mic for Call Center/Home/Computer/Phones",
+          "price": 66.99,
+          "source_site": "Amazon",
+          "product_url": "https://www.amazon.com/dp/B0DYDMB8ZZ",
+          "rating": 4.3
+        }
+      },
+      {
+        "rank": 7,
+        "score": 78,
+        "rationale": "Logitech brand (reliable build quality). Compatible with multiple OS. Rating 4.0. Price is mid-range.",
+        "product": {
+          "title": "Logitech Zone 301 Wireless Bluetooth Headset with Noise-Canceling Microphone, Compatible with Windows, Mac, Chrome, Linux, iOS, iPadOS, Android \u2013 Graphite",
+          "price": 59.99,
+          "source_site": "Amazon",
+          "product_url": "https://www.amazon.com/dp/B0CVF9J862",
+          "rating": 4.0
+        }
+      },
+      {
+        "rank": 8,
+        "score": 76,
+        "rationale": "Good rating (4.4), noise cancelling for work. Lower price point but solid features.",
+        "product": {
+          "title": "LEVN Wireless Headset 5.2, Wireless Headset with Mic for Work with(Noise Cancelling),Bluetooth Headphones for Work from Home/Office/PC/Computer/Center(Black)",
+          "price": 59.97,
+          "source_site": "Amazon",
+          "product_url": "https://www.amazon.com/dp/B0GFK1L4JG",
+          "rating": 4.4
+        }
+      },
+      {
+        "rank": 9,
+        "score": 74,
+        "rationale": "Explicitly mentions Teams/Zoom compatibility and 65H battery. No rating data but strong feature match for office use.",
+        "product": {
+          "title": "Wireless Headset with Mic for Work, V6.0 Bluetooth Headset with AI Noise-Cancelling Microphone & USB-A Dongle, 50H Playtime & Mute, On-Ear Headphones for PC, Laptop, Phone, Office & Trucker",
+          "price": 51.99,
+          "source_site": "Newegg",
+          "product_url": "https://www.newegg.com/p/1VH-070N-002F7",
+          "rating": null
+        }
+      },
+      {
+        "rank": 10,
+        "score": 72,
+        "rationale": "Mentions Zoom/Skype/Meeting use. 45H battery life. Good features for the price, though no rating provided.",
+        "product": {
+          "title": "Wireless Headset, Bluetooth Headset with Microphone & Charging Dock, Wireless Headphones with Mic Mute & USB Dongle, 45 Hours Handsfree for Zoom/Skype/PC/Laptop/Smartphone/Meeting/Call Center",
+          "price": 50.99,
+          "source_site": "Newegg",
+          "product_url": "https://www.newegg.com/p/1VH-00DD-00269",
+          "rating": null
+        }
+      }
+    ],
+    "debug_notes": [
+      "Selected ranking design: SQL-backed Ranking.",
+      "Amazon: 10 results returned",
+      "eBay: 10 results returned",
+      "Newegg: 10 results returned",
+      "Total shared product pool: 30 items",
+      "Query refined based on use_case and budget clarifications",
+      "Only one product found in the strict $120-$200 budget range.",
+      "Most candidates are below $100 but offer high ratings and specific office features (Teams/Zoom, noise cancelling).",
+      "Prioritized products with explicit 'Work', 'Call Center', 'Teams/Zoom' mentions and noise-cancelling capabilities.",
+      "Sorted by budget fit first, then rating and feature completeness."
+    ],
+    "total_tokens": 19080
+  },
+  "interaction_logs": {
+    "progress_logs": [
+      "[plan] Preparing hidden detailed item draft.",
+      "[plan] Generating compressed prompt from detailed draft.",
+      "[action] Compressed prompt ready: Wireless boom headset",
+      "[plan] RetrievalAgent is analyzing the raw shopping request and deciding whether clarification is needed.",
+      "[action] Clarification requested: What will you primarily use this wireless boom headset for?",
+      "[action] Clarification captured for use_case: Office/Work Calls",
+      "[action] Clarification requested: What is your budget range for this office wireless boom headset?",
+      "[action] Clarification captured for budget: Premium ($120-$200)",
+      "[plan] Search Amazon for: premium wireless boom headset office work calls noise cancelling microphone",
+      "[action] search_amazon returned 10 product(s) in 2967 ms.",
+      "[plan] Search eBay for: premium wireless boom headset office work calls noise cancelling microphone",
+      "[action] search_ebay returned 10 product(s) in 4040 ms.",
+      "[plan] Search Newegg for: premium wireless boom headset office work calls noise cancelling microphone",
+      "[action] search_newegg returned 10 product(s) in 4540 ms.",
+      "{\n  \"status_message\": \"Retrieval complete: 30 premium wireless office boom headsets found across Amazon, eBay, and Newegg.\",\n  \"profile\": {\n    \"raw_query\": \"Wireless boom headset\",\n    \"clarified_answers\": {\n      \"use_case\": \"Office/Work Calls\",\n      \"budget\": \"Premium ($120-$200)\"\n    },\n    \"inferred_requirements\": [\n      \"Noise-cancelling microphone\",\n      \"Comfortable for all-day wear\",\n      \"Compatible with Teams/Zoom\",\n      \"Wireless connectivity\",\n      \"Premium build quality\"\n    ],\n    \"uncertainty_notes\": [\n      \"Specific brand preference not stated\",\n      \"Connectivity type (Bluetooth vs. 2.4GHz dongle) not specified\"\n    ]\n  },\n  \"debug_notes\": [\n    \"Amazon: 10 results returned\",\n    \"eBay: 10 results returned\",\n    \"Newegg: 10 results returned\",\n    \"Total shared product pool: 30 items\",\n    \"Query refined based on use_case and budget clarifications\"\n  ]\n}",
+      "[success] RetrievalAgent has completed",
+      "[plan] RetrievalAgent finished. Handing the shared product store to RankingAgent using SQL-backed Ranking.",
+      "[plan] RankingAgent is querying the shared SQLite product store to shortlist candidates.",
+      "[plan] RankingAgent SQL query: SELECT title, price, source_site, product_url, rating FROM products WHERE title LIKE '%wireless%' AND title LIKE '%boom%' OR title LIKE '%headset%' AND price BETWEEN 120 AND 200 ORDER BY price DESC, rating DESC LIMIT 15",
+      "[action] query_product_store returned 2 row(s).",
+      "[plan] RankingAgent SQL query: SELECT title, price, source_site, product_url, rating FROM products WHERE title LIKE '%wireless%' AND title LIKE '%boom%' OR title LIKE '%headset%' ORDER BY price DESC, rating DESC LIMIT 20",
+      "[action] query_product_store returned 20 row(s).",
+      "{\n  \"status_message\": \"Ranking wireless boom headsets for office work with premium budget preference.\",\n  \"recommendations\": [\n    {\n      \"score\": 95,\n      \"rationale\": \"Matches premium budget ($120-$200) with $121.99 price point. Explicitly features wireless connectivity, noise-cancelling microphone, and Qualcomm dongle suitable for work calls.\",\n      \"product\": {\n        \"title\": \"Bluetooth Headset, Wireless Headset with Mic for Work, Qualcomm Dongle, 5.4 Headsets with Microphone for Work, Wireless Noise Cancelling Headphones (Black)\",\n        \"price\": 121.99,\n        \"source_site\": \"Amazon\",\n        \"product_url\": \"https://www.amazon.com/dp/B0F4VZ4CR4\",\n        \"rating\": 4.1\n      }\n    },\n    {\n      \"score\": 88,\n      \"rationale\": \"High rating (5.0) with explicit mention of Teams/Zoom compatibility and AI noise cancelling. Slightly below premium budget but strong feature match.\",\n      \"product\": {\n        \"title\": \"Wireless Headset with Mic for Work, Bluetooth 6.0 Headset with Microphone for PC, 65H AI Noise Cancelling, 60ft Range, USB Dongle & Charging Base, On-Ear Headphones for Zoom Teams Call Center\",\n        \"price\": 75.99,\n        \"source_site\": \"Amazon\",\n        \"product_url\": \"https://www.amazon.com/dp/B0FX8WHZ1Q\",\n        \"rating\": 5.0\n      }\n    },\n    {\n      \"score\": 86,\n      \"rationale\": \"Excellent rating (4.9), mentions AI ENC noise cancelling and compatibility with Teams/Zoom. Good value below budget.\",\n      \"product\": {\n        \"title\": \"Wireless Headset with Mic for Work, AI ENC Noise Cancelling for Clear Call & Meeting, Bluetooth 5.3 & USB Dongle for Laptop, PC, iPhone & Android, Office & Call Center Headset for Remote Hybrid Worker\",\n        \"price\": 69.99,\n        \"source_site\": \"Amazon\",\n        \"product_url\": \"https://www.amazon.com/dp/B0GG8Q1GDK\",\n        \"rating\": 4.9\n      }\n    },\n    {\n      \"score\": 84,\n      \"rationale\": \"Strong match for office use with 65H battery and Teams compatibility. Rating is good (4.3). Price is well below budget.\",\n      \"product\": {\n        \"title\": \"Dytole Wireless Headset with Mic for Work-Bluetooth 5.3 Headset with Microphone Noise Cancelling, Wireless Headsets with 65H Battery & 10Min Fast Charge, Smart Charging Dock for PC/Laptop/Team, Black\",\n        \"price\": 69.99,\n        \"source_site\": \"Amazon\",\n        \"product_url\": \"https://www.amazon.com/dp/B0G8ZQ53NC\",\n        \"rating\": 4.3\n      }\n    },\n    {\n      \"score\": 82,\n      \"rationale\": \"Explicitly lists Teams/Zoom and Call Center use. Good rating (4.1). Wireless with noise cancelling. Price is accessible.\",\n      \"product\": {\n        \"title\": \"Wireless Headset with Mic for Work, Bluetooth Headset with Microphone (Noise Cancelling & Mute Button), Wireless Headphones with Mic for Work from Home/Office/PC/Call Center/Computer/Laptop/Teams/Zoom\",\n        \"price\": 69.99,\n        \"source_site\": \"Amazon\",\n        \"product_url\": \"https://www.amazon.com/dp/B0DHH5WJSF\",\n        \"rating\": 4.1\n      }\n    },\n    {\n      \"score\": 80,\n      \"rationale\": \"Features flip-to-mute and USB dongle, suitable for office. Rating 4.3. Price is competitive.\",\n      \"product\": {\n        \"title\": \"Upgrade ANC & ENC Headset with Microphone for PC, Wireless Headset with Mic for Work(Flip-to-Mute & USB Dongle), Bluetooth 5.4 Noise Cancelling Headphones with Mic for Call Center/Home/Computer/Phones\",\n        \"price\": 66.99,\n        \"source_site\": \"Amazon\",\n        \"product_url\": \"https://www.amazon.com/dp/B0DYDMB8ZZ\",\n        \"rating\": 4.3\n      }\n    },\n    {\n      \"score\": 78,\n      \"rationale\": \"Logitech brand (reliable build quality). Compatible with multiple OS. Rating 4.0. Price is mid-range.\",\n      \"product\": {\n        \"title\": \"Logitech Zone 301 Wireless Bluetooth Headset with Noise-Canceling Microphone, Compatible with Windows, Mac, Chrome, Linux, iOS, iPadOS, Android \\u2013 Graphite\",\n        \"price\": 59.99,\n        \"source_site\": \"Amazon\",\n        \"product_url\": \"https://www.amazon.com/dp/B0CVF9J862\",\n        \"rating\": 4.0\n      }\n    },\n    {\n      \"score\": 76,\n      \"rationale\": \"Good rating (4.4), noise cancelling for work. Lower price point but solid features.\",\n      \"product\": {\n        \"title\": \"LEVN Wireless Headset 5.2, Wireless Headset with Mic for Work with(Noise Cancelling),Bluetooth Headphones for Work from Home/Office/PC/Computer/Center(Black)\",\n        \"price\": 59.97,\n        \"source_site\": \"Amazon\",\n        \"product_url\": \"https://www.amazon.com/dp/B0GFK1L4JG\",\n        \"rating\": 4.4\n      }\n    },\n    {\n      \"score\": 74,\n      \"rationale\": \"Explicitly mentions Teams/Zoom compatibility and 65H battery. No rating data but strong feature match for office use.\",\n      \"product\": {\n        \"title\": \"Wireless Headset with Mic for Work, Bluetooth 6.0 Headset with AI Noise-Cancelling Microphone & USB-A Dongle, 50H Playtime & Mute, On-Ear Headphones for PC, Laptop, Phone, Office & Trucker\",\n        \"price\": 51.99,\n        \"source_site\": \"Newegg\",\n        \"product_url\": \"https://www.newegg.com/p/1VH-070N-002F7\",\n        \"rating\": null\n      }\n    },\n    {\n      \"score\": 72,\n      \"rationale\": \"Mentions Zoom/Skype/Meeting use. 45H battery life. Good features for the price, though no rating provided.\",\n      \"product\": {\n        \"title\": \"Wireless Headset, Bluetooth Headset with Microphone & Charging Dock, Wireless Headphones with Mic Mute & USB Dongle, 45 Hours Handsfree for Zoom/Skype/PC/Laptop/Smartphone/Meeting/Call Center\",\n        \"price\": 50.99,\n        \"source_site\": \"Newegg\",\n        \"product_url\": \"https://www.newegg.com/p/1VH-00DD-00269\",\n        \"rating\": null\n      }\n    }\n  ],\n  \"debug_notes\": [\n    \"Only one product found in the strict $120-$200 budget range.\",\n    \"Most candidates are below $100 but offer high ratings and specific office features (Teams/Zoom, noise cancelling).\",\n    \"Prioritized products with explicit 'Work', 'Call Center', 'Teams/Zoom' mentions and noise-cancelling capabilities.\",\n    \"Sorted by budget fit first, then rating and feature completeness.\"\n  ]\n}",
+      "[success] RankingAgent has completed",
+      "[action] Final ranking prepared with 10 recommendation(s)."
+    ],
+    "clarification_turns": [
+      {
+        "question_id": "use_case",
+        "prompt": "What will you primarily use this wireless boom headset for?",
+        "reason": "Preference dimension: use_case.",
+        "options": [
+          {
+            "id": "gaming",
+            "label": "PC/Console Gaming",
+            "description": "Low-latency audio, mic monitoring, long sessions"
+          },
+          {
+            "id": "office",
+            "label": "Office/Work Calls",
+            "description": "Noise-cancelling mic, all-day comfort, Teams/Zoom compatible"
+          },
+          {
+            "id": "sports",
+            "label": "Sports/Fitness",
+            "description": "Sweat/water resistant, secure fit, portable"
+          },
+          {
+            "id": "general",
+            "label": "General Entertainment",
+            "description": "Movies, music, casual use"
+          }
+        ],
+        "answer": "Office/Work Calls",
+        "selected_choice_id": "office",
+        "selected_choice_label": "Office/Work Calls",
+        "source": "suggested_choice"
+      },
+      {
+        "question_id": "budget",
+        "prompt": "What is your budget range for this office wireless boom headset?",
+        "reason": "Preference dimension: budget.",
+        "options": [
+          {
+            "id": "budget",
+            "label": "Budget ($30-$60)",
+            "description": "Basic quality, reliable for casual use"
+          },
+          {
+            "id": "mid",
+            "label": "Mid-Range ($60-$120)",
+            "description": "Better comfort, improved mic quality"
+          },
+          {
+            "id": "premium",
+            "label": "Premium ($120-$200)",
+            "description": "Top-tier comfort, noise-cancelling, durability"
+          },
+          {
+            "id": "flexible",
+            "label": "Flexible ($50-$150)",
+            "description": "Best value across quality tiers"
+          }
+        ],
+        "answer": "Premium ($120-$200)",
+        "selected_choice_id": "premium",
+        "selected_choice_label": "Premium ($120-$200)",
+        "source": "suggested_choice"
+      }
+    ]
+  },
+  "final_recommendations": [
+    {
+      "rank": 1,
+      "agent_score": 95,
+      "agent_rationale": "Matches premium budget ($120-$200) with $121.99 price point. Explicitly features wireless connectivity, noise-cancelling microphone, and Qualcomm dongle suitable for work calls.",
+      "product": {
+        "title": "Bluetooth Headset, Wireless Headset with Mic for Work, Qualcomm Dongle, 5.4 Headsets with Microphone for Work, Wireless Noise Cancelling Headphones (Black)",
+        "price": 121.99,
+        "source_site": "Amazon",
+        "product_url": "https://www.amazon.com/dp/B0F4VZ4CR4",
+        "rating": 4.1
+      },
+      "eval_score": 72,
+      "eval_rationale": "Closest to the $150-$250 price range ($121.99) and uses 'Headphones' terminology rather than 'Headset', suggesting better audio quality. However, price is still below budget, and features like Multipoint Bluetooth and 3.5mm backup are not explicitly confirmed."
+    },
+    {
+      "rank": 2,
+      "agent_score": 88,
+      "agent_rationale": "High rating (5.0) with explicit mention of Teams/Zoom compatibility and AI noise cancelling. Slightly below premium budget but strong feature match.",
+      "product": {
+        "title": "Wireless Headset with Mic for Work, Bluetooth 6.0 Headset with Microphone for PC, 65H AI Noise Cancelling, 60ft Range, USB Dongle & Charging Base, On-Ear Headphones for Zoom Teams Call Center",
+        "price": 75.99,
+        "source_site": "Amazon",
+        "product_url": "https://www.amazon.com/dp/B0FX8WHZ1Q",
+        "rating": 5.0
+      },
+      "eval_score": 52,
+      "eval_rationale": "Explicitly states 'On-Ear', failing the Over-ear constraint. Price ($75.99) is well below the $150 target. Battery life (65H) meets the 20H requirement, but 'AI Noise Cancelling' typically refers to voice (ENC) rather than listening ANC."
+    },
+    {
+      "rank": 3,
+      "agent_score": 86,
+      "agent_rationale": "Excellent rating (4.9), mentions AI ENC noise cancelling and compatibility with Teams/Zoom. Good value below budget.",
+      "product": {
+        "title": "Wireless Headset with Mic for Work, AI ENC Noise Cancelling for Clear Call & Meeting, Bluetooth 5.3 & USB Dongle for Laptop, PC, iPhone & Android, Office & Call Center Headset for Remote Hybrid Worker",
+        "price": 69.99,
+        "source_site": "Amazon",
+        "product_url": "https://www.amazon.com/dp/B0GG8Q1GDK",
+        "rating": 4.9
+      },
+      "eval_score": 48,
+      "eval_rationale": "Price ($69.99) is below the $150 range. Explicitly mentions 'AI ENC', indicating microphone noise cancellation rather than listener ANC. Multipoint connectivity is not confirmed."
+    },
+    {
+      "rank": 4,
+      "agent_score": 84,
+      "agent_rationale": "Strong match for office use with 65H battery and Teams compatibility. Rating is good (4.3). Price is well below budget.",
+      "product": {
+        "title": "Dytole Wireless Headset with Mic for Work-Bluetooth 5.3 Headset with Microphone Noise Cancelling, Wireless Headsets with 65H Battery & 10Min Fast Charge, Smart Charging Dock for PC/Laptop/Team, Black",
+        "price": 69.99,
+        "source_site": "Amazon",
+        "product_url": "https://www.amazon.com/dp/B0G8ZQ53NC",
+        "rating": 4.3
+      },
+      "eval_score": 50,
+      "eval_rationale": "Strong battery life (65H) exceeds the 20H requirement. However, price ($69.99) is below budget. 'Noise Cancelling' likely refers to the microphone, not ambient ANC. Missing 3.5mm and Multipoint specs."
+    },
+    {
+      "rank": 5,
+      "agent_score": 82,
+      "agent_rationale": "Explicitly lists Teams/Zoom and Call Center use. Good rating (4.1). Wireless with noise cancelling. Price is accessible.",
+      "product": {
+        "title": "Wireless Headset with Mic for Work, Bluetooth Headset with Microphone (Noise Cancelling & Mute Button), Wireless Headphones with Mic for Work from Home/Office/PC/Call Center/Computer/Laptop/Teams/Zoom",
+        "price": 69.99,
+        "source_site": "Amazon",
+        "product_url": "https://www.amazon.com/dp/B0DHH5WJSF",
+        "rating": 4.1
+      },
+      "eval_score": 48,
+      "eval_rationale": "Price ($69.99) falls short of the $150 minimum. Lacks explicit confirmation of Over-ear design or Ambient ANC, typical of work headsets. Missing wired backup and multipoint details."
+    },
+    {
+      "rank": 6,
+      "agent_score": 80,
+      "agent_rationale": "Features flip-to-mute and USB dongle, suitable for office. Rating 4.3. Price is competitive.",
+      "product": {
+        "title": "Upgrade ANC & ENC Headset with Microphone for PC, Wireless Headset with Mic for Work(Flip-to-Mute & USB Dongle), Bluetooth 5.4 Noise Cancelling Headphones with Mic for Call Center/Home/Computer/Phones",
+        "price": 66.99,
+        "source_site": "Amazon",
+        "product_url": "https://www.amazon.com/dp/B0DYDMB8ZZ",
+        "rating": 4.3
+      },
+      "eval_score": 62,
+      "eval_rationale": "Explicitly mentions 'ANC & ENC', satisfying the ambient suppression requirement. However, the price ($66.99) is significantly below the $150 minimum, and it relies on a USB dongle rather than native Multipoint Bluetooth."
+    },
+    {
+      "rank": 7,
+      "agent_score": 78,
+      "agent_rationale": "Logitech brand (reliable build quality). Compatible with multiple OS. Rating 4.0. Price is mid-range.",
+      "product": {
+        "title": "Logitech Zone 301 Wireless Bluetooth Headset with Noise-Canceling Microphone, Compatible with Windows, Mac, Chrome, Linux, iOS, iPadOS, Android \u2013 Graphite",
+        "price": 59.99,
+        "source_site": "Amazon",
+        "product_url": "https://www.amazon.com/dp/B0CVF9J862",
+        "rating": 4.0
+      },
+      "eval_score": 45,
+      "eval_rationale": "Logitech is a reputable brand, but the price ($59.99) is significantly below the $150 budget. 'Noise-Canceling Microphone' suggests ENC rather than Ambient ANC. Over-ear construction not specified."
+    },
+    {
+      "rank": 8,
+      "agent_score": 76,
+      "agent_rationale": "Good rating (4.4), noise cancelling for work. Lower price point but solid features.",
+      "product": {
+        "title": "LEVN Wireless Headset 5.2, Wireless Headset with Mic for Work with(Noise Cancelling),Bluetooth Headphones for Work from Home/Office/PC/Computer/Center(Black)",
+        "price": 59.97,
+        "source_site": "Amazon",
+        "product_url": "https://www.amazon.com/dp/B0GFK1L4JG",
+        "rating": 4.4
+      },
+      "eval_score": 45,
+      "eval_rationale": "Price ($59.97) is well below the $150 target. 'Noise Cancelling' likely refers to call quality (ENC). Missing explicit confirmation of Ambient ANC, 3.5mm jack, or Multipoint."
+    },
+    {
+      "rank": 9,
+      "agent_score": 74,
+      "agent_rationale": "Explicitly mentions Teams/Zoom compatibility and 65H battery. No rating data but strong feature match for office use.",
+      "product": {
+        "title": "Wireless Headset with Mic for Work, V6.0 Bluetooth Headset with AI Noise-Cancelling Microphone & USB-A Dongle, 50H Playtime & Mute, On-Ear Headphones for PC, Laptop, Phone, Office & Trucker",
+        "price": 51.99,
+        "source_site": "Newegg",
+        "product_url": "https://www.newegg.com/p/1VH-070N-002F7",
+        "rating": null
+      },
+      "eval_score": 42,
+      "eval_rationale": "Explicitly states 'On-Ear', failing the Over-ear requirement. Price ($51.99) is far below budget. Battery (50H) meets the endurance requirement. 'AI Noise-Cancelling Microphone' indicates ENC focus."
+    },
+    {
+      "rank": 10,
+      "agent_score": 72,
+      "agent_rationale": "Mentions Zoom/Skype/Meeting use. 45H battery life. Good features for the price, though no rating provided.",
+      "product": {
+        "title": "Wireless Headset, Bluetooth Headset with Microphone & Charging Dock, Wireless Headphones with Mic Mute & USB Dongle, 45 Hours Handsfree for Zoom/Skype/PC/Laptop/Smartphone/Meeting/Call Center",
+        "price": 50.99,
+        "source_site": "Newegg",
+        "product_url": "https://www.newegg.com/p/1VH-00DD-00269",
+        "rating": null
+      },
+      "eval_score": 40,
+      "eval_rationale": "Lowest price ($50.99) deviates most from the $150-$250 target. 'Headset' title implies On-Ear. No explicit Ambient ANC or wired backup (3.5mm) mentioned. Battery (45H) meets requirement."
+    }
+  ],
+  "timestamps": {
+    "started_at": "2026-04-18T21:29:26.634304+00:00",
+    "completed_at": "2026-04-18T21:33:36.685739+00:00"
+  },
+  "meta": {
+    "design": "sql",
+    "model_id": "qwen3.5-122a10b-uncensored",
+    "result_limit": 10,
+    "source_file": "/Users/zyd/Code/Devs/shopping-agent/eval.jsonl",
+    "source_line": 5
+  },
+  "error": null
+}
