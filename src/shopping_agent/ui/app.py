@@ -99,19 +99,21 @@ class ShoppingAgentApp(App[None]):
             )
 
         with Vertical(id="main-view"):
-            with Container(id="top-panel", classes="panel"):
-                yield Static("Active Prompt", classes="panel-title")
-                yield Static("No search submitted yet.", id="active-prompt")
-                yield Static(
-                    f"Pipeline: {self.selected_design.label}",
-                    id="design-status",
-                )
+            with Container(id="search-panel", classes="panel"):
                 with Horizontal(id="search-row"):
                     yield Input(
                         placeholder="Enter a new shopping search and press Enter",
                         id="active-query-input",
                     )
                     yield LoadingIndicator(id="loading")
+
+            with Container(id="status-panel", classes="panel"):
+                yield Static("Active Prompt", classes="panel-title")
+                yield Static("No search submitted yet.", id="active-prompt")
+                yield Static(
+                    f"Pipeline: {self.selected_design.label}",
+                    id="design-status",
+                )
                 yield Static("Ready for a shopping query.", id="status-copy")
 
             with Container(id="bottom-panel", classes="panel"):

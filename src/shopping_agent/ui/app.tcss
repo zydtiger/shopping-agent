@@ -29,7 +29,7 @@ Screen {
     padding: 1 2;
 }
 
-#input-panel {
+#search-panel {
     height: auto;
     margin-bottom: 1;
 }
