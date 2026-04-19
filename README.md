@@ -64,7 +64,7 @@ agent:
 ## Test
 
 ```bash
-uv run python -m unittest discover -s tests
+uv run pytest
 ```
 
 ## Notes
@@ -76,38 +76,46 @@ uv run python -m unittest discover -s tests
 
 ## Architecture Flow
 
+User flow through the system
+
 ```mermaid
 flowchart TD
-    U[User in Textual UI] --> SA[ShoppingAgent.run_search]
+    U[User in Textual UI] -->|enters prompt| SA[ShoppingAgent.run_search]
     SA --> RA[RetrievalAgent]
 
-    RA -->|ask_clarification| C[Clarification Callback]
-    C -->|answer| RA
+    RA -->|ask_clarification| U
+    U -.->|answer| RA
 
     RA -->|search_amazon / search_ebay / search_newegg| TOOLS[Retrieval Tools]
     TOOLS --> ADP[Source Adapters]
     ADP --> TOOLS
     TOOLS -->|normalized products| STORE[(Shared In-Memory Product Store)]
-    TOOLS -->|status only| RA
+    TOOLS -.->|status only| RA
 
-    RA -->|profile + retrieval status| RANK[RankingAgent]
+    RA -->|user profile| RANK[RankingAgent]
     STORE --> RANK
 
     RANK -->|Direct JSON path| DJ[Evaluate injected full product list]
     RANK -->|SQL path| SQL[query_product_store SELECTs]
     SQL --> STORE
 
-    DJ --> RESP[Final SearchResponse<br/>ranked_products + debug_notes]
+    DJ --> RESP[Final SearchResponse<br/>ranked_products]
     SQL --> RESP
-    RESP --> UIRES[UI Recommendations + Logs]
+    RESP --> UIRES[UI Recommendations]
 
-    subgraph EVAL[Evaluation Harness End-to-End]
-      E1[JSONL item_summary] --> E2[Generate detailed hidden draft]
-      E2 --> E3[Compress to <= 3-word prompt]
-      E3 --> E4[Run ShoppingAgent.run_search<br/>with auto clarification callback]
-      E4 --> E5[LLM judge scores each recommendation<br/>against hidden draft]
-      E5 --> E6[Write artifact JSON to ./eval/*.json]
-    end
+    style RA fill:#DBEAFE,stroke:#2563EB,stroke-width:2px,color:#0F172A
+    style RANK fill:#DBEAFE,stroke:#2563EB,stroke-width:2px,color:#0F172A
+```
+
+LLM judge evaluation pipeline
+
+```mermaid
+flowchart TD
+    E1[JSONL item_summary] --> E2[Generate detailed hidden draft]
+    E2 --> E3[Compress to <= 3-word prompt]
+    E3 --> E4[Run ShoppingAgent.run_search<br/>with auto clarification callback]
+    E4 --> E5[LLM judge scores each recommendation<br/>against hidden draft]
+    E5 --> E6[Write artifact JSON to ./eval/*.json]
 ```
 
 ## Project Layout
