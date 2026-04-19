@@ -1,0 +1,6 @@
+flowchart TD
+    E1[JSONL item_summary] --> E2[Generate detailed hidden draft]
+    E2 --> E3[Compress to <= 3-word prompt]
+    E3 --> E4[Run ShoppingAgent.run_search<br/>with auto clarification callback]
+    E4 --> E5[LLM judge scores each recommendation<br/>against hidden draft]
+    E5 --> E6[Write artifact JSON to ./eval/*.json]

@@ -1,0 +1,26 @@
+flowchart TD
+    U[User in Textual UI] -->|enters prompt| SA[ShoppingAgent.run_search]
+    SA --> RA[RetrievalAgent]
+
+    RA -->|ask_clarification| U
+    U -.->|answer| RA
+
+    RA -->|search_amazon / search_ebay / search_newegg| TOOLS[Retrieval Tools]
+    TOOLS --> ADP[Source Adapters]
+    ADP --> TOOLS
+    TOOLS -->|normalized products| STORE[(Shared In-Memory Product Store)]
+    TOOLS -.->|status only| RA
+
+    RA -->|user profile| RANK[RankingAgent]
+    STORE --> RANK
+
+    RANK -->|Direct JSON path| DJ[Evaluate injected full product list]
+    RANK -->|SQL path| SQL[query_product_store SELECTs]
+    SQL --> STORE
+
+    DJ --> RESP[Final SearchResponse<br/>ranked_products]
+    SQL --> RESP
+    RESP --> UIRES[UI Recommendations]
+
+    style RA fill:#DBEAFE,stroke:#2563EB,stroke-width:2px,color:#0F172A
+    style RANK fill:#DBEAFE,stroke:#2563EB,stroke-width:2px,color:#0F172A
