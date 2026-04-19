@@ -113,6 +113,31 @@ In short: the user provides a vague query, `RetrievalAgent` runs clarification a
   caption: [Shopping agent user interaction and multi-agent/tool orchestration flow (`./user_flow.png`).],
 )
 
+#pagebreak()
+
+== Sample user interface UI
+
+#figure(
+  image("./demo/prompt.png", width: 80%),
+  caption: [Initial prompt.],
+)
+
+#figure(
+  image("./demo/question.png", width: 80%),
+  caption: [Question asked by the agent.],
+)
+
+#figure(
+  image("./demo/logs.png", width: 80%),
+  caption: [Logs of agent activities.],
+)
+
+#figure(
+  image("./demo/recommendations.png", width: 80%),
+  caption: [Recommendations generated eventually.],
+)
+
+
 = Empirical evaluation
 
 Evaluation setup used in this project:
